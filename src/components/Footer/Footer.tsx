@@ -4,7 +4,7 @@ import RSSLogo from '../../images/RSSchoolLogo.svg'
 import GitLogo from '../../images/GitLogo.svg' 
 
 
-export function Footer(): JSX.Element {
+function Footer(): JSX.Element {
     return(
         <div className="footer">
             <div className="footer__container container">
@@ -31,3 +31,5 @@ export function Footer(): JSX.Element {
         </div>
     )
 }
+
+export default Footer;
