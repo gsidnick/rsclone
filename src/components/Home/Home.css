@@ -1,0 +1,69 @@
+.home__container {
+  display: grid;
+  grid-template-columns: 480px 280px;
+  gap: 40px;
+  height: calc(100vh - 85px);
+  grid-template-areas:
+    "game score"
+    "game level"
+    "game level"
+    "game level"
+    "game level";
+  padding: 40px 0;
+}
+
+.home__game {
+  grid-area: game;
+  padding: 40px;
+  background: #E8E9EE;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__score {
+  grid-area: score;
+  padding: 40px;
+  background: #E8E9EE;
+  border-radius: 10px;
+}
+
+.home__level {
+  grid-area: level;
+  padding: 40px;
+  background: #E8E9EE;
+  border-radius: 10px;
+}
+
+.home__card-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+  color: #aaaaaa;
+}
+
+.home__card-value {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.home__game-play {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid #cccccc;
+  width: 200px;
+  border-radius: 8px;
+  padding: 16px 32px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.home__game-play:active {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
