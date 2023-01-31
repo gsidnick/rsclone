@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
+import { Footer } from './components/Footer/Footer'
 
 function App() {
-  return <div className="App">RS Clone App is started!!!</div>;
+  return <Footer></Footer>
 }
 
 export default App;

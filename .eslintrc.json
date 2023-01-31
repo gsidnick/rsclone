@@ -19,6 +19,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project": "./tsconfig.json"
+        // "tsconfigRootDir": "rsclone"
     },
     "plugins": [
         "react",
