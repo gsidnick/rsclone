@@ -1,8 +1,13 @@
 import React from 'react';
 import './App.css';
+import Home from './components/Home/Home';
 
 function App() {
-  return <div className="App">RS Clone App is started!!!</div>;
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
