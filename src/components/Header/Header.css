@@ -14,17 +14,3 @@
   align-items: center;
   font-weight: bold;
 }
-
-.nav__list {
-  display: flex;
-  gap: 10px;
-}
-
-.nav__list li {
-  list-style: none;
-}
-
-.nav__list li a {
-  color: #fff;
-  text-decoration: none;
-}

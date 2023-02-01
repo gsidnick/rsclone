@@ -1,0 +1,15 @@
+.nav__list {
+  display: flex;
+  gap: 10px;
+}
+
+.nav__list li {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.nav__list li a {
+  color: #fff;
+  text-decoration: none;
+}
