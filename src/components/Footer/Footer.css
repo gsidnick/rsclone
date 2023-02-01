@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap');
 
 .footer__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:  #efefef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:  #efefef;
 }
 .footer__links{
-    display: flex;
-    justify-content: space-around;
-    width: 130px;
-    height: 30px;
+  display: flex;
+  justify-content: space-around;
+  width: 130px;
+  height: 30px;
 }
 .footer__text{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
 }
