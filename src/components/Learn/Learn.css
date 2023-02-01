@@ -1,0 +1,63 @@
+.learn__progress{
+  padding: 0;
+  margin: 0;
+  height: 0px;
+}
+.learn__input{
+  position: absolute;
+  width: 100%;
+  margin: 0 0 0 0;
+  border: none;
+}
+input[type="range"] {
+  appearance: none;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(90deg, #4c049e, #830c65);
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  display: none;
+}
+.learn__points{
+  padding-left: 70%;
+}
+.learn__points-score{
+  margin: 0;
+  padding: 50px 0 0 0;
+  font-size: 16px;
+}
+.learn__color-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(207, 207, 207);
+  width: 800px;
+  height: 500px;
+  margin: 0 0 50px 0;
+  border-radius: 20px;
+}
+.learn__circle-progress{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(184, 184, 184);
+  border: 1px solid gray;
+  border-radius: 75px;
+}
+.learn__percentage{
+  font-size: 20px;
+  box-sizing: content-box;
+}
+.learn__button{
+  font-size: 20px;
+  width: 150px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: rgb(184, 184, 184);
+}

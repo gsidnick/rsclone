@@ -1,0 +1,85 @@
+.library__container{
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+.library__header{
+  text-align: center;
+}
+.library__header-title{
+  margin: 0;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 44px;
+}
+.library__input{
+  padding: 50px 0 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.library__input-text{
+  outline: none;
+  margin: 0 25px 0 0;
+  background-color: #a6c9bc93;
+  border: none;
+  width: 600px;
+  height: 50px;
+  box-shadow: 
+  inset -4px -4px 4px rgba(255, 255, 255, 0.18), 
+  inset 2px 2px 4px rgba(0, 0, 0, 0.24), 
+  inset -8px -8px 15px rgba(255, 255, 255, 0.02), 
+  inset 8px 8px 15px rgba(10, 46, 82, 0.21);
+  border-radius: 15px;
+}
+.library__input-add{
+  width: 50px;
+  height: 50px;
+  border-radius: 35px;
+  border: 2px solid gray;
+  font-size: 40px;
+  color: rgb(80, 86, 88);
+  cursor: pointer;
+}
+.library__card{
+  margin: 50px 0 0;
+  width: 850px;
+  height: 335px;
+  background: #ECEDF2;
+  border-radius: 30px;
+  box-shadow: 
+  2px 2px 4px rgba(10, 46, 82, 0.12), 
+  -6px -6px 40px rgba(255, 255, 255, 0.63), 
+  4px 4px 15px rgba(10, 46, 82, 0.11), 
+  inset 4px 4px 30px rgba(10, 46, 82, 0.11), 
+  inset -4px -4px 40px #FFFFFF;
+}
+.library__card-header{
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+.bold{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  text-align: center;
+  color: #0A2E52;
+}
+.library__card-label{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.thin{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #0A2E52;
+}
+.active{
+  background-color: #e6dede;
+}
