@@ -1,7 +1,7 @@
 import React from 'react';
-import './Footer.css';
 import RSSLogo from '../../images/RSSchoolLogo.svg';
 import GitLogo from '../../images/GitLogo.svg';
+import './Footer.css';
 
 function Footer() {
   return (
