@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import './Header.css';
 
@@ -6,9 +7,9 @@ function Header() {
   return (
     <div className="header">
       <div className="header__container">
-        <a className="header__logo" href="/">
+        <Link className="header__logo" to="/">
           LOGO
-        </a>
+        </Link>
         <Nav />
       </div>
     </div>
