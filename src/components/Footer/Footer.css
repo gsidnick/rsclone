@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap');
+.footer {
+  padding: 20px 40px;
+  background-color:  #efefef;
+}
 
 .footer__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:  #efefef;
 }
 .footer__links{
   display: flex;
@@ -13,9 +15,7 @@
   height: 30px;
 }
 .footer__text{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-style: normal;
-  font-weight: 300;
   font-size: 12px;
+  font-weight: 300;
   line-height: 100%;
 }
