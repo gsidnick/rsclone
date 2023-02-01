@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
+function Home() {
   return (
     <main className="home">
       <div className="home__container container">
@@ -20,6 +20,6 @@ const Home = () => {
       </div>
     </main>
   );
-};
+}
 
 export default Home;

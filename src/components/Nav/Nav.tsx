@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Nav(): JSX.Element {
+function Nav() {
   return (
     <nav className="nav">
       <ul className="nav__list">

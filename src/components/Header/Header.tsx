@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../Nav/Nav';
 import './Header.css';
 
-function Header(): JSX.Element {
+function Header() {
   return (
     <div className="header">
       <div className="header__container">

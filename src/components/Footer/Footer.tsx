@@ -3,7 +3,7 @@ import RSSLogo from '../../images/RSSchoolLogo.svg';
 import GitLogo from '../../images/GitLogo.svg';
 import './Footer.css';
 
-function Footer(): JSX.Element {
+function Footer() {
   return (
     <div className="footer">
       <div className="footer__container">
