@@ -8,13 +8,13 @@
   justify-content: space-between;
   align-items: center;
 }
-.footer__links{
+.footer__links {
   display: flex;
   justify-content: space-around;
   width: 130px;
   height: 30px;
 }
-.footer__text{
+.footer__text {
   font-size: 12px;
   font-weight: 300;
   line-height: 100%;
