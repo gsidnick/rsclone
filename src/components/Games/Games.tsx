@@ -1,20 +1,20 @@
 import React from 'react';
 import './Games.css';
-import GameCards from '../GameCards/GameCards';
+import GameCard from '../GameCards/GameCard';
 
 function Games() {
   return (
     <main className="games">
       <div className="games__container container">
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
-        <GameCards /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
+        <GameCard /> 
       </div>
     </main>
   );
