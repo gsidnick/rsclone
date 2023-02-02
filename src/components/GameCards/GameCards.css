@@ -1,4 +1,4 @@
-.games__block{
+.gamecards__block{
   margin: 10px 0px 10px 10px;
   display: flex;
   justify-content: space-around;
@@ -14,18 +14,18 @@
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.349);
 }
-.games__image{
+.gamecards__image{
   width: 70px;
   height: 145px;
 }
-.games__block-title{
+.gamecards__block-title{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.games__block-description{
+.gamecards__block-description{
   font-size: 10px;
 }
-.games__block-name{
+.gamecards__block-name{
   font-size: 20px;
 }
