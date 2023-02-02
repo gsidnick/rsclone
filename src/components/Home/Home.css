@@ -1,6 +1,6 @@
 .home__container {
   display: grid;
-  grid-template-columns: 480px 280px;
+  grid-template-columns: 480px 1fr;
   gap: 40px;
   height: calc(100vh - 135px);
   grid-template-areas:
@@ -15,7 +15,7 @@
 .home__game {
   grid-area: game;
   padding: 40px;
-  background: #E8E9EE;
+  background: #fff;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -27,14 +27,14 @@
 .home__score {
   grid-area: score;
   padding: 40px;
-  background: #E8E9EE;
+  background: #fff;
   border-radius: 10px;
 }
 
 .home__level {
   grid-area: level;
   padding: 40px;
-  background: #E8E9EE;
+  background: #fff;
   border-radius: 10px;
 }
 
