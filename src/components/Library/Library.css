@@ -23,14 +23,14 @@
   font-weight: 800;
 }
 
-.library__inputs {
+.library__form {
   margin: 50px 0 20px 0;
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
-.library__input-text {
+.library__form_input-text {
   width: 400px;
   height: 50px;
   outline: none;
@@ -44,7 +44,7 @@
   inset 8px 8px 15px rgba(10, 46, 82, 0.21);
 }
 
-.library__input-add {
+.library__form_input-add {
   margin-left: 25px;
   width: 50px;
   height: 50px;
@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.library__card {
+.library__list {
   margin: 30px auto;
   width: 70%;
   height: 335px;
@@ -64,33 +64,39 @@
   box-shadow: 2px 2px 4px rgba(10, 46, 82, 0.12), -6px -6px 40px rgba(255, 255, 255, 0.63), 4px 4px 15px rgba(10, 46, 82, 0.11), inset 4px 4px 30px rgba(10, 46, 82, 0.11), inset -4px -4px 40px #FFFFFF;
 }
 
-.library__card-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-around;
-}
-
-.bold {
-  font-style: normal;
-  font-weight: 700;
+.head {
+  padding: 20px 0 10px 0;
   font-size: 28px;
   line-height: 44px;
+  font-weight: 700;
   text-align: center;
-  color: #0A2E52;
-}
-
-.library__card-label {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.thin {
-  font-style: normal;
-  font-weight: 400;
+.library__item {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+
+.library__col {
+  padding: 10px;
+  color: #0A2E52;
+}
+
+.body {
   font-size: 20px;
   line-height: 28px;
-  color: #0A2E52;
+  font-weight: 400;
+}
+
+.library__btn-remove {
+  position: absolute;
+  right: 20px;
 }
 
 .active {
