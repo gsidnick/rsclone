@@ -1,14 +1,16 @@
-.learn__progress{
+.learn__progress {
   padding: 0;
   margin: 0;
   height: 0px;
 }
-.learn__input{
+
+.learn__input {
   position: absolute;
   width: 100%;
   margin: 0 0 0 0;
   border: none;
 }
+
 input[type="range"] {
   appearance: none;
   height: 14px;
@@ -17,19 +19,22 @@ input[type="range"] {
   background-size: 70% 100%;
   background-repeat: no-repeat;
 }
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   display: none;
 }
-.learn__points{
+
+.learn__points {
   padding-left: 70%;
 }
-.learn__points-score{
+
+.learn__points-score {
   margin: 0;
   padding: 50px 0 0 0;
   font-size: 16px;
 }
-.learn__color-container{
+.learn__color-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +45,8 @@ input[type="range"]::-webkit-slider-thumb {
   margin: 0 0 50px 0;
   border-radius: 20px;
 }
-.learn__circle-progress{
+
+.learn__circle-progress {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,11 +56,13 @@ input[type="range"]::-webkit-slider-thumb {
   border: 1px solid gray;
   border-radius: 75px;
 }
-.learn__percentage{
+
+.learn__percentage {
   font-size: 20px;
   box-sizing: content-box;
 }
-.learn__button{
+
+.learn__button {
   font-size: 20px;
   width: 150px;
   border-radius: 10px;

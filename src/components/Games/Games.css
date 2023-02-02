@@ -1,4 +1,4 @@
-.games__container{
+.games__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,6 +6,7 @@
   width: 100%;
 
 }
-.gamecard__block{
+
+.gamecard__block {
   margin: 10px 0px 10px 10px;
 }
