@@ -1,6 +1,6 @@
 import React from 'react';
 import './Games.css';
-import GameCard from '../GameCards/GameCard';
+import GameCard from '../GameCard/GameCard';
 
 function Games() {
   return (
