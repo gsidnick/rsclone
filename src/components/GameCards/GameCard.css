@@ -1,4 +1,4 @@
-.gamecard__block{
+.gamecard{
   margin: 10px 0px 10px 10px;
   display: flex;
   justify-content: space-around;
@@ -18,14 +18,14 @@
   width: 70px;
   height: 145px;
 }
-.gamecard__block-title{
+.gamecard__title{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.gamecard__block-description{
+.gamecard__description{
   font-size: 10px;
 }
-.gamecard__block-name{
+.gamecard__name{
   font-size: 20px;
 }
