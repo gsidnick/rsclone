@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .library {
   padding: 30px 0;
 }
@@ -6,12 +7,25 @@
   margin: 0 auto;
   width: 1100px;
   padding: 15px 0;
+=======
+.library__container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.library__header {
+>>>>>>> develop
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .library__title {
+=======
+.library__header-title {
+>>>>>>> develop
   margin: 0;
   font-style: normal;
   font-size: 36px;
@@ -23,16 +37,24 @@
   font-weight: 800;
 }
 
+<<<<<<< HEAD
 .library__inputs {
   margin: 50px 0 20px 0;
+=======
+.library__input{
+  padding: 50px 0 0;
+>>>>>>> develop
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
 .library__input-text {
+<<<<<<< HEAD
   width: 400px;
   height: 50px;
+=======
+>>>>>>> develop
   outline: none;
   background-color: #a6c9bc93;
   border: none;
@@ -45,7 +67,10 @@
 }
 
 .library__input-add {
+<<<<<<< HEAD
   margin-left: 25px;
+=======
+>>>>>>> develop
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -56,8 +81,13 @@
 }
 
 .library__card {
+<<<<<<< HEAD
   margin: 30px auto;
   width: 70%;
+=======
+  margin: 50px 0 0;
+  width: 850px;
+>>>>>>> develop
   height: 335px;
   background: #ECEDF2;
   border-radius: 30px;
