@@ -7,11 +7,11 @@ function Learn() {
       <div className="learn__progress">
         <input type="range" className="learn__input" />
       </div>
-      <div className="learn__contain">
+      <div className="learn__container container">
         <div className="learn__points">
           <h3 className="learn__points-score">Points:123</h3>
         </div>
-        <div className="learn__color-container container">
+        <div className="learn__color-container bordered">
           <div className="learn__circle-progress">
             <span className="learn__percentage">66%</span>
           </div>

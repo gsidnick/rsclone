@@ -1,35 +1,30 @@
 .learn {
+  padding: 30px 0;
   display: flex;
+  position: relative;
 }
 
-.learn__progress {
-  padding: 0;
-  margin: 0;
-  height: 0px;
-}
-
-.learn__input {
-  position: absolute;
-  width: 100%;
-  margin: 0 0 0 0;
-  border: none;
-}
-
-input[type="range"] {
-  appearance: none;
-  height: 14px;
-  background: rgba(255, 255, 255, 0.6);
-  background: linear-gradient(90deg, #4c049e, #830c65);
-  background-size: 70% 100%;
-  background-repeat: no-repeat;
-}
-
-input[type="range"]::-webkit-slider-thumb {
+.learn__input::-webkit-slider-thumb {
   -webkit-appearance: none;
   display: none;
 }
 
-.learn__contain {
+.learn__input {
+  width: 100%;
+  height: 14px;
+  margin: 0;
+  border: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(90deg, #4c049e, #830c65);
+  background-repeat: no-repeat;
+  background-size: 70% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.learn__container {
   margin: auto;
 }
 
@@ -41,15 +36,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .learn__points-score {
-  margin: 0;
-  padding: 50px 0 0 0;
   font-size: 16px;
   position: absolute;
-  right: 0;
+  right: 20px;
 }
 
 .learn__color-container {
-  width: 700px;
   padding: 10px 0 80px 0;
   border-radius: 30px;
   display: flex;
@@ -93,14 +85,19 @@ input[type="range"]::-webkit-slider-thumb {
 
 .learn__button {
   width: 160px;
-  padding: 15px 30px;
+  padding: 20px 30px;
   text-align: center;
   display: flex;
   background-color: #fff;
   box-shadow: 2px 2px 5px rgba(10, 46, 82, 0.16), -8px -8px 40px rgba(255, 255, 255, 0.56), 8px 8px 15px rgba(0, 0, 0, 0.17);
   border-radius: 50px;
   border: 0;
+  transition: 0.5s;
   cursor: pointer;
+}
+
+.learn__button:hover {
+  transform: scale(1.05);
 }
 
 .learn__button-arrow {
