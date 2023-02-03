@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import Footer from './components/Footer/Footer';
+import Games from './components/Games/Games';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/library/' element={<Library />} />
           <Route path='/learn/' element={<Learn />} />
+          <Route path='/games/' element={<Games />} />
         </Routes>
         <Footer />
       </Router>
