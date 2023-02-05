@@ -10,6 +10,10 @@
 }
 
 .nav__list li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
+}
+
+.nav__current {
+  filter: invert(65%);
 }
