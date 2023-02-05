@@ -30,7 +30,7 @@
   justify-content: center;
 }
 
-.library__form_input-text {
+.library__input-text {
   padding-left: 10px;
   width: 400px;
   height: 50px;
@@ -46,7 +46,7 @@
   inset 8px 8px 15px rgba(10, 46, 82, 0.21);
 }
 
-.library__form_input-add {
+.library__button-add {
   margin-left: 25px;
   width: 50px;
   height: 50px;
