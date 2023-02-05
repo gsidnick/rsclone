@@ -76,7 +76,7 @@ function Library() {
       <div className="library__container bordered">
         <h2 className="library__title">Add new <span className="library__title_span">Word</span></h2>
         <form className="library__form">
-          <input ref={inputRef} className="library__input-text" type="text" /> 
+          <input ref={inputRef} className="library__input-text" type="text" name="word" /> 
           <button onClick={add} className="library__button-add">+</button>
         </form>
         <div className="library__list">
