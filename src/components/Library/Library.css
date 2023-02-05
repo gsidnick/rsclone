@@ -31,8 +31,10 @@
 }
 
 .library__form_input-text {
+  padding-left: 10px;
   width: 400px;
   height: 50px;
+  font-size: 24px;
   outline: none;
   background-color: #a6c9bc93;
   border: none;
@@ -69,16 +71,14 @@
   font-size: 28px;
   line-height: 44px;
   font-weight: 700;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .library__item {
   width: 100%;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   position: relative;
 }
@@ -97,6 +97,7 @@
 .library__btn-remove {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
 .active {
