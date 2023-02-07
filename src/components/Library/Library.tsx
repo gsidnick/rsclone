@@ -1,19 +1,20 @@
-import { useRef, useState } from 'react';
-import ILibrary from '../../interfaces/ILibrary';
+import { useRef, useContext } from 'react';
 import './Library.css';
+import { MainContext } from '../../App';
 
 function Library() {
-  function getStorage() {
-    const libraryTmp = localStorage.getItem('library');
-    if (!libraryTmp) return;
+  // function getStorage() {
+  //   const libraryTmp = localStorage.getItem('library');
+  //   if (!libraryTmp) return;
 
-    const listLibraryTmp = JSON.parse(libraryTmp);
-    if (!listLibraryTmp) return;
+  //   const listLibraryTmp = JSON.parse(libraryTmp);
+  //   if (!listLibraryTmp) return;
 
-    return listLibraryTmp;
-  }
+  //   return listLibraryTmp;
+  // }
 
-  const [library, setLibrary] = useState<ILibrary[]>(getStorage());
+  const { library, setLibrary} = useContext(MainContext);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   function setStorage() {
@@ -51,7 +52,7 @@ function Library() {
   function remove(wordIndex: number) {
     let libraryTmp = library;
     libraryTmp = libraryTmp.filter((item, index) => {
-      return wordIndex != index;
+      return wordIndex !== index;
     })
   
     setLibrary([...libraryTmp]);
