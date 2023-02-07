@@ -3,27 +3,9 @@ import './Library.css';
 import { MainContext } from '../../App';
 
 function Library() {
-  // function getStorage() {
-  //   const libraryTmp = localStorage.getItem('library');
-  //   if (!libraryTmp) return;
-
-  //   const listLibraryTmp = JSON.parse(libraryTmp);
-  //   if (!listLibraryTmp) return;
-
-  //   return listLibraryTmp;
-  // }
-
   const { library, setLibrary} = useContext(MainContext);
 
   const inputRef = useRef<HTMLInputElement>(null);
-
-  function setStorage() {
-    const libraryTmp = library;
-    const listLibraryTmp = JSON.stringify(libraryTmp);
-    if (!listLibraryTmp) return;
-
-    window.localStorage.setItem('library', listLibraryTmp);
-  }
 
   function dublicate(word: string) {
     const wordDublicate = library.find(item => word === item.word);
@@ -59,7 +41,6 @@ function Library() {
   }
 
   function get() {
-    setStorage()
     return library.map((item, index) => {
       return (
         <div key={index} className="library__item">
@@ -74,7 +55,7 @@ function Library() {
 
   return (
     <main className="library">
-      <div className="library__container bordered">
+      <div className="library__container container">
         <h2 className="library__title">Add new <span className="library__title_span">Word</span></h2>
         <form className="library__form">
           <input ref={inputRef} className="library__input-text" type="text" name="word" /> 
