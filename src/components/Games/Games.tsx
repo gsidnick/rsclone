@@ -7,14 +7,6 @@ function Games() {
     <main className="games">
       <div className="games__container container">
         <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
-        <GameCard /> 
       </div>
     </main>
   );
