@@ -7,8 +7,10 @@ import Home from './components/Home/Home';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import Footer from './components/Footer/Footer';
-import Games from './components/Games/Games';
+import GamePage from './components/GamePage/GamePage';
 import './App.css';
+import GameCards from './components/GameCards/GameCards';
+
 
 export const MainContext = React.createContext<IMainContext>({ library:[] , setLibrary:() => {} });
 
@@ -55,7 +57,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/library/' element={<Library />} />
           <Route path='/learn/' element={<Learn />} />
-          <Route path='/games/' element={<Games />} />
+          <Route path='/games/' element={<GameCards />} />
+          <Route path='/games/:number/' element={<GamePage />}/>
         </Routes>
         </MainContext.Provider>
         <Footer />

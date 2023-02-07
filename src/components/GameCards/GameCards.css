@@ -1,4 +1,10 @@
-.gamecard {
+.gamecards__links {
+  text-decoration: none;
+  font-family:'Franklin Gothic Medium', sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+.gamecards__shell {
   margin: 10px 0px 10px 10px;
   display: flex;
   justify-content: space-around;
@@ -15,21 +21,33 @@
   border: 1px solid rgba(0, 0, 0, 0.349);
 }
 
-.gamecard__image {
+.gamecards__image {
   width: 70px;
   height: 145px;
 }
 
-.gamecard__title {
+.gamecards__title {
+  width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.gamecard__description {
-  font-size: 10px;
+.gamecards__description {
+  font-size: 12px;
 }
 
-.gamecard__name {
+.gamecards__name {
   font-size: 20px;
+}
+
+.gamecards__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gamecards__block {
+  margin: 10px 0px 10px 10px;
 }
