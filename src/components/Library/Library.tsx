@@ -31,16 +31,23 @@ function Library() {
     inputElem.value = '';
   }
 
+  function clearStorage() {
+    localStorage.removeItem('library');
+  }
+
   function remove(wordIndex: number) {
     let libraryTmp = library;
     libraryTmp = libraryTmp.filter((item, index) => {
       return wordIndex !== index;
     })
+
+    if (libraryTmp.length === 0) clearStorage()
   
     setLibrary([...libraryTmp]);
   }
 
   function get() {
+    console.log('get')
     return library.map((item, index) => {
       return (
         <div key={index} className="library__item">
