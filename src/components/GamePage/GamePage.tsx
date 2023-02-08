@@ -1,19 +1,37 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import { useState, useEffect, ReactElement, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MainContext } from '../../App';
 import Game1 from '../Games/Game1';
 import Game2 from '../Games/Game2';
 import './GamePage.css';
+import ILibrary from '../../interfaces/ILibrary';
+
 
 function GamePage() {
-  const { gamesLib, points } = useContext(MainContext);
+  const { gamesLib, points, setPoints, library } = useContext(MainContext);
 
   const [content, setContent] = useState<ReactElement | null | string>(null);
   const [name, setName] = useState<string | null>(null);
+
   const [failAnsw, setFailAnsw] = useState<number>(0);
   const [correctAnsw, setCorrectAnsw] = useState<number>(0);
 
   const params = useParams();
+
+  function shuffleGameNames(library: ILibrary[]) {
+    let libraryTmp: ILibrary[] = [];
+    
+    while(true) {
+      let index = Math.floor(Math.random() * library.length);
+      let word = library[index];
+
+      if (libraryTmp.length === library.length) break
+
+      if (!libraryTmp.includes(word)) libraryTmp.push(word)
+    }
+    return libraryTmp;
+  }
 
   useEffect(() => {
     const number: number | null = (params && params.number) ? +params.number : null;
@@ -22,17 +40,21 @@ function GamePage() {
       const gameName = gamesLib[(number as number)-1].name;
       if(gameName) setName(gameName);
 
+      const gameData = [shuffleGameNames(library), points, failAnsw, correctAnsw, setPoints, setFailAnsw, setCorrectAnsw];
+
       switch  (number){
         case 1:
-          setContent(Game1);
+          setContent(<Game1 data = {gameData} />);
           break;
         case 2:
-          setContent(Game2);
+          setContent(<Game2 data = {gameData}/>);
           break;
         default: setContent('Game not found');
       }
     }
-  },[params, gamesLib]);
+  },[params, gamesLib, library, points, failAnsw, correctAnsw, setPoints]);
+
+
 
   return  (
     <main className="gamepage">
