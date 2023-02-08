@@ -1,0 +1,10 @@
+.gamepage__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gamepage__header-info {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}

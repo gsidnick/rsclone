@@ -10,12 +10,15 @@ import Footer from './components/Footer/Footer';
 import GamePage from './components/GamePage/GamePage';
 import './App.css';
 import GameCards from './components/GameCards/GameCards';
+import { gamesLib } from './constants';
 
-
-export const MainContext = React.createContext<IMainContext>({ library:[] , setLibrary:() => {} });
+export const MainContext = React.createContext<IMainContext>({ 
+  library:[], setLibrary:() => {}, gamesLib:[] , points:0, setPoints:() => {}
+});
 
 function App() {
   const [library, setLibrary] = useState<ILibrary[]>([]);
+  const [points, setPoints] = useState(0);
 
   function setStorage() {
     const libraryTmp = library;
@@ -52,7 +55,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <MainContext.Provider value={{ library, setLibrary }}>
+        <MainContext.Provider value={{ library, setLibrary, gamesLib, points, setPoints}}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/library/' element={<Library />} />

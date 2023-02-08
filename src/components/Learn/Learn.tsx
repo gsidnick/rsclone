@@ -3,7 +3,7 @@ import './Learn.css';
 import { MainContext } from '../../App';
 
 function Learn() {
-  const { library  } = useContext(MainContext);
+  const { library, points } = useContext(MainContext);
 
   const [currentWord, setCurrentWord] = useState({
     word: 'Chair', translate: 'Стул'
@@ -29,7 +29,7 @@ function Learn() {
       </div>
       <div className="learn__container container">
         <div className="learn__points">
-          <h3 className="learn__points-score">Points:123</h3>
+          <h3 className="learn__points-score">Points: {points}</h3>
         </div>
         {library.length > 0 &&
           <div className="learn__color-container bordered">
