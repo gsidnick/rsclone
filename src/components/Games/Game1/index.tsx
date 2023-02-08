@@ -5,22 +5,30 @@ import ILibrary from '../../../interfaces/ILibrary';
 import IGameData from '../../../interfaces/IGameData';
 
 function Game1(props: IGameData) {
-  const [library, points, failAnsw, correctAnsw, setPoints, setFailAnsw, setCorrectAnsw] = props.data;
-  const [currentWord, setCurrentWord] = useState({
-    word: 'Chair', translate: 'Стул'
-  });
-  console.log(library);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [
+    library, 
+    librarySaved,
+    points, 
+    failAnsw, 
+    correctAnsw, 
+    currentIndex,
+    currentWord,
+    setPoints, 
+    setFailAnsw, 
+    setCorrectAnsw,
+    setCurrentWord,
+    setCurrentIndex,
+  ] = props.data;
 
   useEffect(() => {
-    if ((library as ILibrary[])[currentIndex]) setCurrentWord((library as ILibrary[])[currentIndex]);
-  },[library, currentIndex]);
+    if ((library as ILibrary[])[(currentIndex as number)]) setCurrentWord((library as ILibrary[])[(currentIndex as number)]);
+  },[library, currentIndex, setCurrentWord]);
 
   function nextWord() {
     let currentIndexTmp = currentIndex;
-    currentIndexTmp++;
+    (currentIndexTmp as number)++;
 
-    if(!(library as ILibrary[])[currentIndexTmp]) return;
+    if(!(library as ILibrary[])[(currentIndexTmp as number)]) return;
     setCurrentIndex(currentIndexTmp);
   }
   return (

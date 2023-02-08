@@ -19,6 +19,9 @@ function GamePage() {
 
   const params = useParams();
 
+  const [currentWord, setCurrentWord] = useState<{word: string, translate: string}>({word: 'Chair', translate: 'Стул'});
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   function shuffleGameNames(library: ILibrary[]) {
     let libraryTmp: ILibrary[] = [];
     
@@ -40,9 +43,22 @@ function GamePage() {
       const gameName = gamesLib[(number as number)-1].name;
       if(gameName) setName(gameName);
 
-      const gameData = [shuffleGameNames(library), points, failAnsw, correctAnsw, setPoints, setFailAnsw, setCorrectAnsw];
+      const gameData = [
+        shuffleGameNames(library),
+        library, 
+        points, 
+        failAnsw, 
+        correctAnsw, 
+        currentIndex,
+        currentWord,
+        setPoints, 
+        setFailAnsw, 
+        setCorrectAnsw,
+        setCurrentWord,
+        setCurrentIndex,
+      ];
 
-      switch  (number){
+      switch (number) {
         case 1:
           setContent(<Game1 data = {gameData} />);
           break;
@@ -52,7 +68,7 @@ function GamePage() {
         default: setContent('Game not found');
       }
     }
-  },[params, gamesLib, library, points, failAnsw, correctAnsw, setPoints]);
+  },[params, gamesLib, library, points, failAnsw, correctAnsw, setPoints, currentIndex, currentWord]);
 
 
 
