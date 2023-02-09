@@ -60,7 +60,7 @@ function Library() {
           <div className="library__col">{item.word}</div>
           <div className="library__col">{item.translation}</div>
           <div className="library__col">{item.learn}%</div>
-          <button onClick={() => { remove(index) }} className="library__btn-remove">-</button>
+          <button onClick={() => { remove(index) }} className="library__btn-remove"></button>
         </div>
       )
     })
@@ -68,19 +68,19 @@ function Library() {
 
   return (
     <main className="library">
-      <div className="library__container container">
+      <div className="library__container container bordered">
         <h2 className="library__title">Add new <span className="library__title_span">Word</span></h2>
         <form className="library__form">
           <input ref={inputRef} className="library__input-text" type="text" name="word" /> 
           <button onClick={add} className="library__button-add">+</button>
         </form>
         <div className="library__list">
-          <div className="library__row head">
+          <div className="library__row-head">
             <div className="library__col">Word</div>
             <div className="library__col">Translation</div>
             <div className="library__col">Learn</div>
           </div>
-          <div className="library__row body active">{get()}</div>
+          <div className="library__row-body">{get()}</div>
         </div>
       </div>
     </main>

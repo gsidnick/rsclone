@@ -1,6 +1,5 @@
 .learn {
   padding: 0 0 30px;
-  display: flex;
   position: relative;
 }
 
@@ -13,19 +12,15 @@
   width: 100%;
   height: 15px;
   position: absolute;
-  background: #dfdbff;
+  background: #E9EBF1;
 }
 
 .learn__progress span {
   height: 100%;
   display: block;
-  background: linear-gradient(90deg, #4c049e, #830c65);
+  background: linear-gradient(90.14deg, #124E82 1.94%, #1966AE 21.33%, #1AB9E1 43.79%, #86CDDE 62.16%, #A3D2B6 81.55%, #61C0BA 99.93%);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-
-.learn__container {
-  margin: auto;
 }
 
 .learn__points {
@@ -43,27 +38,26 @@
 
 .learn__color-container {
   padding: 10px 0 80px 0;
-  border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 .learn__circle-progress {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  background-color: rgb(184, 184, 184);
-  border: 1px solid gray;
+  width: 146px;
+  height: 146px;
+  box-shadow: inset -4px -4px 4px rgba(255, 255, 255, 0.18), inset 2px 2px 4px rgba(0, 0, 0, 0.24), inset -8px -8px 15px rgba(255, 255, 255, 0.02), inset 8px 8px 15px rgba(10, 46, 82, 0.21);
+  border: 0;
   border-radius: 75px;
 }
 
 .learn__percentage {
-  font-size: 20px;
-  box-sizing: content-box;
+  font-size: 36px;
+  font-weight: 600;
+  color: #1A90C8;
 }
 
 .learn__color {
@@ -75,11 +69,13 @@
 }
 
 .learn__color-english {
-  font-size: 52px;
+  font-size: 54px;
+  font-weight: 600;
 }
 
 .learn__color-russian {
-  font-size: 46px;
+  font-size: 38px;
+  font-weight: 500;
   color: #124F85;
 }
 

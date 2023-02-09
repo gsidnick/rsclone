@@ -1,35 +1,34 @@
 .gamecard {
-  margin: 10px 0px 10px 10px;
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 250px;
-  height: 150px;
   background-color: rgb(185, 185, 185);
-  box-shadow: 
-  2px 2px 4px rgba(90, 90, 90, 0.12), 
-  -6px -6px 40px rgba(255, 241, 241, 0.63), 
-  4px 4px 15px rgba(0, 0, 0, 0.11), 
-  inset 4px 4px 30px rgba(10, 46, 82, 0.11), 
-  inset -4px -4px 40px #cccccc;
-  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(10, 46, 82, 0.12), -6px -6px 40px rgba(255, 255, 255, 0.63), 4px 4px 15px rgba(10, 46, 82, 0.11), inset 4px 4px 30px rgba(10, 46, 82, 0.11), inset -4px -4px 40px #FFFFFF;
+  border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.349);
-}
-
-.gamecard__image {
-  width: 70px;
-  height: 145px;
+  cursor: pointer;
 }
 
 .gamecard__title {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-
-.gamecard__description {
-  font-size: 10px;
+  gap: 20px;
 }
 
 .gamecard__name {
   font-size: 20px;
+}
+
+.gamecard__description {
+  font-size: 12px;
+}
+
+.gamecard__image-block {
+  display: flex;
+  align-items: center;
+}
+
+.gamecard__image {
+  width: 70px;
 }

@@ -59,20 +59,32 @@
 
 .library__list {
   margin: 30px auto;
+  padding: 30px 0;
   width: 70%;
-  height: 335px;
+  min-height: 300px;
   background: #ECEDF2;
   border-radius: 30px;
   box-shadow: 2px 2px 4px rgba(10, 46, 82, 0.12), -6px -6px 40px rgba(255, 255, 255, 0.63), 4px 4px 15px rgba(10, 46, 82, 0.11), inset 4px 4px 30px rgba(10, 46, 82, 0.11), inset -4px -4px 40px #FFFFFF;
+  overflow: hidden;
 }
 
-.head {
-  padding: 20px 0 10px 0;
+.library__row-head {
   font-size: 28px;
   line-height: 44px;
   font-weight: 700;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.library__col {
+  padding: 10px;
+  color: #0A2E52;
+}
+
+.library__row-body {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
 .library__item {
@@ -81,25 +93,22 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   position: relative;
-}
-
-.library__col {
-  padding: 10px;
-  color: #0A2E52;
-}
-
-.body {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 400;
-}
-
-.library__btn-remove {
-  position: absolute;
-  right: 20px;
   cursor: pointer;
 }
 
-.active {
+.library__item:hover {
   background-color: #e6dede;
+}
+
+.library__btn-remove {
+  width: 20px;
+  height: 27px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='27' fill='none'%3e%3cpath fill='%23000' d='M7.882 23.857h.013a.722.722 0 0 0 .712-.732l-.29-16.332a.715.715 0 0 0-.737-.707.722.722 0 0 0-.711.732l.29 16.332c.007.393.33.707.723.707Zm4.237 0a.722.722 0 0 0 .724-.707l.29-16.332a.722.722 0 0 0-.712-.732.723.723 0 0 0-.737.707l-.29 16.332a.722.722 0 0 0 .712.732h.013Zm5.696-17.77a.729.729 0 0 0-.747.695l-.58 17.896a.887.887 0 0 1-.888.884H4.403a.894.894 0 0 1-.89-.907l-.58-17.873a.728.728 0 0 0-.747-.696.721.721 0 0 0-.7.742l.579 17.85c0 1.28 1.049 2.322 2.338 2.322H15.6c1.289 0 2.337-1.042 2.337-2.299l.58-17.873a.721.721 0 0 0-.701-.742Zm1.46-2.877H.726c-.4 0-.725.322-.725.72 0 .396.324.718.724.718h18.552c.4 0 .724-.322.724-.719a.722.722 0 0 0-.724-.719ZM5.502 2.589c.4 0 .724-.322.724-.72 0-.237.195-.43.435-.43h6.68c.24 0 .435.193.435.43 0 .398.324.72.724.72.4 0 .725-.322.725-.72C15.224.84 14.379 0 13.34 0H6.66a1.878 1.878 0 0 0-1.883 1.87c0 .397.324.719.724.719Z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 0;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
