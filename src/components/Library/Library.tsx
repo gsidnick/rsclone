@@ -1,4 +1,4 @@
-import { useRef, useContext } from 'react';
+import { useRef, useContext, FormEvent } from 'react';
 import './Library.css';
 import { MainContext } from '../../App';
 
@@ -16,13 +16,18 @@ function Library() {
 
   async function add() {
     try {
-      const inputElem = inputRef.current;
+      const inputElem = inputRef.current as HTMLInputElement | null;
   
       let word = '';
       if (inputElem) word = inputElem.value.toLowerCase();
       if (word?.length === 0) return;
+      
+      let libraryTmp = library;
   
-      if (dublicate(word)) return;
+      if (dublicate(word)) {
+        if (inputElem) inputElem.value = '';
+        return;
+      }
 
 
       const URL = 'http://localhost:4100/api/word/';
@@ -32,25 +37,34 @@ function Library() {
         body: JSON.stringify({ word, translation: word, learn: 0 }),
       });
       const data = await response.json();
-      
-      let libraryTmp = library;
       libraryTmp.push(data);
   
       setLibrary([...libraryTmp]);
 
-      if (inputElem !== null) inputElem.value = '';
+      if (inputElem) inputElem.value = '';
     } catch (e) {
       console.error(e);
     }
   }
 
-  function remove(wordIndex: number) {
-    let libraryTmp = library;
-    libraryTmp = libraryTmp.filter((item, index) => {
-      return wordIndex !== index;
-    })
+  async function remove(wordIndex: number) {
+    try {
+      const URL = `http://localhost:4100/api/word/${wordIndex}`;
+      await fetch (URL, { method: "DELETE" });
+      let libraryTmp = library;
+      libraryTmp = libraryTmp.filter((item) => {
+        return wordIndex !== item.id;
+      })
   
-    setLibrary([...libraryTmp]);
+      setLibrary([...libraryTmp]);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function formHandler(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    add();
   }
 
   function get() {
@@ -60,7 +74,7 @@ function Library() {
           <div className="library__col">{item.word}</div>
           <div className="library__col">{item.translation}</div>
           <div className="library__col">{item.learn}%</div>
-          <button onClick={() => { remove(index) }} className="library__btn-remove"></button>
+          <button className="library__btn-remove" onClick={() => { remove(item.id) }}></button>
         </div>
       )
     })
@@ -70,9 +84,9 @@ function Library() {
     <main className="library">
       <div className="library__container container bordered">
         <h2 className="library__title">Add new <span className="library__title_span">Word</span></h2>
-        <form className="library__form">
-          <input ref={inputRef} className="library__input-text" type="text" name="word" /> 
-          <button onClick={add} className="library__button-add">+</button>
+        <form className="library__form" onSubmit={formHandler}>
+          <input className="library__input-text" ref={inputRef} name="word" type="text" /> 
+          <button className="library__button-add">+</button>
         </form>
         <div className="library__list">
           <div className="library__row-head">
