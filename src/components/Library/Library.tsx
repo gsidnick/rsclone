@@ -3,7 +3,7 @@ import './Library.css';
 import { MainContext } from '../../App';
 
 function Library() {
-  const { library, setLibrary} = useContext(MainContext);
+  const { library, setLibrary } = useContext(MainContext);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -14,25 +14,34 @@ function Library() {
     return false;
   }
 
-  function add() {
-    const inputElem = inputRef.current;
-    if (!inputElem) return;
-
-    const word = inputElem.value.toLowerCase();
-    if (!word) return;
-
-    if (dublicate(word)) return;
-
-    const libraryTmp = library;
-    libraryTmp.push({ word: word, translation : word, learn: 0, id: 0 });
+  async function add() {
+    try {
+      const inputElem = inputRef.current;
   
-    setLibrary([...libraryTmp]);
+      let word = '';
+      if (inputElem) word = inputElem.value.toLowerCase();
+      if (word?.length === 0) return;
+  
+      if (dublicate(word)) return;
 
-    inputElem.value = '';
-  }
 
-  function clearStorage() {
-    localStorage.removeItem('library');
+      const URL = 'http://localhost:4100/api/word/';
+      const response = await fetch (URL, { 
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word, translation: word, learn: 0 }),
+      });
+      const data = await response.json();
+      
+      let libraryTmp = library;
+      libraryTmp.push(data);
+  
+      setLibrary([...libraryTmp]);
+
+      if (inputElem !== null) inputElem.value = '';
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   function remove(wordIndex: number) {
@@ -40,8 +49,6 @@ function Library() {
     libraryTmp = libraryTmp.filter((item, index) => {
       return wordIndex !== index;
     })
-
-    if (libraryTmp.length === 0) clearStorage()
   
     setLibrary([...libraryTmp]);
   }
