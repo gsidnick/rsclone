@@ -15,36 +15,26 @@ export const MainContext = React.createContext<IMainContext>({ library:[] , setL
 function App() {
   const [library, setLibrary] = useState<IWord[]>([]);
 
-  function setStorage() {
-    const libraryTmp = library;
-    const listLibraryTmp = JSON.stringify(libraryTmp);
-    if (!listLibraryTmp) return;
-
-    window.localStorage.setItem('library', listLibraryTmp);
+  async function getDataWords() {
+    const URL = 'http://localhost:4100';
+    try {
+      const data = await fetch(`${URL}/api/words`);
+      return await data.json();
+    } catch(e) {
+      console.error(e)
+    }
   }
 
-  function getStorage() {
-    const libraryTmp = localStorage.getItem('library');
-    if (!libraryTmp) return;
-
-    const listLibraryTmp = JSON.parse(libraryTmp);
-    if (!listLibraryTmp) return;
-
-    return listLibraryTmp;
-  }
+  const setUseState = async () => {
+    const libraryTmp = await getDataWords();
+    setLibrary([...libraryTmp])
+  };
 
   useEffect(() => {
-    if(!library || library.length === 0) {
-      const libraryLocal = getStorage();
-
-      if (libraryLocal && libraryLocal.length > 0){
-        setLibrary([...libraryLocal]);
-      }
-    } else {
-      setStorage();
+    if (!library || library.length === 0) {
+      setUseState();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[library])
+  }, [library])
 
   return (
     <div className="App">
