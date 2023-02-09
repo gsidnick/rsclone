@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import { MainContext } from '../../App';
-import ILibrary from '../../interfaces/ILibrary';
+import IWord from '../../interfaces/IWord';
 import './Learn.css';
 
 function Learn() {
   const { library  } = useContext(MainContext);
 
-  const [currentWord, setCurrentWord] = useState<ILibrary>();
+  const [currentWord, setCurrentWord] = useState<IWord>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function Learn() {
             </div>
             <div className="learn__color">
               <span className="learn__color-english">{currentWord.word}</span>
-              <span className="learn__color-russian">{currentWord.translate}</span>
+              <span className="learn__color-russian">{currentWord.translation}</span>
             </div>
             <div onClick={nextWord} className="learn__button">
               <div className="learn__button-arrow"></div>

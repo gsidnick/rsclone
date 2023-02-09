@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import ILibrary from '../src/interfaces//ILibrary';
+import IWord from './interfaces/IWord';
 import IMainContext from './interfaces/IMainContext';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -13,7 +13,7 @@ import './App.css';
 export const MainContext = React.createContext<IMainContext>({ library:[] , setLibrary:() => {} });
 
 function App() {
-  const [library, setLibrary] = useState<ILibrary[]>([]);
+  const [library, setLibrary] = useState<IWord[]>([]);
 
   function setStorage() {
     const libraryTmp = library;

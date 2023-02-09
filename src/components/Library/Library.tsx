@@ -24,7 +24,7 @@ function Library() {
     if (dublicate(word)) return;
 
     const libraryTmp = library;
-    libraryTmp.push({ word: word, translate: word, learn: '0' });
+    libraryTmp.push({ word: word, translation : word, learn: 0, id: 0 });
   
     setLibrary([...libraryTmp]);
 
@@ -47,12 +47,11 @@ function Library() {
   }
 
   function get() {
-    console.log('get')
     return library.map((item, index) => {
       return (
         <div key={index} className="library__item">
           <div className="library__col">{item.word}</div>
-          <div className="library__col">{item.translate}</div>
+          <div className="library__col">{item.translation}</div>
           <div className="library__col">{item.learn}%</div>
           <button onClick={() => { remove(index) }} className="library__btn-remove">-</button>
         </div>
