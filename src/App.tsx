@@ -8,9 +8,11 @@ import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import Footer from './components/Footer/Footer';
 import Games from './components/Games/Games';
+import AuthLogin from './components/Auth/AuthLogin';
+import AuthSignup from './components/Auth/AuthSignup';
 import './App.css';
 
-export const MainContext = React.createContext<IMainContext>({ library:[] , setLibrary:() => {} });
+export const MainContext = React.createContext<IMainContext>({ library: [], setLibrary: () => {} });
 
 function App() {
   const [library, setLibrary] = useState<IWord[]>([]);
@@ -41,12 +43,14 @@ function App() {
       <Router>
         <Header />
         <MainContext.Provider value={{ library, setLibrary }}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/library/' element={<Library />} />
-          <Route path='/learn/' element={<Learn />} />
-          <Route path='/games/' element={<Games />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/library/" element={<Library />} />
+            <Route path="/learn/" element={<Learn />} />
+            <Route path="/games/" element={<Games />} />
+            <Route path="/login/" element={<AuthLogin />} />
+            <Route path="/signup/" element={<AuthSignup />} />
+          </Routes>
         </MainContext.Provider>
         <Footer />
       </Router>
