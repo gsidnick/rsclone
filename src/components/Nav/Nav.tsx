@@ -36,6 +36,16 @@ function Nav() {
             Learn
           </Link>
         </li>
+        <li className="nav__item">
+          <Link className="nav__link" onClick={checkCurrentLink} to="/login/">
+            Log In
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link className="nav__link" onClick={checkCurrentLink} to="/signup/">
+            Sign Up
+          </Link>
+        </li>
       </ul>
     </nav>
   );
