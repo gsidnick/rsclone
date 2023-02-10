@@ -15,5 +15,7 @@
 }
 
 .nav__current {
-  filter: invert(65%);
+  padding-bottom: 5px;
+  border-radius: 2px;
+  border-bottom: 3px solid #fff;
 }

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import ILibrary from '../src/interfaces//ILibrary';
+import IWord from './interfaces/IWord';
 import IMainContext from './interfaces/IMainContext';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -13,38 +13,28 @@ import './App.css';
 export const MainContext = React.createContext<IMainContext>({ library:[] , setLibrary:() => {} });
 
 function App() {
-  const [library, setLibrary] = useState<ILibrary[]>([]);
+  const [library, setLibrary] = useState<IWord[]>([]);
 
-  function setStorage() {
-    const libraryTmp = library;
-    const listLibraryTmp = JSON.stringify(libraryTmp);
-    if (!listLibraryTmp) return;
-
-    window.localStorage.setItem('library', listLibraryTmp);
+  async function getDataWords() {
+    const URL = 'http://localhost:4100';
+    try {
+      const data = await fetch(`${URL}/api/words`);
+      return await data.json();
+    } catch(e) {
+      console.error(e)
+    }
   }
 
-  function getStorage() {
-    const libraryTmp = localStorage.getItem('library');
-    if (!libraryTmp) return;
-
-    const listLibraryTmp = JSON.parse(libraryTmp);
-    if (!listLibraryTmp) return;
-
-    return listLibraryTmp;
-  }
+  const setUseState = async () => {
+    const libraryTmp = await getDataWords();
+    setLibrary([...libraryTmp])
+  };
 
   useEffect(() => {
-    if(!library || library.length === 0) {
-      const libraryLocal = getStorage();
-
-      if (libraryLocal && libraryLocal.length > 0){
-        setLibrary([...libraryLocal]);
-      }
-    } else {
-      setStorage();
+    if (!library || library.length === 0) {
+      setUseState();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[library])
+  }, [library])
 
   return (
     <div className="App">

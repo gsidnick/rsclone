@@ -1,9 +1,9 @@
-import { useRef, useContext } from 'react';
+import { useRef, useContext, FormEvent } from 'react';
 import './Library.css';
 import { MainContext } from '../../App';
 
 function Library() {
-  const { library, setLibrary} = useContext(MainContext);
+  const { library, setLibrary } = useContext(MainContext);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -14,30 +14,57 @@ function Library() {
     return false;
   }
 
-  function add() {
-    const inputElem = inputRef.current;
-    if (!inputElem) return;
-
-    const word = inputElem.value.toLowerCase();
-    if (!word) return;
-
-    if (dublicate(word)) return;
-
-    const libraryTmp = library;
-    libraryTmp.push({ word: word, translate: word, learn: '0' });
+  async function add() {
+    try {
+      const inputElem = inputRef.current as HTMLInputElement | null;
   
-    setLibrary([...libraryTmp]);
+      let word = '';
+      if (inputElem) word = inputElem.value.toLowerCase();
+      if (word?.length === 0) return;
+      
+      let libraryTmp = library;
+  
+      if (dublicate(word)) {
+        if (inputElem) inputElem.value = '';
+        return;
+      }
 
-    inputElem.value = '';
+
+      const URL = 'http://localhost:4100/api/word/';
+      const response = await fetch (URL, { 
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word, translation: word, learn: 0 }),
+      });
+      const data = await response.json();
+      libraryTmp.push(data);
+  
+      setLibrary([...libraryTmp]);
+
+      if (inputElem) inputElem.value = '';
+    } catch (e) {
+      console.error(e);
+    }
   }
 
-  function remove(wordIndex: number) {
-    let libraryTmp = library;
-    libraryTmp = libraryTmp.filter((item, index) => {
-      return wordIndex !== index;
-    })
+  async function remove(wordIndex: number) {
+    try {
+      const URL = `http://localhost:4100/api/word/${wordIndex}`;
+      await fetch (URL, { method: "DELETE" });
+      let libraryTmp = library;
+      libraryTmp = libraryTmp.filter((item) => {
+        return wordIndex !== item.id;
+      })
   
-    setLibrary([...libraryTmp]);
+      setLibrary([...libraryTmp]);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function formHandler(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    add();
   }
 
   function get() {
@@ -45,9 +72,9 @@ function Library() {
       return (
         <div key={index} className="library__item">
           <div className="library__col">{item.word}</div>
-          <div className="library__col">{item.translate}</div>
+          <div className="library__col">{item.translation}</div>
           <div className="library__col">{item.learn}%</div>
-          <button onClick={() => { remove(index) }} className="library__btn-remove">-</button>
+          <button className="library__btn-remove" onClick={() => { remove(item.id) }}></button>
         </div>
       )
     })
@@ -55,19 +82,19 @@ function Library() {
 
   return (
     <main className="library">
-      <div className="library__container container">
+      <div className="library__container container bordered">
         <h2 className="library__title">Add new <span className="library__title_span">Word</span></h2>
-        <form className="library__form">
-          <input ref={inputRef} className="library__input-text" type="text" name="word" /> 
-          <button onClick={add} className="library__button-add">+</button>
+        <form className="library__form" onSubmit={formHandler}>
+          <input className="library__input-text" ref={inputRef} name="word" type="text" /> 
+          <button className="library__button-add">+</button>
         </form>
         <div className="library__list">
-          <div className="library__row head">
+          <div className="library__row-head">
             <div className="library__col">Word</div>
             <div className="library__col">Translation</div>
             <div className="library__col">Learn</div>
           </div>
-          <div className="library__row body active">{get()}</div>
+          <div className="library__row-body">{get()}</div>
         </div>
       </div>
     </main>
