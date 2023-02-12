@@ -1,8 +1,7 @@
 import './style.css'
-import IGameData from '../../../interfaces/IGameData';
 
-function Game2(data: IGameData) {
-  console.log(data);
+function Game2() {
+
   return (
     <main className="game">
       <div className="game__container container">

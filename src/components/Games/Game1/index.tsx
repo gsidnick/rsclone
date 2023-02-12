@@ -1,40 +1,83 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 import './style.css'
-import { useEffect, useState } from 'react';
-import ILibrary from '../../../interfaces/ILibrary';
+import { useState, useEffect } from 'react';
 import IGameData from '../../../interfaces/IGameData';
+import ILibrary from '../../../interfaces/ILibrary';
 
-function Game1(props: IGameData) {
-  const [
-    library, 
-    librarySaved,
-    points, 
-    failAnsw, 
-    correctAnsw, 
-    currentIndex,
-    currentWord,
-    setPoints, 
-    setFailAnsw, 
-    setCorrectAnsw,
-    setCurrentWord,
-    setCurrentIndex,
-  ] = props.data;
+function Game1(props: IGameData){
+  const [libraryGame, setLibraryGame] = useState<ILibrary[]>([]);
+  const [currentWord, setCurrentWord] = useState({translate:''});
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [voiceWord, setVoiceWord] = useState('');
+
+  const addCorrect = props.functions.addCorrect;
+  const addError = props.functions.addError;
+  const shuffleGameNames = props.functions.shuffleGameNames;
 
   useEffect(() => {
-    if ((library as ILibrary[])[(currentIndex as number)]) setCurrentWord((library as ILibrary[])[(currentIndex as number)]);
-  },[library, currentIndex, setCurrentWord]);
+    if (libraryGame.length === 0){
+      setLibraryGame([...shuffleGameNames()])
+    }
+    if (libraryGame.length > 0) setCurrentWord(libraryGame[currentIndex]);
+  }, [libraryGame]);
+
+  useEffect(() => {
+    if(libraryGame[currentIndex]) setCurrentWord(libraryGame[currentIndex]);
+  },[currentIndex])
+
+  function check() {
+    if(!currentWord.translate || !voiceWord) return null;
+    if(currentWord.translate.toLowerCase() === voiceWord.toLowerCase()) return true;
+
+    return false;
+  }
 
   function nextWord() {
-    let currentIndexTmp = currentIndex;
-    (currentIndexTmp as number)++;
+    setVoiceWord('');
 
-    if(!(library as ILibrary[])[(currentIndexTmp as number)]) return;
+    let currentIndexTmp = currentIndex;
+    currentIndexTmp++;
+
+    if(!libraryGame[currentIndexTmp]) {
+      setCurrentIndex(0);
+    };
     setCurrentIndex(currentIndexTmp);
   }
+
+  useEffect(() => {
+    if (check() === true) {
+      addCorrect();
+      nextWord();
+    }
+    if (check() === false) addError();
+  },[voiceWord])
+
+  function voice() {
+    const SpeechRecognition = new (
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    )();
+
+    SpeechRecognition.lang = 'en-EN';
+
+    SpeechRecognition.onresult = function(event: {results: {transcript: string}[][]}){
+      let word = event.results[0][0].transcript;
+
+      console.log(word);
+      setVoiceWord(word);
+    };
+
+    SpeechRecognition.start();
+  }
+
   return (
     <main className="game">
       <div className="game__container container">
-        Game 1(One) content
+        <h2>{currentWord.translate}</h2>
+        {voiceWord && <div>{voiceWord}</div>}
+        <button onClick={voice}> Voice </button>
+        <button onClick={nextWord}>Skip it</button>
       </div>
     </main>
   )

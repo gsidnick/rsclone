@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SetStateAction } from 'react';
 import ILibrary from '../src/interfaces//ILibrary';
 import IMainContext from './interfaces/IMainContext';
 import Header from './components/Header/Header';
@@ -13,7 +14,11 @@ import GameCards from './components/GameCards/GameCards';
 import { gamesLib } from './constants';
 
 export const MainContext = React.createContext<IMainContext>({ 
-  library:[], setLibrary:() => {}, gamesLib:[] , points:0, setPoints:() => {}
+  library:[],
+  setLibrary:() => {},
+  gamesLib:[],
+  points:0,
+  setPoints:() => {},
 });
 
 function App() {
@@ -23,9 +28,18 @@ function App() {
   function setStorage() {
     const libraryTmp = library;
     const listLibraryTmp = JSON.stringify(libraryTmp);
+
     if (!listLibraryTmp) return;
 
     window.localStorage.setItem('library', listLibraryTmp);
+    window.localStorage.setItem('points', points + '');
+  }
+
+  function getStoragePoints(): string | null | undefined | SetStateAction<number> {
+    const pointsTmp = localStorage.getItem('points');
+    if (isNaN(points)) return;
+
+    return pointsTmp;
   }
 
   function getStorage() {
@@ -44,13 +58,16 @@ function App() {
 
       if (libraryLocal && libraryLocal.length > 0){
         setLibrary([...libraryLocal]);
+        setPoints((getStoragePoints()) as number);
       }
     } else {
       setStorage();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[library])
 
+  useEffect(() => {
+    setStorage();
+  },[points])
   return (
     <div className="App">
       <Router>
