@@ -29,8 +29,7 @@ function Library() {
         return;
       }
 
-
-      const URL = 'http://localhost:4100/api/word/';
+      const URL = 'http://localhost:7000/api/word/';
       const response = await fetch (URL, { 
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
@@ -49,7 +48,7 @@ function Library() {
 
   async function remove(wordIndex: number) {
     try {
-      const URL = `http://localhost:4100/api/word/${wordIndex}`;
+      const URL = `http://localhost:7000/api/word/${wordIndex}`;
       await fetch (URL, { method: "DELETE" });
       let libraryTmp = library;
       libraryTmp = libraryTmp.filter((item) => {
