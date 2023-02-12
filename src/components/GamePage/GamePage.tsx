@@ -7,8 +7,8 @@ import { MainContext } from '../../App';
 import Game1 from '../Games/Game1';
 import Game2 from '../Games/Game2';
 import './GamePage.css';
-import ILibrary from '../../interfaces/ILibrary';
 import IGameData from '../../interfaces/IGameData';
+import IWord from '../../interfaces/IWord';
 
 const libraryComponents = [Game1, Game2];
 
@@ -45,7 +45,7 @@ function GamePage() {
   };
 
   function shuffleGameNames() {
-    let libraryTmp: ILibrary[] = [];
+    let libraryTmp: IWord[] = [];
     
     while(true) {
       let index = Math.floor(Math.random() * library.length);

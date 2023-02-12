@@ -3,11 +3,11 @@
 import './style.css'
 import { useState, useEffect } from 'react';
 import IGameData from '../../../interfaces/IGameData';
-import ILibrary from '../../../interfaces/ILibrary';
+import IWord from '../../../interfaces/IWord';
 
 function Game1(props: IGameData){
-  const [libraryGame, setLibraryGame] = useState<ILibrary[]>([]);
-  const [currentWord, setCurrentWord] = useState({translate:''});
+  const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
+  const [currentWord, setCurrentWord] = useState({translation:''});
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [voiceWord, setVoiceWord] = useState('');
@@ -28,8 +28,8 @@ function Game1(props: IGameData){
   },[currentIndex])
 
   function check() {
-    if(!currentWord.translate || !voiceWord) return null;
-    if(currentWord.translate.toLowerCase() === voiceWord.toLowerCase()) return true;
+    if(!currentWord.translation || !voiceWord) return null;
+    if(currentWord.translation.toLowerCase() === voiceWord.toLowerCase()) return true;
 
     return false;
   }
@@ -74,7 +74,7 @@ function Game1(props: IGameData){
   return (
     <main className="game">
       <div className="game__container container">
-        <h2>{currentWord.translate}</h2>
+        <h2>{currentWord.translation}</h2>
         {voiceWord && <div>{voiceWord}</div>}
         <button onClick={voice}> Voice </button>
         <button onClick={nextWord}>Skip it</button>

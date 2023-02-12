@@ -2,7 +2,9 @@
   width: 100%;
   padding: 20px 40px;
   background-color:  #efefef;
-  position: sticky;
+  position: relative;
+  left: 0px;
+  bottom: 0;
 }
 
 .footer__container {
