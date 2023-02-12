@@ -1,5 +1,5 @@
 import { SetStateAction, Dispatch } from 'react';
-import ILibrary from '../interfaces/ILibrary';
+import ILibrary from './ILibrary';
 
 export default interface IMainContext {
   setLibrary: Dispatch<SetStateAction<ILibrary[]>>,

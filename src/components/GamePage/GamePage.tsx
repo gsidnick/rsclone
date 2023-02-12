@@ -8,6 +8,7 @@ import Game1 from '../Games/Game1';
 import Game2 from '../Games/Game2';
 import './GamePage.css';
 import ILibrary from '../../interfaces/ILibrary';
+import IGameData from '../../interfaces/IGameData';
 
 const libraryComponents = [Game1, Game2];
 
@@ -19,7 +20,7 @@ function GamePage() {
   const number = Number(params.number); // Определяем number игры по url
 
   /* TODO: Разобраться с типизацией!! */
-  const Component: null | ((library: any) => JSX.Element) = libraryComponents[number - 1] || null; // Определяем компонет игры по number
+  const Component: null | ((props: IGameData) => React.ReactElement) = libraryComponents[number - 1] || null; // Определяем компонет игры по number
 
   const name = gamesLib[number -1].name || ''; // Определяем название игры по number
 
