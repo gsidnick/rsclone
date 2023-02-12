@@ -19,7 +19,6 @@ function GamePage() {
 
   const number = Number(params.number); // Определяем number игры по url
 
-  /* TODO: Разобраться с типизацией!! */
   const Component: null | ((props: IGameData) => React.ReactElement) = libraryComponents[number - 1] || null; // Определяем компонет игры по number
 
   const name = gamesLib[number -1].name || ''; // Определяем название игры по number
