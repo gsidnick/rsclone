@@ -1,5 +1,5 @@
 /*TODO: Сделать описание игр! */
-export const gamesLib = [
+export const libraryGames = [
   { name: 'Write the translation', description: 'Say the word on the screen and check your spelling'},
   { name: 'Remember translation', description: 'Say the word on the screen and check your spelling'},
   { name: 'Speak and check ', description: 'Say the word on the screen and check your spelling'},

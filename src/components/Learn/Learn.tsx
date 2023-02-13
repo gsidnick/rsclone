@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from 'react';
-import { MainContext } from '../../App';
+import { AppContext } from '../../App';
 import IWord from '../../interfaces/IWord';
 import './Learn.css';
 
 function Learn() {
-  const { library, points } = useContext(MainContext);
+  const { library, points } = useContext(AppContext);
 
   const [currentWord, setCurrentWord] = useState<IWord>();
   const [currentIndex, setCurrentIndex] = useState(0);

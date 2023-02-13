@@ -1,9 +1,9 @@
 import IWord from "./IWord";
 
 export default interface IGameData {
-  functions:{
+  functions: {
     addCorrect: () => void, 
-    addError:() => void, 
-    shuffleGameNames: () => IWord[];
-}
+    addError: () => void, 
+    shuffleGameNames: () => IWord[]
+  }
 }

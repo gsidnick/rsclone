@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect, SetStateAction } from 'react';
-import IWord from './interfaces/IWord';
-import IMainContext from './interfaces/IMainContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Library from './components/Library/Library';
@@ -11,16 +9,18 @@ import Footer from './components/Footer/Footer';
 import GamePage from './components/GamePage/GamePage';
 import AuthLogin from './components/Auth/AuthLogin';
 import AuthSignup from './components/Auth/AuthSignup';
-import './App.css';
 import GameCards from './components/GameCards/GameCards';
-import { gamesLib } from './constants';
+import IWord from './interfaces/IWord';
+import IAppContext from './interfaces/IAppContext';
+import { libraryGames } from './constants';
+import './App.css';
 
-export const MainContext = React.createContext<IMainContext>({ 
-  library:[],
-  setLibrary:() => {},
-  gamesLib:[],
-  points:0,
-  setPoints:() => {},
+export const AppContext = React.createContext<IAppContext>({ 
+  library: [],
+  setLibrary: () => {},
+  libraryGames: [],
+  points: 0,
+  setPoints: () => {},
 });
 
 function App() {
@@ -28,12 +28,12 @@ function App() {
   const [points, setPoints] = useState(0);
 
   async function getDataWords() {
-    const URL = 'http://localhost:7000';
+    const URL = 'http://localhost:4100';
     try {
       const data = await fetch(`${URL}/api/words`);
       return await data.json();
     } catch(e) {
-      console.error(e)
+      console.error(e);
     }
   }
 
@@ -64,7 +64,7 @@ function App() {
 
   const setUseState = async () => {
     const libraryTmp = await getDataWords();
-    setLibrary([...libraryTmp])
+    setLibrary([...libraryTmp]);
   };
 
   useEffect(() => {
@@ -72,24 +72,25 @@ function App() {
 
       const libraryLocal = getStorage();
 
-      if (libraryLocal && libraryLocal.length > 0){
+      if (libraryLocal && libraryLocal.length > 0) {
         setLibrary([...libraryLocal]);
         setPoints((getStoragePoints()) as number);
       }
-   setUseState();
+      setUseState();
     }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[library])
+  }, [library]);
 
   useEffect(() => {
     setStorage();
-  },[points]);
+  }, [points]);
 
   return (
     <div className="App">
       <Router>
         <Header />
-        <MainContext.Provider value={{ library, setLibrary, gamesLib, points, setPoints}}>
+        <AppContext.Provider value={{ library, setLibrary, libraryGames, points, setPoints}}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/library/' element={<Library />} />
@@ -97,9 +98,9 @@ function App() {
           <Route path='/games/' element={<GameCards />} />
           <Route path='/games/:number/' element={<GamePage />}/>
           <Route path="/login/" element={<AuthLogin />} />
-            <Route path="/signup/" element={<AuthSignup />} />
+          <Route path="/signup/" element={<AuthSignup />} />
         </Routes>
-        </MainContext.Provider>
+        </AppContext.Provider>
         <Footer />
       </Router>
     </div>

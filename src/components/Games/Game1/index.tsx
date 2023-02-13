@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
-import './style.css'
 import { useState, useEffect } from 'react';
-import IGameData from '../../../interfaces/IGameData';
 import IWord from '../../../interfaces/IWord';
+import IGameData from '../../../interfaces/IGameData';
+import './style.css';
 
-function Game1(props: IGameData){
+function Game1(props: IGameData) {
   const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
-  const [currentWord, setCurrentWord] = useState({translation:''});
+  const [currentWord, setCurrentWord] = useState({ word: '' });
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [voiceWord, setVoiceWord] = useState('');
@@ -17,19 +17,19 @@ function Game1(props: IGameData){
   const shuffleGameNames = props.functions.shuffleGameNames;
 
   useEffect(() => {
-    if (libraryGame.length === 0){
-      setLibraryGame([...shuffleGameNames()])
-    }
+    if (libraryGame.length === 0) {
+      setLibraryGame([...shuffleGameNames()]);
+    };
     if (libraryGame.length > 0) setCurrentWord(libraryGame[currentIndex]);
   }, [libraryGame]);
 
   useEffect(() => {
     if(libraryGame[currentIndex]) setCurrentWord(libraryGame[currentIndex]);
-  },[currentIndex])
+  }, [currentIndex]);
 
   function check() {
-    if(!currentWord.translation || !voiceWord) return null;
-    if(currentWord.translation.toLowerCase() === voiceWord.toLowerCase()) return true;
+    if(!currentWord.word || !voiceWord) return null;
+    if(currentWord.word.toLowerCase() === voiceWord.toLowerCase()) return true;
 
     return false;
   }
@@ -42,6 +42,7 @@ function Game1(props: IGameData){
 
     if(!libraryGame[currentIndexTmp]) {
       setCurrentIndex(0);
+      return;
     };
     setCurrentIndex(currentIndexTmp);
   }
@@ -52,7 +53,7 @@ function Game1(props: IGameData){
       nextWord();
     }
     if (check() === false) addError();
-  },[voiceWord])
+  }, [voiceWord]);
 
   function voice() {
     const SpeechRecognition = new (
@@ -74,13 +75,13 @@ function Game1(props: IGameData){
   return (
     <main className="game">
       <div className="game__container container">
-        <h2>{currentWord.translation}</h2>
+        <h2>{currentWord.word}</h2>
         {voiceWord && <div>{voiceWord}</div>}
         <button onClick={voice}> Voice </button>
         <button onClick={nextWord}>Skip it</button>
       </div>
     </main>
-  )
+  );
 }
 
 export default Game1;
