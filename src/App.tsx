@@ -28,7 +28,7 @@ function App() {
   const [points, setPoints] = useState(0);
 
   async function getDataWords() {
-    const URL = 'http://localhost:4100';
+    const URL = 'http://localhost:7000';
     try {
       const data = await fetch(`${URL}/api/words`);
       return await data.json();
@@ -69,7 +69,6 @@ function App() {
 
   useEffect(() => {
     if(!library || library.length === 0) {
-
       const libraryLocal = getStorage();
 
       if (libraryLocal && libraryLocal.length > 0) {
