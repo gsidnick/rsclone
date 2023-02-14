@@ -3,11 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import Game1 from '../Games/Game1';
 import Game2 from '../Games/Game2';
+import Game3 from '../Games/Game3';
 import IGameData from '../../interfaces/IGameData';
 import IWord from '../../interfaces/IWord';
 import './GamePage.css';
 
-const libraryComponents = [Game1, Game2];
+const libraryComponents = [Game1, Game2, Game3];
 
 function GamePage() {
   const params = useParams();
