@@ -64,6 +64,11 @@ function Game3(props: IGameData) {
       window.speechSynthesis.speak(msg);
    }
 
+   function scipAnswer(){
+    addError();
+    nextWord();
+   }
+
    function checkYes() {
     if (randomWord.word.toLowerCase() === currentWord.word.toLowerCase()) {
       addCorrect();
@@ -92,7 +97,7 @@ function Game3(props: IGameData) {
         </h3>
         <div className="game__listen-container">
           <img onClick={wiretap} src={EarImg} className="game__img-hear" alt="Ear" />
-          <button onClick={nextWord} className="game__btn-next"> Next word</button>
+          <button onClick={scipAnswer} className="game__btn-next"> Next word</button>
         </div>
         <div className="game__answer-container">
           <button onClick={checkYes} className="game_btn-yes">Yes</button>
