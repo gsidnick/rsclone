@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
-import { SetStateAction, Dispatch } from 'react';
 import IGameData from '../../../interfaces/IGameData';
 import IWord from '../../../interfaces/IWord';
 import EarImg from '../../../images/ear.svg';
@@ -12,15 +10,12 @@ function Game3(props: IGameData) {
   const [currentWord, setCurrentWord] = useState({ word: '', translation: '' });
   const [randomWord, setRandomWord] = useState({ word: '', translation: '' });
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [wiretapWord, setWiretapWord] = useState('');
 
   const addCorrect = props.functions.addCorrect;
   const addError = props.functions.addError;
   const shuffleGameNames = props.functions.shuffleGameNames;
 
   function nextWord() {
-    setWiretapWord('');
-
     let currentIndexTmp = currentIndex;
     currentIndexTmp++;
 
@@ -78,6 +73,7 @@ function Game3(props: IGameData) {
       nextWord();
     };
    }
+
    function checkNo() {
     if (randomWord.word.toLowerCase() !== currentWord.word.toLowerCase()) {
       addCorrect();
@@ -87,7 +83,6 @@ function Game3(props: IGameData) {
       nextWord();
     };
    }
-
 
   return (
     <main className="game">
