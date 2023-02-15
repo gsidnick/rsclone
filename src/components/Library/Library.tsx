@@ -30,7 +30,6 @@ function Library() {
   return (
     <main className="library">
       <div className="library__container container">
-        <h1 className="library__title">Library</h1>
         <div className="library__group-controls">
           <Input
             name="word"
