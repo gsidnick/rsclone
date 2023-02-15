@@ -1,10 +1,7 @@
 .footer {
   width: 100%;
   padding: 20px 40px;
-  background-color:  #efefef;
-  position: absolute;
-  left: 0px;
-  bottom: 0;
+  background-color:  #ffffff;
 }
 
 .footer__container {
