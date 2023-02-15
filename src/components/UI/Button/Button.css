@@ -2,6 +2,7 @@
   display: inline-block;
   font-size: 16px;
   font-weight: 600;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
   border: none;
   color: #ffffff;
@@ -65,4 +66,23 @@ a.button {
 
 .button:hover .button__arrow {
   fill: #aaaaaa;
+}
+
+.button_small {
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.button_red {
+  background-color: #e75d69;
+  box-shadow: 0 4px 4px rgba(197, 78, 88, 0.5);
+}
+
+.button_red:active {
+  box-shadow: 0 2px 2px rgba(197, 78, 88, 0.5);
+}
+
+.button_red:hover {
+  background-color: #d54e5a;
 }
