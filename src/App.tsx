@@ -10,6 +10,7 @@ import AuthLogin from './components/Auth/AuthLogin';
 import AuthSignup from './components/Auth/AuthSignup';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
+import GameCards from './components/GameCards/GameCards';
 
 function App() {
   const { wordStore } = useContext<IAppContext>(AppContext);
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/library/" element={<Library />} />
           <Route path="/learn/" element={<Learn />} />
+          <Route path="/games/" element={<GameCards />} />
           <Route path="/login/" element={<AuthLogin />} />
           <Route path="/signup/" element={<AuthSignup />} />
         </Routes>
