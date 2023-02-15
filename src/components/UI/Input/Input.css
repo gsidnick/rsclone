@@ -3,6 +3,8 @@
   width: 100%;
   min-width: 300px;
   font-size: 16px;
+  font-weight: 400;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   border: 1px solid #cccccc;
   border-radius: 8px;
   padding: 16px 16px;
