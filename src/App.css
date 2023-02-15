@@ -1,10 +1,4 @@
 .container {
-  max-width: 1150px;
-  width: 800px;
+  width: 1000px;
   margin: 0 auto;
-}
-
-.bordered {
-  border: 1px solid #DDDDDD;
-  border-radius: 30px;
 }
