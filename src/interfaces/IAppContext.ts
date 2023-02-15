@@ -1,10 +1,5 @@
-import { SetStateAction, Dispatch } from 'react';
-import IWord from './IWord';
+import AuthStore from '../store/AuthStore';
 
 export default interface IAppContext {
-  setLibrary: Dispatch<SetStateAction<IWord[]>>;
-  library: IWord[];
-  libraryGames: { name: string; description: string; }[];
-  points: number;
-  setPoints: Dispatch<SetStateAction<number>>;
+  authStore: AuthStore;
 }

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import IAppContext from '../../interfaces/IAppContext';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
+import { AppContext } from '../../';
 
 function AuthLogin() {
+  const { authStore } = useContext<IAppContext>(AppContext);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   return (
@@ -18,7 +21,9 @@ function AuthLogin() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button className="auth__button">Log In</Button>
+        <Button className="auth__button" onClick={() => authStore.login(email, password)}>
+          Log In
+        </Button>
         <Button className="button_back" to="/">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
