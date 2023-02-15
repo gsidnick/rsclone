@@ -1,0 +1,14 @@
+.progress {
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #E9EBF1;
+}
+
+.progress_bar {
+  height: 100%;
+  display: block;
+  background: linear-gradient(90.14deg, #124E82 1.94%, #1966AE 21.33%, #1AB9E1 43.79%, #86CDDE 62.16%, #A3D2B6 81.55%, #61C0BA 99.93%);
+}
