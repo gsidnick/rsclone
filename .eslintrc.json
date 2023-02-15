@@ -1,35 +1,26 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": ["react-app", "react-app/jest", "airbnb-typescript", "plugin:import/typescript", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "react-app",
-        "react-app/jest",
-        "airbnb-typescript",
-        "plugin:import/typescript",
-        "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "prettier"
-    ],
-    "rules": {
-        "react/react-in-jsx-scope": ["off"],
-        "react/jsx-uses-react": ["off"],
-        "react/no-unescaped-entities": ["off"],
-        "react/jsx-props-no-spreading": ["error"],
-        "@typescript-eslint/no-explicit-any": ["error"]
-    }
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": ["off"],
+    "react/jsx-uses-react": ["off"],
+    "react/no-unescaped-entities": ["off"],
+    "react/jsx-props-no-spreading": ["error"],
+    "@typescript-eslint/no-explicit-any": ["error"],
+    "@typescript-eslint/lines-between-class-members": ["off"]
+  }
 }
