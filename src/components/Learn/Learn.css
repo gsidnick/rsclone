@@ -1,6 +1,16 @@
 .learn {
-  padding: 0 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 135px);
   position: relative;
+  padding: 40px 0;
+}
+
+.learn__container {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .learn__input::-webkit-slider-thumb {
@@ -8,119 +18,46 @@
   display: none;
 }
 
-.learn__progress {
-  width: 100%;
-  height: 15px;
-  position: absolute;
-  background: #E9EBF1;
-}
-
-.learn__progress span {
-  height: 100%;
-  display: block;
-  background: linear-gradient(90.14deg, #124E82 1.94%, #1966AE 21.33%, #1AB9E1 43.79%, #86CDDE 62.16%, #A3D2B6 81.55%, #61C0BA 99.93%);
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.learn__points {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.learn__points-score {
-  font-size: 16px;
-  position: absolute;
-  right: 20px;
-}
-
-.learn__color-container {
-  padding: 10px 0 80px 0;
+.learn__content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.learn__circle-progress {
+.learn__wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 146px;
-  height: 146px;
-  box-shadow: inset -4px -4px 4px rgba(255, 255, 255, 0.18), inset 2px 2px 4px rgba(0, 0, 0, 0.24), inset -8px -8px 15px rgba(255, 255, 255, 0.02), inset 8px 8px 15px rgba(10, 46, 82, 0.21);
-  border: 0;
-  border-radius: 75px;
+  margin: 0 0 60px 0;
 }
 
-.learn__percentage {
+.learn__wrapper > * + * {
+  margin: 20px 0 0 0;
+}
+
+.learn__word-learn {
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 900;
   color: #1A90C8;
 }
 
-.learn__color {
-  margin: 30px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-}
-
-.learn__color-english {
+.learn__word-from {
   font-size: 54px;
   font-weight: 600;
 }
 
-.learn__color-russian {
+.learn__word-to {
   font-size: 38px;
   font-weight: 500;
   color: #124F85;
 }
 
-.learn__button {
-  width: 160px;
-  padding: 20px 30px;
-  text-align: center;
+.learn__group-controls {
   display: flex;
-  background-color: #fff;
-  box-shadow: 2px 2px 5px rgba(10, 46, 82, 0.16), -8px -8px 40px rgba(255, 255, 255, 0.56), 8px 8px 15px rgba(0, 0, 0, 0.17);
-  border-radius: 50px;
-  border: 0;
-  transition: 0.5s;
-  cursor: pointer;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.learn__button:hover {
-  transform: scale(1.05);
-}
-
-.learn__button-arrow {
-  width: 100px;
-  height: 2px;
-  background-color: #ECEDF2;
-  position: relative;
-}
-
-.learn__button-arrow::before {
-  content: '';
-  width: 10px;
-  height: 2px;
-  background-color: #ECEDF2;
-  position: absolute;
-  top: -3px;
-  right: 0;
-  transform: rotate(45deg);
-}
-
-.learn__button-arrow::after {
-  content: '';
-  width: 10px;
-  height: 2px;
-  background-color: #ECEDF2;
-  position: absolute;
-  top: 3px;
-  right: 0;
-  transform: rotate(-45deg);
+.learn__button {
+  min-width: 160px
 }

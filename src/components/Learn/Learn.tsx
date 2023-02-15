@@ -1,54 +1,42 @@
-import { useContext, useState, useEffect } from 'react';
-import { AppContext } from '../../App';
-import IWord from '../../interfaces/IWord';
 import './Learn.css';
+import { useContext } from 'react';
+import IAppContext from '../../interfaces/IAppContext';
+import { AppContext } from '../../';
+import { observer } from 'mobx-react-lite';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
+import Loader from '../UI/Loader/Loader';
+import Button from '../UI/Button/Button';
 
 function Learn() {
-  const { library, points } = useContext(AppContext);
-
-  const [currentWord, setCurrentWord] = useState<IWord>();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (library[currentIndex]) setCurrentWord(library[currentIndex]);
-  },[library, currentIndex]);
-
-  function nextWord() {
-    let currentIndexTmp = currentIndex;
-    currentIndexTmp++;
-
-    if (!library[currentIndexTmp]) return;
-    setCurrentIndex(currentIndexTmp);
-  }
+  const { wordStore } = useContext<IAppContext>(AppContext);
 
   return (
     <main className="learn">
-      <div className="learn__progress">
-        <span style={{width: (library.length > 0 ? ((currentIndex + 1)*100)/library.length : 0) + '%'}}></span>
-      </div>
+      {!wordStore.isLoad && <ProgressBar value={0} />}
       <div className="learn__container container">
-        <div className="learn__points">
-          <h3 className="learn__points-score">Points: {points}</h3>
+        <div className="learn__content">
+          {wordStore.isLoad && <Loader />}
+          {!wordStore.isLoad && (
+            <>
+              <div className="learn__wrapper">
+                <span className="learn__word-learn">{wordStore.currentWord.learn}%</span>
+                <span className="learn__word-from">{wordStore.currentWord.word}</span>
+                <span className="learn__word-to">{wordStore.currentWord.translation}</span>
+              </div>
+              <div className="learn__group-controls">
+                <Button className="learn__button button_outline" onClick={() => wordStore.prevWord()}>
+                  Previous
+                </Button>
+                <Button className="learn__button " onClick={() => wordStore.nextWord()}>
+                  Next
+                </Button>
+              </div>
+            </>
+          )}
         </div>
-        {library.length > 0 && currentWord !== undefined
-          ? <div className="learn__color-container bordered">
-            <div className="learn__circle-progress">
-              <span className="learn__percentage">66%</span>
-            </div>
-            <div className="learn__color">
-              <span className="learn__color-english">{currentWord.word}</span>
-              <span className="learn__color-russian">{currentWord.translation}</span>
-            </div>
-            <div onClick={nextWord} className="learn__button">
-              <div className="learn__button-arrow"></div>
-            </div>
-          </div>
-          : <span>Library is empty!</span>
-        
-        }
       </div>
     </main>
   );
 }
 
-export default Learn;
+export default observer(Learn);
