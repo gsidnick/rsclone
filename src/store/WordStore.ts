@@ -52,6 +52,10 @@ class WordStore {
     this.currentWord = this.words[this.index];
   }
 
+  public setProgress() {
+    return ((this.index + 1) * 100) / this.words.length;
+  }
+
   public async getAllWords(): Promise<void> {
     try {
       this.setIsLoad(true);

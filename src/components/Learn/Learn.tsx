@@ -12,7 +12,7 @@ function Learn() {
 
   return (
     <main className="learn">
-      {!wordStore.isLoad && <ProgressBar value={0} />}
+      {!wordStore.isLoad && <ProgressBar value={wordStore.setProgress()} />}
       <div className="learn__container container">
         <div className="learn__content">
           {wordStore.isLoad && <Loader />}
