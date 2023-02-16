@@ -7,14 +7,17 @@ import Game3 from '../components/Games/Game3';
 class GameStore {
   public correct: number = 0;
   public wrong: number = 0;
-  public games: Array<GameFunctionalComponent> = [Game1, Game2, Game3];
+  private games: Array<GameFunctionalComponent> = [Game1, Game2, Game3];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  public loadGame(number: number) {
-    return this.games[number];
+  public loadGame(number: number): GameFunctionalComponent | undefined {
+    const index = number - 1;
+    if (index >= 0 && index < this.games.length) {
+      return this.games[number - 1];
+    }
   }
 
   public setCorrect() {
