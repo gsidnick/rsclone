@@ -3,7 +3,7 @@ import IAppContext from '../../interfaces/IAppContext';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { AppContext } from '../../';
+import { AppContext } from '../../context/AppContext';
 
 function AuthSignup() {
   const { authStore } = useContext<IAppContext>(AppContext);

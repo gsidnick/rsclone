@@ -1,7 +1,7 @@
 import './Library.css';
 import React, { useContext, useState } from 'react';
 import IAppContext from '../../interfaces/IAppContext';
-import { AppContext } from '../../';
+import { AppContext } from '../../context/AppContext';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';

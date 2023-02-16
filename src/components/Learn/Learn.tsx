@@ -1,7 +1,7 @@
 import './Learn.css';
 import { useContext } from 'react';
 import IAppContext from '../../interfaces/IAppContext';
-import { AppContext } from '../../';
+import { AppContext } from '../../context/AppContext';
 import { observer } from 'mobx-react-lite';
 import ProgressBar from '../UI/ProgressBar/ProgressBar';
 import Loader from '../UI/Loader/Loader';
