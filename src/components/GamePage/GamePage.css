@@ -1,10 +1,30 @@
-.gamepage__header {
+.gamepage {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: calc(100vh - 135px);
+  position: relative;
+  padding: 40px 0;
 }
 
-.gamepage__header-info {
-  width: 300px;
+.gamepage__panel {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  min-height: 50px;
+  margin: 0 0 20px 0;
+}
+
+.gamepage__score {
+  width: 400px;
   display: flex;
   justify-content: space-between;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 50px;
+}
+
+.gamepage__content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }

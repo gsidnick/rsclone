@@ -11,6 +11,7 @@ import AuthSignup from './components/Auth/AuthSignup';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import GameCards from './components/GameCards/GameCards';
+import GamePage from './components/GamePage/GamePage';
 
 function App() {
   const { wordStore } = useContext<IAppContext>(AppContext);
@@ -25,6 +26,7 @@ function App() {
           <Route path="/library/" element={<Library />} />
           <Route path="/learn/" element={<Learn />} />
           <Route path="/games/" element={<GameCards />} />
+          <Route path="/games/:id" element={<GamePage />} />
           <Route path="/login/" element={<AuthLogin />} />
           <Route path="/signup/" element={<AuthSignup />} />
         </Routes>
