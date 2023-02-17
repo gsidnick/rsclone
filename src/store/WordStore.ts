@@ -12,6 +12,7 @@ class WordStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.fetchWords();
   }
 
   public setIsLoad(bool: boolean) {
@@ -56,7 +57,7 @@ class WordStore {
     return ((this.index + 1) * 100) / this.words.length;
   }
 
-  public async getAllWords(): Promise<void> {
+  public async fetchWords(): Promise<void> {
     try {
       this.setIsLoad(true);
       const response = await wordService.getAllWords();
