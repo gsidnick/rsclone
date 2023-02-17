@@ -4,11 +4,15 @@ import { observer } from 'mobx-react-lite';
 import Button from '../../UI/Button/Button';
 import Loader from '../../UI/Loader/Loader';
 import useStores from '../../../hooks/useStores';
+import WordIteratorStore from '../../../store/WordIteratorStore';
+
+const wordIteratorStore = new WordIteratorStore();
 
 function Game1() {
   const { wordStore } = useStores();
+  wordIteratorStore.setWords(wordStore.words);
   // const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
-  // const [currentWord, setCurrentWord] = useState({ word: '' });
+  // const [current, setCurrentWord] = useState({ word: '' });
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const [voiceWord, setVoiceWord] = useState('');
   //
@@ -28,8 +32,8 @@ function Game1() {
   // }, [currentIndex]);
   //
   // function check() {
-  //   if (!currentWord.word || !voiceWord) return null;
-  //   if (currentWord.word.toLowerCase() === voiceWord.toLowerCase()) return true;
+  //   if (!current.word || !voiceWord) return null;
+  //   if (current.word.toLowerCase() === voiceWord.toLowerCase()) return true;
   //
   //   return false;
   // }
@@ -76,10 +80,10 @@ function Game1() {
         {wordStore.isLoad && <Loader />}
         {!wordStore.isLoad && (
           <>
-            <h2>{wordStore.currentWord.word}</h2>
+            <h2>{wordIteratorStore.current.word}</h2>
             {/*{voiceWord && <div>{voiceWord}</div>}*/}
             {/*<button onClick={voice}> Voice </button>*/}
-            <Button onClick={() => wordStore.nextWord()}>Skip It</Button>
+            <Button onClick={() => wordIteratorStore.nextWord()}>Skip It</Button>
           </>
         )}
       </div>
