@@ -1,8 +1,6 @@
 import './App.css';
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AppContext } from './context/AppContext';
-import IAppContext from './interfaces/IAppContext';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
@@ -14,9 +12,6 @@ import GameCards from './components/GameCards/GameCards';
 import GamePage from './components/GamePage/GamePage';
 
 function App() {
-  const { wordStore } = useContext<IAppContext>(AppContext);
-  wordStore.getAllWords();
-
   return (
     <div className="App">
       <Router>

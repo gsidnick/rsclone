@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
-import IAppContext from '../../interfaces/IAppContext';
+import React, { useState } from 'react';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { AppContext } from '../../context/AppContext';
+import useStores from '../../hooks/useStores';
 
 function AuthSignup() {
-  const { authStore } = useContext<IAppContext>(AppContext);
+  const { authStore } = useStores();
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

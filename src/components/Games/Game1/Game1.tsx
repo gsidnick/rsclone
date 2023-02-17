@@ -1,16 +1,12 @@
 import './Game1.css';
-import React, { useContext } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react-lite';
 import Button from '../../UI/Button/Button';
 import Loader from '../../UI/Loader/Loader';
-import { AppContext } from '../../../context/AppContext';
-import IAppContext from '../../../interfaces/IAppContext';
-import WordStore from '../../../store/WordStore';
+import useStores from '../../../hooks/useStores';
 
-const wordStore = new WordStore();
-
-function Game1(): React.ReactElement {
-  // const { wordStore } = useContext<IAppContext>(AppContext);
+function Game1() {
+  const { wordStore } = useStores();
   // const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
   // const [currentWord, setCurrentWord] = useState({ word: '' });
   // const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,14 +1,12 @@
 import './Learn.css';
-import { useContext } from 'react';
-import IAppContext from '../../interfaces/IAppContext';
-import { AppContext } from '../../context/AppContext';
 import { observer } from 'mobx-react-lite';
 import ProgressBar from '../UI/ProgressBar/ProgressBar';
 import Loader from '../UI/Loader/Loader';
 import Button from '../UI/Button/Button';
+import useStores from '../../hooks/useStores';
 
 function Learn() {
-  const { wordStore } = useContext<IAppContext>(AppContext);
+  const { wordStore } = useStores();
 
   return (
     <main className="learn">
