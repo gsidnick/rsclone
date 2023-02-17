@@ -1,13 +1,12 @@
 import './Library.css';
-import React, { useContext, useState } from 'react';
-import IAppContext from '../../interfaces/IAppContext';
-import { AppContext } from '../../';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
+import useStores from '../../hooks/useStores';
 
 function Library() {
-  const { wordStore } = useContext<IAppContext>(AppContext);
+  const { wordStore } = useStores();
   const [word, setWord] = useState<string>('');
 
   function renderRows() {
@@ -30,7 +29,6 @@ function Library() {
   return (
     <main className="library">
       <div className="library__container container">
-        <h1 className="library__title">Library</h1>
         <div className="library__group-controls">
           <Input
             name="word"

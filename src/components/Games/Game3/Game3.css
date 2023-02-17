@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.game__word { 
+.game__word {
   text-align: center;
 }
 
@@ -32,5 +32,4 @@
   justify-content: space-around;
   width: 400px;
   padding-top: 60px;
-  display: flex;
 }

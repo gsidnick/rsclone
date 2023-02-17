@@ -1,75 +1,48 @@
-import { useState, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { AppContext } from '../../App';
-import Game1 from '../Games/Game1';
-import Game2 from '../Games/Game2';
-import Game3 from '../Games/Game3';
-import IGameData from '../../interfaces/IGameData';
-import IWord from '../../interfaces/IWord';
 import './GamePage.css';
-
-const libraryComponents = [Game1, Game2, Game3];
+import { observer } from 'mobx-react-lite';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { GameFunctionalComponent } from '../../types/GameFunctionalComponent';
+import GameNotFound from '../Games/GameNotFound/GameNotFound';
+import Button from '../UI/Button/Button';
+import useStores from '../../hooks/useStores';
 
 function GamePage() {
+  const { gameStore } = useStores();
   const params = useParams();
-  const { libraryGames, points, library, setPoints } = useContext(AppContext);
-  const number = Number(params.number);
-  const Component: null | ((props: IGameData) => React.ReactElement) = libraryComponents[number - 1] || null;
-  const name = libraryGames[number -1].name || '';
+  const gameNumber = Number(params.id);
+  const Game: GameFunctionalComponent | undefined = gameStore.loadGame(gameNumber);
 
-  const [failAnsw, setFailAnsw] = useState<number>(0);
-  const [correctAnsw, setCorrectAnsw] = useState<number>(0);
-
-  function addError() {
-    let count = failAnsw;
-    count++;
-
-    setFailAnsw(count);
-  };
-
-  function addCorrect() {
-    let count = correctAnsw;
-    count++;
-
-    let countPoints = points;
-    countPoints++;
-
-    setCorrectAnsw(count);
-    setPoints(countPoints);
-  };
-
-  function shuffleGameNames() {
-    let libraryTmp: IWord[] = [];
-    
-    while(true) {
-      let index = Math.floor(Math.random() * library.length);
-      let word = library[index];
-
-      if (libraryTmp.length === library.length) break;
-
-      if (!libraryTmp.includes(word)) libraryTmp.push(word)
-    }
-    return libraryTmp;
-  };
-
-  return  (
+  return (
     <main className="gamepage">
       <div className="gamepage__container container">
-        <div className="gamepage__header">
-          <Link to={"/games/"} >Back</Link>
-          <div className="gamepage__header-info">
-            <span className="gamepage__fails">Fails: {failAnsw}</span>
-            <span className="gamepage__correct">Correct: {correctAnsw}</span>
-            <span className="gamepage__points">Points: {points}</span>
-          </div>
-        </div>
-        <div className="gamepage__content">
-          {name && <h3>{name}</h3>}
-          {!Component ? <>Game not found</> : <Component functions={{ addCorrect, addError, shuffleGameNames }}/>}
-        </div>
+        {Game !== undefined && (
+          <>
+            <div className="gamepage__panel">
+              <Button className="button_back" to="/games/">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    className="button__arrow"
+                    d="M33 20C34.1046 20 35 19.1046 35 18C35 16.8954 34.1046 16 33 16V20ZM1.58578 16.5858C0.804736 17.3668 0.804736 18.6332 1.58578 19.4142L14.3137 32.1421C15.0948 32.9232 16.3611 32.9232 17.1421 32.1421C17.9232 31.3611 17.9232 30.0948 17.1421 29.3137L5.82843 18L17.1421 6.68629C17.9232 5.90524 17.9232 4.63891 17.1421 3.85786C16.3611 3.07682 15.0948 3.07682 14.3137 3.85786L1.58578 16.5858ZM33 16L3 16V20L33 20V16Z"
+                    fill="black"
+                  />
+                </svg>
+              </Button>
+              <div className="gamepage__score">
+                <span className="gamepage__wrong">Wrong: {gameStore.wrong}</span>
+                <span className="gamepage__correct">Correct: {gameStore.correct}</span>
+                <span className="gamepage__points">Points: {0}</span>
+              </div>
+            </div>
+            <div className="gamepage__content">
+              <Game />
+            </div>
+          </>
+        )}
+        {Game === undefined && <GameNotFound />}
       </div>
     </main>
   );
 }
 
-export default GamePage;
+export default observer(GamePage);

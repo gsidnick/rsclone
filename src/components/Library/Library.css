@@ -3,23 +3,21 @@
   justify-content: center;
   min-height: calc(100vh - 135px);
   position: relative;
-  padding: 40px 0;
+  padding: 80px 0;
 }
 
 .library__container {
   margin: 0 auto;
-  padding: 15px 0;
-  text-align: center;
   display: flex;
   flex-direction: column;
 }
 
 .library__title {
   margin: 0 0 40px 0;
-  font-style: normal;
   font-size: 36px;
   font-weight: 800;
   line-height: 1;
+  text-align: center;
 }
 
 .library__group-controls {
@@ -34,8 +32,9 @@
   padding: 20px 0;
   width: 100%;
   min-height: 400px;
-  background: #fcfcfc;
+  background: #f9f9f9;
   border-radius: 8px;
+  text-align: center;
 }
 
 .library__row-head {
@@ -65,7 +64,7 @@
 }
 
 .library__item:hover {
-  background-color: #f6f6f6;
+  background-color: #f0f0f0;
 }
 
 .library__col-controls {

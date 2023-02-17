@@ -3,7 +3,7 @@ import { IButtonProps } from '../../../interfaces/IButtonProps';
 import './Button.css';
 import { Link } from 'react-router-dom';
 
-function Button({ className, children, onClick, to }: IButtonProps) {
+function Button({ className, children, onClick, to, disabled }: IButtonProps) {
   const classnames = className ? `button ${className}` : 'button';
 
   return (
@@ -13,7 +13,7 @@ function Button({ className, children, onClick, to }: IButtonProps) {
           {children}
         </Link>
       ) : (
-        <button className={classnames} onClick={onClick} type="button">
+        <button className={classnames} onClick={onClick} type="button" disabled={disabled}>
           {children}
         </button>
       )}

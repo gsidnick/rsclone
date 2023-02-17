@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
 body {
   margin: 0;
   font-size: 16px;

@@ -1,52 +1,68 @@
-.gamecards__container {
-  padding: 20px 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-}
-
-.gamecards__links {
-  text-decoration: none;
-  font-family:'Franklin Gothic Medium', sans-serif;
-  color: rgb(0, 0, 0);
-}
-
-.gamecards__shell {
-  display: flex;
-  justify-content: center;
-  width: 250px;
-  background-color: rgb(185, 185, 185);
-  box-shadow: 2px 2px 4px rgba(10, 46, 82, 0.12), -6px -6px 40px rgba(255, 255, 255, 0.63), 4px 4px 15px rgba(10, 46, 82, 0.11), inset 4px 4px 30px rgba(10, 46, 82, 0.11), inset -4px -4px 40px #FFFFFF;
-  border-radius: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.349);
-}
-
-.gamecards__image {
-  width: 70px;
-  height: 145px;
-  cursor: pointer;
+.gamecards {
+  min-height: calc(100vh - 135px);
+  padding: 80px 0;
 }
 
 .gamecards__title {
+  margin: 0 0 40px 0;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.gamecards__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 30px;
+}
+
+.gamecards__link {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-top: 8px solid #69d37f;
+  transition: all 0.1s linear;
+  box-shadow: 0 0 0 0 rgba(34, 60, 80, 0.2);
+}
+
+.gamecards__link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 5px -10px rgba(34, 60, 80, 0.2);
+}
+
+.gamecards__card-text {
   width: 150px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 20px 0 0 0;
 }
 
-.gamecards__name {
-  font-size: 20px;
+.gamecards__card-title {
+  font-size: 24px;
+  margin: 0;
 }
 
-.gamecards__description {
+.gamecards__card-description {
   font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.gamecards__image-block {
+.gamecards__card-image-block {
   display: flex;
   align-items: center;
 }
 
-.gamecards__image {
-  width: 70px;
+.gamecards__card-image {
+  width: 80px;
 }

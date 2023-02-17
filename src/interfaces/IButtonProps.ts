@@ -5,4 +5,5 @@ export interface IButtonProps {
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   to?: string;
+  disabled?: boolean | undefined;
 }
