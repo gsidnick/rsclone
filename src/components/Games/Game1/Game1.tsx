@@ -1,93 +1,56 @@
 import './Game1.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import Button from '../../UI/Button/Button';
 import Loader from '../../UI/Loader/Loader';
 import useStores from '../../../hooks/useStores';
 import WordIteratorStore from '../../../store/WordIteratorStore';
+import WordSpeechStore from '../../../store/WordSpeechStore';
 
 const wordIteratorStore = new WordIteratorStore();
+const wordSpeechStore = new WordSpeechStore();
 
 function Game1() {
-  const { wordStore } = useStores();
+  const { wordStore, gameStore } = useStores();
   wordIteratorStore.setWords(wordStore.words);
-  // const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
-  // const [current, setCurrentWord] = useState({ word: '' });
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [voiceWord, setVoiceWord] = useState('');
-  //
-  // const addCorrect = props.functions.addCorrect;
-  // const addError = props.functions.addError;
-  // const shuffleGameNames = props.functions.shuffleGameNames;
-  //
-  // useEffect(() => {
-  //   if (libraryGame.length === 0) {
-  //     setLibraryGame([...shuffleGameNames()]);
-  //   }
-  //   if (libraryGame.length > 0) setCurrentWord(libraryGame[currentIndex]);
-  // }, [libraryGame]);
-  //
-  // useEffect(() => {
-  //   if (libraryGame[currentIndex]) setCurrentWord(libraryGame[currentIndex]);
-  // }, [currentIndex]);
-  //
-  // function check() {
-  //   if (!current.word || !voiceWord) return null;
-  //   if (current.word.toLowerCase() === voiceWord.toLowerCase()) return true;
-  //
-  //   return false;
-  // }
-  //
-  // function nextWord() {
-  //   setVoiceWord('');
-  //
-  //   let currentIndexTmp = currentIndex;
-  //   currentIndexTmp++;
-  //
-  //   if (!libraryGame[currentIndexTmp]) {
-  //     setCurrentIndex(0);
-  //     return;
-  //   }
-  //   setCurrentIndex(currentIndexTmp);
-  // }
-  //
-  // useEffect(() => {
-  //   if (check() === true) {
-  //     addCorrect();
-  //     nextWord();
-  //   }
-  //   if (check() === false) addError();
-  // }, [voiceWord]);
-  //
-  // function voice() {
-  //   const SpeechRecognition = new ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)();
-  //
-  //   SpeechRecognition.lang = 'en-EN';
-  //
-  //   SpeechRecognition.onresult = function (event: { results: { transcript: string }[][] }) {
-  //     let word = event.results[0][0].transcript;
-  //
-  //     console.log(word);
-  //     setVoiceWord(word);
-  //   };
-  //
-  //   SpeechRecognition.start();
-  // }
+
+  useEffect(() => {
+    const compareResult = wordSpeechStore.compareWords();
+    if (compareResult === true) {
+      gameStore.setCorrect();
+      wordIteratorStore.nextWord();
+    }
+
+    if (compareResult === false) {
+      gameStore.setWrong();
+      wordIteratorStore.nextWord();
+    }
+  }, [wordSpeechStore.answer]);
 
   return (
-    <main className="game">
-      <div className="game__container container">
-        {wordStore.isLoad && <Loader />}
-        {!wordStore.isLoad && (
-          <>
-            <h2>{wordIteratorStore.current.word}</h2>
-            {/*{voiceWord && <div>{voiceWord}</div>}*/}
-            {/*<button onClick={voice}> Voice </button>*/}
-            <Button onClick={() => wordIteratorStore.nextWord()}>Skip It</Button>
-          </>
-        )}
-      </div>
-    </main>
+    <div className="game">
+      {wordStore.isLoad && <Loader />}
+      {!wordStore.isLoad && (
+        <>
+          {wordSpeechStore.setQuestion(wordIteratorStore.current.word)}
+          <span className="game__word-label">Say this word</span>
+          <h2 className="game__word-question">{wordSpeechStore.question}</h2>
+          <h2 className="game__word-answer">{wordSpeechStore.answer}</h2>
+          <div className="game__group-controls">
+            <Button onClick={() => wordSpeechStore.recognizeSpeech()} disabled={wordSpeechStore.isSpeeching}>
+              {wordSpeechStore.isSpeeching ? 'Speak now...' : 'Start Speaking'}
+            </Button>
+            <Button
+              className={wordSpeechStore.isSpeeching ? 'button_disabled' : 'button_red'}
+              onClick={() => wordIteratorStore.nextWord()}
+              disabled={wordSpeechStore.isSpeeching}
+            >
+              Skip It
+            </Button>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
