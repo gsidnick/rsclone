@@ -1,4 +1,5 @@
 import './GamePage.css';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { GameFunctionalComponent } from '../../types/GameFunctionalComponent';
@@ -44,4 +45,4 @@ function GamePage() {
   );
 }
 
-export default GamePage;
+export default observer(GamePage);
