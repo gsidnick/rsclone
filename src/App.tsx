@@ -14,11 +14,14 @@ import GamePage from './components/GamePage/GamePage';
 import useStores from './hooks/useStores';
 
 function App() {
-  const { authStore } = useStores();
+  const { authStore, wordStore } = useStores();
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
-      authStore.verifyAuth();
+      authStore
+        .verifyAuth()
+        .then(() => wordStore.fetchWords())
+        .catch((error) => console.error(error));
     }
   }, []);
 
