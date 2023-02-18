@@ -2,8 +2,11 @@ import { makeAutoObservable } from 'mobx';
 import IUser from '../interfaces/IUser';
 import AuthService from '../services/AuthService';
 import axios from 'axios';
+import IAuthResponse from '../interfaces/IAuthResponse';
+import TokenService from '../services/TokenService';
 
 const authService = new AuthService();
+const tokenService = new TokenService();
 
 class AuthStore {
   public user: IUser = {} as IUser;
@@ -25,7 +28,8 @@ class AuthStore {
     try {
       const response = await authService.signup(name, email, password);
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      tokenService.setAccessToken(response.data.accessToken);
+      tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);
       this.setIsAuth(true);
     } catch (error) {
@@ -37,7 +41,8 @@ class AuthStore {
     try {
       const response = await authService.login(email, password);
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      tokenService.setAccessToken(response.data.accessToken);
+      tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);
       this.setIsAuth(true);
     } catch (error) {
@@ -48,7 +53,8 @@ class AuthStore {
   public async logout(): Promise<void> {
     try {
       await authService.logout();
-      localStorage.removeItem('token');
+      tokenService.removeAccessToken();
+      tokenService.removeRefreshToken();
       this.setUser({} as IUser);
       this.setIsAuth(false);
     } catch (error) {
@@ -58,9 +64,12 @@ class AuthStore {
 
   public async verifyAuth(): Promise<void> {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/refresh`, { withCredentials: true });
+      const response = await axios.get<IAuthResponse>(`${process.env.REACT_APP_RAILWAY_URL}/api/refresh`, {
+        withCredentials: true,
+      });
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      tokenService.setAccessToken(response.data.accessToken);
+      tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);
       this.setIsAuth(true);
     } catch (error) {
