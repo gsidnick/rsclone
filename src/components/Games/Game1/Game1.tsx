@@ -25,7 +25,7 @@ function Game1() {
       gameStore.setWrong();
       wordIteratorStore.nextWord();
     }
-  }, [wordSpeechStore.answer]);
+  }, [gameStore]);
 
   return (
     <div className="game">
