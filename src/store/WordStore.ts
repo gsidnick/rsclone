@@ -5,18 +5,17 @@ import IWord from '../interfaces/IWord';
 const wordService = new WordService();
 
 class WordStore {
-  public isLoad: boolean = true;
+  public isLoading: boolean = true;
   public words: IWord[] = [] as IWord[];
   public currentWord: IWord = {} as IWord;
   private index: number = 0;
 
   constructor() {
     makeAutoObservable(this);
-    this.fetchWords();
   }
 
   public setIsLoad(bool: boolean) {
-    this.isLoad = bool;
+    this.isLoading = bool;
   }
 
   public setWords(words: IWord[]) {

@@ -14,11 +14,11 @@ function Learn() {
 
   return (
     <main className="learn">
-      {!wordStore.isLoad && <ProgressBar value={wordIteratorStore.setProgress()} />}
+      {!wordStore.isLoading && <ProgressBar value={wordIteratorStore.setProgress()} />}
       <div className="learn__container container">
         <div className="learn__content">
-          {wordStore.isLoad && <Loader />}
-          {!wordStore.isLoad && (
+          {wordStore.isLoading && <Loader />}
+          {!wordStore.isLoading && (
             <>
               <div className="learn__wrapper">
                 <span className="learn__word-learn">{wordIteratorStore.current.learn}%</span>
