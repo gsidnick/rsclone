@@ -17,7 +17,6 @@ function App() {
   const { authStore } = useStores();
 
   useEffect(() => {
-    console.log(localStorage.getItem('accessToken'));
     if (localStorage.getItem('accessToken')) {
       authStore.verifyAuth();
     }
