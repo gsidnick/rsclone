@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
@@ -40,4 +41,4 @@ function AuthSignup() {
   );
 }
 
-export default AuthSignup;
+export default observer(AuthSignup);
