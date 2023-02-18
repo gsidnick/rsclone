@@ -21,6 +21,7 @@
     "react/no-unescaped-entities": ["off"],
     "react/jsx-props-no-spreading": ["error"],
     "@typescript-eslint/no-explicit-any": ["error"],
-    "@typescript-eslint/lines-between-class-members": ["off"]
+    "@typescript-eslint/lines-between-class-members": ["off"],
+    "@typescript-eslint/no-unused-vars": ["warn"]
   }
 }
