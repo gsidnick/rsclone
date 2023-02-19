@@ -1,10 +1,11 @@
 import './Library.css';
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { useTranslation } from 'react-i18next';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
+import Loader from '../UI/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 function Library() {
   const { t } = useTranslation();
@@ -33,26 +34,31 @@ function Library() {
   return (
     <main className="library">
       <div className="library__container container">
-        <div className="library__group-controls">
-          <Input
-            name="word"
-            type="text"
-            placeholder= {placeholder}
-            value={word}
-            onChange={(e) => setWord(e.target.value)}
-          />
-          <Button className="" onClick={() => wordStore.addWord(word)}>
-            <span>{t('Add')}</span>
-          </Button>
-        </div>
-        <div className="library__list">
-          <div className="library__row-head">
-            <div className="library__col">{t('Word')}</div>
-            <div className="library__col">{t('Translation')}</div>
-            <div className="library__col">{t('Learn')}</div>
-          </div>
-          <div className="library__row-body">{renderRows()}</div>
-        </div>
+        {wordStore.isLoading && <Loader />}
+        {!wordStore.isLoading && (
+          <>
+            <div className="library__group-controls">
+              <Input
+                name="word"
+                type="text"
+                placeholder= {placeholder}
+                value={word}
+                onChange={(e) => setWord(e.target.value)}
+              />
+              <Button className="" onClick={() => wordStore.addWord(word)}>
+                <>{t('Add')}</>
+              </Button>
+            </div>
+            <div className="library__list">
+              <div className="library__row-head">
+                <div className="library__col">{t('Word')}</div>
+                <div className="library__col">{t('Translation')}</div>
+                <div className="library__col">{t('Learn')}</div>
+              </div>
+              <div className="library__row-body">{renderRows()}</div>
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

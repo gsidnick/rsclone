@@ -31,8 +31,8 @@ function Game1() {
 
   return (
     <div className="game">
-      {wordStore.isLoad && <Loader />}
-      {!wordStore.isLoad && (
+      {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && (
         <>
           {wordSpeechStore.setQuestion(wordIteratorStore.current.word)}
           <span className="game__word-label">{t('Say this word')}</span>
