@@ -15,3 +15,17 @@
   align-items: center;
   font-weight: 900;
 }
+
+.header__options {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__button {
+  width: 35px;
+  height: 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,52 @@
+{
+  "NAV" : "NAV",
+  "Home" : "Домой",
+  "Games" : "Игры",
+  "Library" : "Библиотека",
+  "Learn": "Изучение",
+
+  "LEARN" : "LEARN",
+  "Previous" : "Назад",
+  "Next" : "Вперед",
+
+  "HOME" : "HOME",
+  "Hey, friend, let's start our journey!" : "Друг, давай начнем наше путешествие!",
+  "Discover new opportunities for communication, career and travel" : "Откройте для себя новые возможности для общения, карьеры и путешествий",
+  "Log In" : "Войти",
+  "Sign Up" : "Регестрация",
+
+  "LIBRARY" : "LIBRARY",
+  "Add" : "Добавить",
+  "Word" : "Слово",
+  "Translation" : "Перевод",
+  "Type new word here..." : "Введите новое слово здесь...",
+
+  "FOOTER" : "FOOTER",
+  "© 2023, All Rights Reserved" : "© 2023, Все права защищены",
+
+  "AUTH LOGIN" : "AUTH LOGIN",
+  "Password" : "Пароль",
+  "Email" : "Эл. почта",
+  "Name" : "Имя",
+  
+  "GAME PAGE" : "GAME PAGE",
+  "Points" : "Очки",
+  "Wrong" : "Ошибки",
+  "Correct" : "Правильно",
+
+  "GAME1" : "GAME1",
+  "Say this word" : "Произнесите это слово",
+  "Speak now..." : "Говорите сейчас...",
+  "Start Speaking" : "Начать говорить",
+  "Skit it" : "Пропустить",
+
+  "GAME3" : "GAME3",
+  "It translates as" : "Переводится ли это как",
+  "Next word" : "Следующее слово",
+  "Yes" : "Да",
+  "No" : "Нет",
+
+  "GAME NOT FOUND" : "GAME NOT FOUND",
+  "Sorry, this game not found!" : "Извините, эта игра не найдена!",
+  "Choose another game" : "Выбрать другую игру"
+}

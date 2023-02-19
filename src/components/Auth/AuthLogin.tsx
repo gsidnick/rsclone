@@ -3,25 +3,31 @@ import Auth from './Auth';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
+import { useTranslation } from 'react-i18next';
 
 function AuthLogin() {
+  const { t } = useTranslation();
   const { authStore } = useStores();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const passwordPlalceholder = t('Password');
+  const emailPlalceholder = t('Email');
+
   return (
     <Auth>
       <div className="auth__form">
-        <h1 className="auth__heading">Log In</h1>
-        <Input name="email" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <h1 className="auth__heading">{t('Log In')}</h1>
+        <Input name="email" type="text" placeholder={emailPlalceholder} value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder={passwordPlalceholder}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button className="auth__button" onClick={() => authStore.login(email, password)}>
-          Log In
+          <span>{t('Log In')}</span>
         </Button>
         <Button className="button_back" to="/">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
