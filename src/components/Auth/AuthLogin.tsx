@@ -12,9 +12,13 @@ function AuthLogin() {
   const { t } = useTranslation();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
   const passwordPlalceholder = t('Password');
   const emailPlalceholder = t('Email');
+
+  function authButtonHandler() {
+    authStore.login(email, password);
+    modalStore.closeModal();
+  }
 
   return (
     <Modal>
@@ -35,7 +39,7 @@ function AuthLogin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button className="auth__button" onClick={() => authStore.login(email, password)}>
+          <Button className="auth__button" onClick={authButtonHandler}>
             <>{t('Log In')}</>
           </Button>
           <Button className="button_back" onClick={() => modalStore.closeModal()}>
