@@ -25,10 +25,10 @@ function Game3() {
     let flag = wordListenStore.isCorrect;
     if (flag === true){
       gameStore.setCorrect();
-      wordIteratorStore.nextWord()
+      wordIteratorStore.nextWord();
     } else {
-      gameStore.setWrong()
-      wordIteratorStore.nextWord()
+      gameStore.setWrong();
+      wordIteratorStore.nextWord();
     }
   };
 
@@ -36,12 +36,17 @@ function Game3() {
     let flag = wordListenStore.isCorrect;
     if (flag === false){
       gameStore.setCorrect();
-      wordIteratorStore.nextWord()
+      wordIteratorStore.nextWord();
     } else {
-      gameStore.setWrong()
-      wordIteratorStore.nextWord()
+      gameStore.setWrong();
+      wordIteratorStore.nextWord();
     }
   };
+
+  function skipWord() {
+    wordIteratorStore.nextWord();
+    gameStore.setWrong();
+  }
 
   return (
     <main className="game">
@@ -57,7 +62,7 @@ function Game3() {
             <div className="game__listen-container">
             <img  src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
             <Button className="game__btn-next"
-              onClick={() => wordIteratorStore.nextWord()}>
+              onClick={()=> skipWord()}>
               <span>{t('Next word')}</span>
             </Button>
             </div>
