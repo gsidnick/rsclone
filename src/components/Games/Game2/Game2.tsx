@@ -15,12 +15,12 @@ function Game2() {
   const { wordStore, gameStore } = useStores();
 
   useEffect(() => {
-    if (wordStore.isLoad === false) {
+    if (wordStore.isLoading === false) {
       wordIteratorStore.setWords(wordStore.words);
       wordCharsStore.setWord(wordIteratorStore.current.translation);
       wordCharsStore.setShuffleWord();
     }
-  }, [wordStore.isLoad]);
+  }, [wordStore.isLoading]);
 
   useEffect(() => {
     if (wordCharsStore.isCorrect === true) {
@@ -34,7 +34,7 @@ function Game2() {
   }, [wordCharsStore.isCorrect, wordCharsStore.notIsCorrect]);
 
   useEffect(() => {
-    if (wordIteratorStore.current !== undefined && wordStore.isLoad === false) {
+    if (wordIteratorStore.current !== undefined && wordStore.isLoading === false) {
       wordCharsStore.setWord(wordIteratorStore.current.translation);
       wordCharsStore.setShuffleWord();
       wordCharsStore.changeIsCorrectToFalse();
@@ -44,20 +44,38 @@ function Game2() {
 
   return (
     <div className="game">
-      {wordStore.isLoad && <Loader />}
-      {!wordStore.isLoad && (
+      {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && (
         <>
           <div className="game__wrapper">
-            <div className="game__word-row">{wordCharsStore.word?.map((char, index) => {
-              return <span className="game__char" key={index}></span>
-            })}</div>
-            <div className="game__word-row">{wordCharsStore.currentWord?.map((char, index) => {
-              return <span className="game__char" key={index}>{char}</span>
-            })}</div>
+            <div className="game__word-row">
+              {wordCharsStore.word?.map((char, index) => {
+                return <span className="game__char" key={index}></span>;
+              })}
+            </div>
+            <div className="game__word-row">
+              {wordCharsStore.currentWord?.map((char, index) => {
+                return (
+                  <span className="game__char" key={index}>
+                    {char}
+                  </span>
+                );
+              })}
+            </div>
           </div>
-          <div className="game__word-row">{wordCharsStore.shuffleWord?.map((char, index) => {
-            return <Button className="button_square game__char-button" onClick={() => wordCharsStore.check(char)} key={index}>{char}</Button>
-          })}</div>
+          <div className="game__word-row">
+            {wordCharsStore.shuffleWord?.map((char, index) => {
+              return (
+                <Button
+                  className="button_square game__char-button"
+                  onClick={() => wordCharsStore.check(char)}
+                  key={index}
+                >
+                  {char}
+                </Button>
+              );
+            })}
+          </div>
         </>
       )}
     </div>
