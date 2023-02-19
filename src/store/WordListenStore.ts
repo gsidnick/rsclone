@@ -1,12 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { makeAutoObservable } from 'mobx';
 import IWord from '../interfaces/IWord';
+import useStores from '../hooks/useStores';
 
 class WordListenStore {
   public question: IWord | null = null; // WordRu
   private words: IWord[] = {} as IWord[];
   private answer: string | null = null; // WordEng 
-  private isCorrect: boolean = false; // Проверка
+  public isCorrect: boolean = false; // Проверка
 
   constructor() {
     makeAutoObservable(this);
@@ -43,21 +45,18 @@ class WordListenStore {
       const randomIndex = Math.floor(Math.random() * randomWords.length)
       this.setAnswer(randomWords[randomIndex].translation);
       this.setIsCorrect(false);
-      return this.answer;
     } else {
       if (this.question !== null) {
         this.setAnswer(this.question.translation);
         this.setIsCorrect(true);
-        return this.answer;
       }
     }
   }
 
   public wiretap() {
     const msg = new SpeechSynthesisUtterance();
-
     msg.lang = 'en-EN';
-    msg.text = '';
+    msg.text = (this.answer as string);
     window.speechSynthesis.speak(msg);
   }
 }

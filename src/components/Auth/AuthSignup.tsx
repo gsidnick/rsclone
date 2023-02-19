@@ -30,7 +30,7 @@ function AuthSignup() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button className="auth__button" onClick={() => authStore.signup(name, email, password)}>
-          <span>{t('Sign Up')}</span>
+          <>{t('Sign Up')}</>
         </Button>
         <Button className="button_back" to="/">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
