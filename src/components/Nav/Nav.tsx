@@ -22,7 +22,7 @@ function Nav() {
     <nav ref={navRef} className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <Link className="nav__link" onClick={checkCurrentLink} to="/">
+          <Link className="nav__link" onClick={checkCurrentLink} to="/" id='Home'>
             <span>{t('Home')}</span>
           </Link>
         </li>

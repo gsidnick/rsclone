@@ -25,6 +25,7 @@
 .game__listen-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .game__answer-container {

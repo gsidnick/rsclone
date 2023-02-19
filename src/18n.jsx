@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next'
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
   fallbackLng: localStorage.getItem('i18nextLng'),
-  debug: true, // Убрать console.log i18next
+  debug: true, // false - Убрать console.log i18next
   detection: {
     order: ['queryString', 'cookie'],
     cache: ['cookie']
