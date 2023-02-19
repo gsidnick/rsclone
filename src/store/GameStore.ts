@@ -27,7 +27,5 @@ class GameStore {
   public setWrong() {
     this.wrong = this.wrong + 1;
   }
-
-  public shuffleGames() {}
 }
 export default GameStore;

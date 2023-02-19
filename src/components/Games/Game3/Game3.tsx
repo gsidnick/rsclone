@@ -21,49 +21,32 @@ function Game3() {
   wordIteratorStore.setWords(wordStore.words);
   wordListenStore.setWords(wordStore.words);
 
+  function checkYes() {
+    let flag = wordListenStore.isCorrect;
+    if (flag === true){
+      gameStore.setCorrect();
+      wordIteratorStore.nextWord();
+    } else {
+      gameStore.setWrong();
+      wordIteratorStore.nextWord();
+    }
+  };
 
-  // const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
-  // const [currentWord, setCurrentWord] = useState({ word: '', translation: '' });
-  // const [randomWord, setRandomWord] = useState({ word: '', translation: '' });
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  //
-  // function getRandomInt(max: number) {
-  //   let prevValue = Math.floor(Math.random() * max);
-  //   let nextValue = Math.floor(Math.random() * max);
-  //   if (prevValue === nextValue) {
-  //     return 1;
-  //   } else return nextValue;
-  // }
-  //
-  // useEffect(() => {
-  //   if (libraryGame.length === 0) {
-  //     setLibraryGame([...shuffleGameNames()]);
-  //   }
-  //   if (libraryGame.length > 0) {
-  //     setCurrentWord(libraryGame[currentIndex]);
-  //     setRandomWord(libraryGame[getRandomInt(libraryGame.length)]);
-  //   }
-  // }, [libraryGame]);
-  //
-  // useEffect(() => {
-  //   if (libraryGame[currentIndex]) {
-  //     setCurrentWord(libraryGame[currentIndex]);
-  //     setRandomWord(libraryGame[getRandomInt(libraryGame.length)]);
-  //   }
-  // }, [currentIndex]);
-  //
-  // function wiretap() {
-  //   const msg = new SpeechSynthesisUtterance();
-  //   msg.lang = 'en-EN';
-  //   msg.text = currentWord.word;
-  //   window.speechSynthesis.speak(msg);
-  // }
-  //
-  // function skipAnswer() {
-  //   addError();
-  //   nextWord();
-  // }
-  //
+  function checkNo() {
+    let flag = wordListenStore.isCorrect;
+    if (flag === false){
+      gameStore.setCorrect();
+      wordIteratorStore.nextWord();
+    } else {
+      gameStore.setWrong();
+      wordIteratorStore.nextWord();
+    }
+  };
+
+  function skipWord() {
+    wordIteratorStore.nextWord();
+    gameStore.setWrong();
+  }
 
   return (
     <main className="game">
@@ -71,23 +54,23 @@ function Game3() {
       {!wordStore.isLoad && (
         <>
           {wordListenStore.setQuestion(wordIteratorStore.current)}
+          {wordListenStore.randomWord()}
           <div className="game__container container">
             <h3 className="game__word">
-            {wordIteratorStore.current.translation}
-            {t('It translates as')} <span className="game__main-traslation">{wordListenStore.randomWord()} {}</span> ?
+            {t('It translates as')} <span className="game__main-traslation">{wordListenStore.question?.word}</span> ?
             </h3>
             <div className="game__listen-container">
             <img  src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
             <Button className="game__btn-next"
-              onClick={() => wordIteratorStore.nextWord()}>
+              onClick={()=> skipWord()}>
               <span>{t('Next word')}</span>
             </Button>
             </div>
             <div className="game__answer-container">
-            <Button onClick={() => console.log('Yes')}>
+            <Button onClick={checkYes}>
               <span>{t('Yes')}</span>
             </Button>
-            <Button className="button_red" onClick={() => console.log('No')} >
+            <Button className="button_red" onClick={checkNo} >
               <span>{t('No')}</span>
             </Button>
             </div>

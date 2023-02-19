@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Nav from '../Nav/Nav';
@@ -8,6 +8,15 @@ import './Header.css';
 function Header() {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng'));
+  const navRef = useRef<HTMLElement>(null);
+
+  const deleteCurrentLink = () => {
+    const elements = document.querySelectorAll('.nav__current');
+    elements.forEach((element) => {
+      element.classList.remove('nav__current');
+    });
+    (document.getElementById('Home') as HTMLElement).classList.add('nav__current');
+  }
 
   function changeLanguage (language1: string) {
     i18n.changeLanguage(language1);
@@ -27,7 +36,7 @@ function Header() {
     <div className="header">
       <div className="header__container">
         <div className="header__options">
-        <Link className="header__logo" to="/">
+        <Link className="header__logo" to="/" onClick={deleteCurrentLink}>
           LOGO
         </Link>
         <button onClick={changeButton} className="header__button">{language?.toUpperCase()}
