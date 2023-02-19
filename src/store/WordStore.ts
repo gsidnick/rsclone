@@ -14,7 +14,7 @@ class WordStore {
     makeAutoObservable(this);
   }
 
-  public setIsLoad(bool: boolean) {
+  public setIsLoading(bool: boolean) {
     this.isLoading = bool;
   }
 
@@ -58,10 +58,10 @@ class WordStore {
 
   public async fetchWords(): Promise<void> {
     try {
-      this.setIsLoad(true);
+      this.setIsLoading(true);
       const response = await wordService.getAllWords();
       this.setWords(response.data);
-      this.setIsLoad(false);
+      this.setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -69,11 +69,13 @@ class WordStore {
 
   public async addWord(word: string): Promise<void> {
     try {
+      this.setIsLoading(true);
       word = word.toLowerCase();
       const duplicate = this.words.find((item) => word === item.word);
       if (duplicate) return;
       const response = await wordService.addWord(word);
       this.setWord(response.data);
+      this.setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -81,8 +83,10 @@ class WordStore {
 
   public async removeWord(word: string): Promise<void> {
     try {
+      this.setIsLoading(true);
       const response = await wordService.removeWord(word);
       this.unsetWord(response.data._id);
+      this.setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
