@@ -29,6 +29,9 @@ class WordIteratorStore {
       this.current = this.words[index];
       this.index = index;
     }
+    if (index === this.words.length){
+      this.index = 0;
+    }
   }
 
   public setProgress() {

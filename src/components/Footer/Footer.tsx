@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import RSSLogo from '../../images/RSSchoolLogo.svg';
 import GitLogo from '../../images/GitLogo.svg';
 import './Footer.css';
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <div className="footer">
       <div className="footer__container">
@@ -13,7 +15,7 @@ function Footer() {
           </a>
         </div>
         <div className="footer__text">
-          <span>© 2023, All Rights Reserved</span>
+          <span>{t('© 2023, All Rights Reserved')}</span>
         </div>
         <div className="footer__links">
           <a href="https://github.com/alexkaroh/">

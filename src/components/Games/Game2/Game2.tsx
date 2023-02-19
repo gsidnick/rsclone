@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import Loader from '../../UI/Loader/Loader';
 import useStores from '../../../hooks/useStores';
@@ -14,12 +15,12 @@ function Game2() {
   const { wordStore, gameStore } = useStores();
 
   useEffect(() => {
-    if (wordStore.isLoading === false) {
+    if (wordStore.isLoad === false) {
       wordIteratorStore.setWords(wordStore.words);
       wordCharsStore.setWord(wordIteratorStore.current.translation);
       wordCharsStore.setShuffleWord();
     }
-  }, [wordStore.isLoading]);
+  }, [wordStore.isLoad]);
 
   useEffect(() => {
     if (wordCharsStore.isCorrect === true) {
@@ -33,7 +34,7 @@ function Game2() {
   }, [wordCharsStore.isCorrect, wordCharsStore.notIsCorrect]);
 
   useEffect(() => {
-    if (wordIteratorStore.current !== undefined && wordStore.isLoading === false) {
+    if (wordIteratorStore.current !== undefined && wordStore.isLoad === false) {
       wordCharsStore.setWord(wordIteratorStore.current.translation);
       wordCharsStore.setShuffleWord();
       wordCharsStore.changeIsCorrectToFalse();
@@ -43,8 +44,8 @@ function Game2() {
 
   return (
     <div className="game">
-      {wordStore.isLoading && <Loader />}
-      {!wordStore.isLoading && (
+      {wordStore.isLoad && <Loader />}
+      {!wordStore.isLoad && (
         <>
           <div className="game__wrapper">
             <div className="game__word-row">{wordCharsStore.word?.map((char, index) => {
