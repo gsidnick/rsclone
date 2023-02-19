@@ -46,11 +46,16 @@ function Game2() {
       {wordStore.isLoading && <Loader />}
       {!wordStore.isLoading && (
         <>
-          <div className="game__word">{wordCharsStore.currentWord?.map((char, index) => {
-            return <button className="game__char" key={index}>{char}</button>
-          })}</div>
-          <div className="game__word">{wordCharsStore.shuffleWord?.map((char, index) => {
-            return <button onClick={() => wordCharsStore.check(char)} key={index}>{char}</button>
+          <div className="game__wrapper">
+            <div className="game__word-row">{wordCharsStore.word?.map((char, index) => {
+              return <span className="game__char" key={index}></span>
+            })}</div>
+            <div className="game__word-row">{wordCharsStore.currentWord?.map((char, index) => {
+              return <span className="game__char" key={index}>{char}</span>
+            })}</div>
+          </div>
+          <div className="game__word-row">{wordCharsStore.shuffleWord?.map((char, index) => {
+            return <Button className="button_square game__char-button" onClick={() => wordCharsStore.check(char)} key={index}>{char}</Button>
           })}</div>
         </>
       )}
