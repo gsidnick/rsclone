@@ -6,8 +6,10 @@ import { GameFunctionalComponent } from '../../types/GameFunctionalComponent';
 import GameNotFound from '../Games/GameNotFound/GameNotFound';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
+import { useTranslation } from 'react-i18next';
 
 function GamePage() {
+  const { t } = useTranslation();
   const { gameStore } = useStores();
   const params = useParams();
   const gameNumber = Number(params.id);
@@ -29,9 +31,9 @@ function GamePage() {
                 </svg>
               </Button>
               <div className="gamepage__score">
-                <span className="gamepage__wrong">Wrong: {gameStore.wrong}</span>
-                <span className="gamepage__correct">Correct: {gameStore.correct}</span>
-                <span className="gamepage__points">Points: {0}</span>
+                <span className="gamepage__wrong">{t('Wrong')} : {gameStore.wrong}</span>
+                <span className="gamepage__correct">{t('Correct')} : {gameStore.correct}</span>
+                <span className="gamepage__points">{t('Points')} : {0}</span>
               </div>
             </div>
             <div className="gamepage__content">

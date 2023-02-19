@@ -1,29 +1,31 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-// import { useState, useEffect } from 'react';
-// import IWord from '../../../interfaces/IWord';
-// import EarImg from '../../../images/ear.svg';
 import './Game3.css';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import Button from '../../UI/Button/Button';
+import Loader from '../../UI/Loader/Loader';
+import useStores from '../../../hooks/useStores';
+import WordIteratorStore from '../../../store/WordIteratorStore';
+import WordListenStore from '../../../store/WordListenStore';
+import EarSvg from '../../../images/ear.svg';
+import { useTranslation } from 'react-i18next';
 
-function Game3(): React.ReactElement {
+const wordIteratorStore = new WordIteratorStore();
+const wordListenStore = new WordListenStore();
+
+function Game3() {
+  const { t } = useTranslation();
+
+  const { wordStore, gameStore } = useStores();
+  wordIteratorStore.setWords(wordStore.words);
+  wordListenStore.setWords(wordStore.words);
+
+
   // const [libraryGame, setLibraryGame] = useState<IWord[]>([]);
   // const [currentWord, setCurrentWord] = useState({ word: '', translation: '' });
   // const [randomWord, setRandomWord] = useState({ word: '', translation: '' });
   // const [currentIndex, setCurrentIndex] = useState(0);
-  //
-  // const addCorrect = props.functions.addCorrect;
-  // const addError = props.functions.addError;
-  // const shuffleGameNames = props.functions.shuffleGameNames;
-  //
-  // function nextWord() {
-  //   let currentIndexTmp = currentIndex;
-  //   currentIndexTmp++;
-  //
-  //   if (!libraryGame[currentIndexTmp]) {
-  //     setCurrentIndex(0);
-  //     return;
-  //   }
-  //   setCurrentIndex(currentIndexTmp);
-  // }
   //
   // function getRandomInt(max: number) {
   //   let prevValue = Math.floor(Math.random() * max);
@@ -57,55 +59,43 @@ function Game3(): React.ReactElement {
   //   window.speechSynthesis.speak(msg);
   // }
   //
-  // function scipAnswer() {
+  // function skipAnswer() {
   //   addError();
   //   nextWord();
   // }
   //
-  // function checkYes() {
-  //   if (randomWord.word.toLowerCase() === currentWord.word.toLowerCase()) {
-  //     addCorrect();
-  //     nextWord();
-  //   } else {
-  //     addError();
-  //     nextWord();
-  //   }
-  // }
-  //
-  // function checkNo() {
-  //   if (randomWord.word.toLowerCase() !== currentWord.word.toLowerCase()) {
-  //     addCorrect();
-  //     nextWord();
-  //   } else {
-  //     addError();
-  //     nextWord();
-  //   }
-  // }
 
   return (
     <main className="game">
-      <div className="game__container container">
-        {/*<h3 className="game__word">*/}
-        {/*  It translates as <span className="game__main-traslation">{randomWord.translation}</span> ?*/}
-        {/*</h3>*/}
-        {/*<div className="game__listen-container">*/}
-        {/*  <img onClick={wiretap} src={EarImg} className="game__img-hear" alt="Ear" />*/}
-        {/*  <button onClick={scipAnswer} className="game__btn-next">*/}
-        {/*    {' '}*/}
-        {/*    Next word*/}
-        {/*  </button>*/}
-        {/*</div>*/}
-        {/*<div className="game__answer-container">*/}
-        {/*  <button onClick={checkYes} className="game_btn-yes">*/}
-        {/*    Yes*/}
-        {/*  </button>*/}
-        {/*  <button onClick={checkNo} className="game_btn-no">*/}
-        {/*    No*/}
-        {/*  </button>*/}
-        {/*</div>*/}
-      </div>
+      {wordStore.isLoad && <Loader />}
+      {!wordStore.isLoad && (
+        <>
+          {wordListenStore.setQuestion(wordIteratorStore.current)}
+          <div className="game__container container">
+            <h3 className="game__word">
+            {wordIteratorStore.current.translation}
+            {t('It translates as')} <span className="game__main-traslation">{wordListenStore.randomWord()} {}</span> ?
+            </h3>
+            <div className="game__listen-container">
+            <img  src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
+            <Button className="game__btn-next"
+              onClick={() => wordIteratorStore.nextWord()}>
+              <span>{t('Next word')}</span>
+            </Button>
+            </div>
+            <div className="game__answer-container">
+            <Button onClick={() => console.log('Yes')}>
+              <span>{t('Yes')}</span>
+            </Button>
+            <Button className="button_red" onClick={() => console.log('No')} >
+              <span>{t('No')}</span>
+            </Button>
+            </div>
+          </div>
+        </>
+      )}
     </main>
   );
 }
 
-export default Game3;
+export default observer(Game3);

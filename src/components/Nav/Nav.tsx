@@ -1,15 +1,20 @@
 import { useRef } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import useStores from '../../hooks/useStores';
-import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 
 function Nav() {
   const { authStore } = useStores();
+  const { t } = useTranslation();
   const navRef = useRef<HTMLElement>(null);
 
   const checkCurrentLink = (event: React.MouseEvent<HTMLElement>) => {
     navRef?.current?.querySelectorAll('a').forEach((link) => {
+      link.classList.remove('nav__current');
+    });
+    navRef?.current?.querySelectorAll('span').forEach((link) => {
       link.classList.remove('nav__current');
     });
 
@@ -23,22 +28,22 @@ function Nav() {
           <>
             <li className="nav__item">
               <Link className="nav__link" onClick={checkCurrentLink} to="/">
-                Home
+                {t('Home')}
               </Link>
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={checkCurrentLink} to="/games/">
-                Games
+                {t('Games')}
               </Link>
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={checkCurrentLink} to="/library/">
-                Library
+                {t('Library')}
               </Link>
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={checkCurrentLink} to="/learn/">
-                Learn
+                {t('Learn')}
               </Link>
             </li>
             <li className="nav__item">

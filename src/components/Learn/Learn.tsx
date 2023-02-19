@@ -1,5 +1,6 @@
 import './Learn.css';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 import ProgressBar from '../UI/ProgressBar/ProgressBar';
 import Loader from '../UI/Loader/Loader';
 import Button from '../UI/Button/Button';
@@ -9,6 +10,8 @@ import WordIteratorStore from '../../store/WordIteratorStore';
 const wordIteratorStore = new WordIteratorStore();
 
 function Learn() {
+  const { t } = useTranslation();
+
   const { wordStore } = useStores();
   wordIteratorStore.setWords(wordStore.words);
 
@@ -27,10 +30,10 @@ function Learn() {
               </div>
               <div className="learn__group-controls">
                 <Button className="learn__button button_outline" onClick={() => wordIteratorStore.prevWord()}>
-                  Previous
+                  <span>{t('Previous')}</span>
                 </Button>
                 <Button className="learn__button " onClick={() => wordIteratorStore.nextWord()}>
-                  Next
+                  <span>{t('Next')}</span>
                 </Button>
               </div>
             </>

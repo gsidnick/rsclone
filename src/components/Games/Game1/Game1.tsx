@@ -6,11 +6,13 @@ import Loader from '../../UI/Loader/Loader';
 import useStores from '../../../hooks/useStores';
 import WordIteratorStore from '../../../store/WordIteratorStore';
 import WordSpeechStore from '../../../store/WordSpeechStore';
+import { useTranslation } from 'react-i18next';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordSpeechStore = new WordSpeechStore();
 
 function Game1() {
+  const { t } = useTranslation();
   const { wordStore, gameStore } = useStores();
   wordIteratorStore.setWords(wordStore.words);
 
@@ -25,7 +27,7 @@ function Game1() {
       gameStore.setWrong();
       wordIteratorStore.nextWord();
     }
-  }, [wordSpeechStore.answer]);
+  }, [gameStore]);
 
   return (
     <div className="game">
@@ -33,19 +35,19 @@ function Game1() {
       {!wordStore.isLoading && (
         <>
           {wordSpeechStore.setQuestion(wordIteratorStore.current.word)}
-          <span className="game__word-label">Say this word</span>
+          <span className="game__word-label">{t('Say this word')}</span>
           <h2 className="game__word-question">{wordSpeechStore.question}</h2>
           <h2 className="game__word-answer">{wordSpeechStore.answer}</h2>
           <div className="game__group-controls">
             <Button onClick={() => wordSpeechStore.recognizeSpeech()} disabled={wordSpeechStore.isSpeeching}>
-              {wordSpeechStore.isSpeeching ? 'Speak now...' : 'Start Speaking'}
+              {wordSpeechStore.isSpeeching ? <span>{t('Speak now...')}</span> : <span>{t('Start Speaking')}</span>}
             </Button>
             <Button
               className={wordSpeechStore.isSpeeching ? 'button_disabled' : 'button_red'}
               onClick={() => wordIteratorStore.nextWord()}
               disabled={wordSpeechStore.isSpeeching}
             >
-              Skip It
+              <span>{t('Skit it')}</span>
             </Button>
           </div>
         </>

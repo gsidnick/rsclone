@@ -1,0 +1,46 @@
+{
+  "GAME1" : "GAME1",
+  "Say this word" : "Say this word",
+  "Speak now..." : "Speak now...",
+  "Start Speaking" : "Start Speaking",
+  "Skit it" : "Skit it",
+
+  "NAV" : "NAV",
+  "Home" : "Home",
+  "Games" : "Games",
+  "Library" : "Library",
+  "Learn": "Learn",
+
+  "LEARN" : "LEARN",
+  "Previous" : "Previous",
+  "Next" : "Next",
+
+  "HOME" : "HOME",
+  "Hey, friend, let's start our journey!" : "Hey, friend, let's start our journey",
+  "Discover new opportunities for communication, career and travel" : "Discover new opportunities for communication, career and travel",
+  "Log In" : "Log In",
+  "Sign Up" : "Sign Up",
+
+  "LIBRARY" : "LIBRARY",
+  "Add" : "Add",
+  "Word" : "Word",
+  "Translation" : "Translation",
+  "Type new word here..." : "Type new word here...",
+
+  "FOOTER" : "FOOTER",
+  "© 2023, All Rights Reserved" : "© 2023, All Rights Reserved",
+
+  "AUTH LOGIN" : "AUTH LOGIN",
+  "Password" : "Password",
+  "Email" : "Email",
+  "Name" : "Name",
+
+  "GAME PAGE" : "GAME PAGE",
+  "Points" : "Points",
+  "Wrong" : "Wrong",
+  "Correct" : "Correct",
+
+  "GAME NOT FOUND" : "GAME NOT FOUND",
+  "Sorry, this game not found!" : "Sorry, this game not found!",
+  "Choose another game" : "Choose another game"
+}

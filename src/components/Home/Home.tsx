@@ -4,9 +4,12 @@ import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { observer } from 'mobx-react-lite';
 import ModalAuthLogin from '../Modal/ModalAuthLogin/ModalAuthLogin';
+import { useTranslation } from 'react-i18next';
+import './Home.css';
 
 function Home() {
   const { modalStore } = useStores();
+  const { t } = useTranslation();
 
   function openLoginForm() {
     modalStore.openModal();
@@ -22,16 +25,16 @@ function Home() {
       <main className="home">
         <div className="home__container container">
           <div className="home__greeting">
-            <h1 className="home__greeting-text">Hey, friend, let's start our journey!</h1>
+            <h1 className="home__greeting-text">{t(`Hey, friend, let's start our journey!`)}</h1>
             <span className="home__greeting-description">
-              Discover new opportunities for communication, career and travel
+              {t('Discover new opportunities for communication, career and travel')}
             </span>
             <div className="home__group-controls">
               <Button className="home__game-play" onClick={openLoginForm}>
-                Log In
+                <>{t('Log In')}</>
               </Button>
               <Button className="home__game-play button_outline" onClick={openSignupForm}>
-                Sign Up
+                <>{t('Sign Up')}</>
               </Button>
             </div>
           </div>

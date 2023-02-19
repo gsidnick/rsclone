@@ -5,8 +5,12 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import Loader from '../UI/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 function Library() {
+  const { t } = useTranslation();
+  const placeholder = t('Type new word here...');
+
   const { wordStore } = useStores();
   const [word, setWord] = useState<string>('');
 
@@ -37,19 +41,19 @@ function Library() {
               <Input
                 name="word"
                 type="text"
-                placeholder="Type new word here..."
+                placeholder= {placeholder}
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
               />
               <Button className="" onClick={() => wordStore.addWord(word)}>
-                Add
+                <>{t('Add')}</>
               </Button>
             </div>
             <div className="library__list">
               <div className="library__row-head">
-                <div className="library__col">Word</div>
-                <div className="library__col">Translation</div>
-                <div className="library__col">Learn</div>
+                <div className="library__col">{t('Word')}</div>
+                <div className="library__col">{t('Translation')}</div>
+                <div className="library__col">{t('Learn')}</div>
               </div>
               <div className="library__row-body">{renderRows()}</div>
             </div>

@@ -5,35 +5,42 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import Modal from '../Modal/Modal';
+import { useTranslation } from 'react-i18next';
 
 function AuthSignup() {
   const { authStore, modalStore } = useStores();
+  const { t } = useTranslation();
+  const { authStore } = useStores();
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const passwordPlalceholder = t('Password');
+  const emailPlalceholder = t('Email');
+  const namePlalceholder = t('Name');
 
   return (
     <Modal>
       <Auth>
         <div className="auth__form">
-          <h1 className="auth__heading">Sign Up</h1>
-          <Input name="name" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <h1 className="auth__heading">{t('Sign Up')}</h1>
+          <Input name="name" type="text" placeholder={namePlalceholder} value={name} onChange={(e) => setName(e.target.value)} />
           <Input
             name="email"
             type="text"
-            placeholder="Email"
+            placeholder={emailPlalceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder={passwordPlalceholder}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button className="auth__button" onClick={() => authStore.signup(name, email, password)}>
-            Sign Up
+            <>{t('Sign Up')}</>
           </Button>
           <Button className="button_back" onClick={() => modalStore.closeModal()}>
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
