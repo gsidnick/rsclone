@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 function AuthSignup() {
   const { authStore, modalStore } = useStores();
   const { t } = useTranslation();
-  const { authStore } = useStores();
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -24,7 +23,13 @@ function AuthSignup() {
       <Auth>
         <div className="auth__form">
           <h1 className="auth__heading">{t('Sign Up')}</h1>
-          <Input name="name" type="text" placeholder={namePlalceholder} value={name} onChange={(e) => setName(e.target.value)} />
+          <Input
+            name="name"
+            type="text"
+            placeholder={namePlalceholder}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <Input
             name="email"
             type="text"
