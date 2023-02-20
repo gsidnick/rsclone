@@ -62,15 +62,15 @@ function Game3() {
             <div className="game__listen-container">
               <img src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
               <Button className="game__btn-next" onClick={() => skipWord()}>
-                <span>{t('Next word')}</span>
+                <>{t('Next word')}</>
               </Button>
             </div>
             <div className="game__answer-container">
               <Button onClick={checkYes}>
-                <span>{t('Yes')}</span>
+                <>{t('Yes')}</>
               </Button>
               <Button className="button_red" onClick={checkNo}>
-                <span>{t('No')}</span>
+                <>{t('No')}</>
               </Button>
             </div>
           </div>

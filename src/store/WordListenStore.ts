@@ -1,8 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { makeAutoObservable } from 'mobx';
 import IWord from '../interfaces/IWord';
-import useStores from '../hooks/useStores';
 
 class WordListenStore {
   public question: IWord | null = null; // WordRu

@@ -25,10 +25,10 @@ export const libraryGames = [
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
   {
-    nameRU: 'Составь перевод',
-    name: 'Put together a translation',
-    descriptionRU: 'Произнесите слово на экране и проверьте его написание',
-    description: 'Say the word on the screen and check your spelling',
+    nameRU: 'Введи правильный перевод',
+    name: 'Write the correct translation',
+    descriptionRU: 'Введи правильный перевод предложенного слова',
+    description: 'Enter the correct translation of the suggested word',
     image:
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },

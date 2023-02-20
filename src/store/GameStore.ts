@@ -3,11 +3,12 @@ import { GameFunctionalComponent } from '../types/GameFunctionalComponent';
 import Game1 from '../components/Games/Game1/Game1';
 import Game2 from '../components/Games/Game2/Game2';
 import Game3 from '../components/Games/Game3/Game3';
+import Game4 from '../components/Games/Game4/Game4';
 
 class GameStore {
   public correct: number = 0;
   public wrong: number = 0;
-  private games: Array<GameFunctionalComponent> = [Game1, Game2, Game3];
+  private games: Array<GameFunctionalComponent> = [Game1, Game2, Game3, Game4];
 
   constructor() {
     makeAutoObservable(this);
