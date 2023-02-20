@@ -14,7 +14,11 @@ function Loader() {
       }
   }, []);
 
-  return <span className="loader"></span>;
+  return (
+    <div className="loader">
+      <span className="loader__spinner"></span>
+    </div>
+  );
 }
 
 export default Loader;

@@ -13,10 +13,11 @@ import Learn from './components/Learn/Learn';
 import GameCards from './components/GameCards/GameCards';
 import GamePage from './components/GamePage/GamePage';
 import useStores from './hooks/useStores';
-import ModalLoader from './components/Modal/ModalLoader/ModalLoader';
+import Modal from './components/Modal/Modal';
+import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
 
 function App() {
-  const { authStore, wordStore } = useStores();
+  const { authStore, wordStore, modalStore } = useStores();
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      {authStore.isLoading && <ModalLoader />}
+      {authStore.isLoading && <OverlayLoader />}
       {!authStore.isLoading && (
         <>
           <Router>
@@ -54,6 +55,7 @@ function App() {
           </Router>
         </>
       )}
+      <Modal className={modalStore.isModal ? 'modal_open' : ''} />
     </div>
   );
 }

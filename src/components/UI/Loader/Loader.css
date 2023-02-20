@@ -9,13 +9,20 @@
 }
 
 .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader__spinner {
   width: 48px;
   height: 48px;
   display: inline-block;
   position: relative;
   transform: rotate(45deg);
 }
-.loader::before {
+
+.loader__spinner::before {
   content: '';
   box-sizing: border-box;
   width: 24px;
@@ -25,7 +32,8 @@
   top: -24px;
   animation: flip 4s ease infinite;
 }
-.loader::after {
+
+.loader__spinner::after {
   content: '';
   box-sizing: border-box;
   position: absolute;

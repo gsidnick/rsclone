@@ -3,25 +3,24 @@ import React from 'react';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { observer } from 'mobx-react-lite';
-import ModalAuthLogin from '../Modal/ModalAuthLogin/ModalAuthLogin';
 import { useTranslation } from 'react-i18next';
-import './Home.css';
+import AuthLogin from '../Auth/AuthLogin';
+import AuthSignup from '../Auth/AuthSignup';
 
 function Home() {
   const { modalStore } = useStores();
   const { t } = useTranslation();
 
   function openLoginForm() {
-    modalStore.openModal();
+    modalStore.openModal(<AuthLogin />);
   }
 
   function openSignupForm() {
-    modalStore.openModal();
+    modalStore.openModal(<AuthSignup />);
   }
 
   return (
     <>
-      {modalStore.isModal && <ModalAuthLogin />}
       <main className="home">
         <div className="home__container container">
           <div className="home__greeting">
