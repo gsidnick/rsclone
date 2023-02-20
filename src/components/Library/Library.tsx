@@ -14,6 +14,27 @@ function Library() {
   const { wordStore } = useStores();
   const [word, setWord] = useState<string>('');
 
+  function sendData() {
+    wordStore.addWord(word);
+    setWord('');
+  }
+
+  function wordChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setWord(event.target.value);
+  }
+
+  function wordKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      sendData();
+      const target = event.target as HTMLInputElement;
+      target.focus();
+    }
+  }
+
+  function addClickHandler() {
+    sendData();
+  }
+
   function renderRows() {
     return wordStore.words.map((item, index) => {
       return (
@@ -41,11 +62,12 @@ function Library() {
               <Input
                 name="word"
                 type="text"
-                placeholder= {placeholder}
+                placeholder={placeholder}
                 value={word}
-                onChange={(e) => setWord(e.target.value)}
+                onChange={wordChangeHandler}
+                onKeyDown={wordKeyDownHandler}
               />
-              <Button className="" onClick={() => wordStore.addWord(word)}>
+              <Button className="" onClick={addClickHandler}>
                 <>{t('Add')}</>
               </Button>
             </div>
