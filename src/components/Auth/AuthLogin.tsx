@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
@@ -14,10 +14,34 @@ function AuthLogin() {
   const [password, setPassword] = useState<string>('');
   const passwordPlalceholder = t('Password');
   const emailPlalceholder = t('Email');
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
   function authButtonHandler() {
     authStore.login(email, password);
     modalStore.closeModal();
+  }
+
+  function emailChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value);
+  }
+
+  function passwordChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value);
+  }
+
+  function emailKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      if (passwordInputRef.current !== null) passwordInputRef.current.focus();
+    }
+  }
+
+  function passwordKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      if (passwordInputRef.current !== null) passwordInputRef.current.blur();
+      authStore.login(email, password);
+      modalStore.closeModal();
+    }
   }
 
   return (
@@ -28,16 +52,20 @@ function AuthLogin() {
           <Input
             name="email"
             type="text"
+            ref={emailInputRef}
             placeholder={emailPlalceholder}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={emailChangeHandler}
+            onKeyDown={emailKeyDownHandler}
           />
           <Input
             name="password"
             type="password"
+            ref={passwordInputRef}
             placeholder={passwordPlalceholder}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={passwordChangeHandler}
+            onKeyDown={passwordKeyDownHandler}
           />
           <Button className="auth__button" onClick={authButtonHandler}>
             <>{t('Log In')}</>
