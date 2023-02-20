@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import './Game4.css';
 import React from 'react';
 import { observer } from 'mobx-react-lite';
@@ -8,7 +6,6 @@ import Loader from '../../UI/Loader/Loader';
 import useStores from '../../../hooks/useStores';
 import WordIteratorStore from '../../../store/WordIteratorStore';
 import WordWriteStore from '../../../store/WordWriteStore';
-import Input from '../../UI/Input/Input';
 import { useTranslation } from 'react-i18next';
 
 const wordIteratorStore = new WordIteratorStore();
@@ -31,7 +28,7 @@ function Game4() {
       wordIteratorStore.nextWord();
       gameStore.setWrong();
     }
-  }
+  };
 
   return (
     <main className="game">

@@ -30,7 +30,7 @@ function Game3() {
       gameStore.setWrong();
       wordIteratorStore.nextWord();
     }
-  }
+  };
 
   function checkNo() {
     let flag = wordListenStore.isCorrect;
@@ -41,12 +41,12 @@ function Game3() {
       gameStore.setWrong();
       wordIteratorStore.nextWord();
     }
-  }
+  };
 
   function skipWord() {
     wordIteratorStore.nextWord();
     gameStore.setWrong();
-  }
+  };
 
   return (
     <main className="game">
