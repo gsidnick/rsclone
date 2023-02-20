@@ -55,22 +55,22 @@ function Library() {
   return (
     <main className="library">
       <div className="library__container container">
+        <div className="library__group-controls">
+          <Input
+            name="word"
+            type="text"
+            placeholder={placeholder}
+            value={word}
+            onChange={wordChangeHandler}
+            onKeyDown={wordKeyDownHandler}
+          />
+          <Button className="" onClick={addClickHandler}>
+            <>{t('Add')}</>
+          </Button>
+        </div>
         {wordStore.isLoading && <Loader />}
         {!wordStore.isLoading && (
           <>
-            <div className="library__group-controls">
-              <Input
-                name="word"
-                type="text"
-                placeholder={placeholder}
-                value={word}
-                onChange={wordChangeHandler}
-                onKeyDown={wordKeyDownHandler}
-              />
-              <Button className="" onClick={addClickHandler}>
-                <>{t('Add')}</>
-              </Button>
-            </div>
             <div className="library__list">
               <div className="library__row-head">
                 <div className="library__col">{t('Word')}</div>
