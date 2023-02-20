@@ -9,14 +9,24 @@ import SunSvg from '../../images/sun.svg';
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [image, setImage] = useState(MoonSvg);
-  const [language, setLanguage] = useState(localStorage.getItem('i18nextLng'));
+  const [image, setImage] = useState('');
+  const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
   const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'dark') {
+      setImage(SunSvg);
+    } else {setImage(MoonSvg)};
+  },[])
 
   function changeImage () {
     if (image === MoonSvg) {
-      setImage(SunSvg)
-    } else setImage(MoonSvg);
+      setImage(SunSvg);
+      localStorage.setItem('theme', 'dark');
+    } else {
+      setImage(MoonSvg)
+      localStorage.setItem('theme', 'light')
+    }
   };
 
   function deleteCurrentLink () {
