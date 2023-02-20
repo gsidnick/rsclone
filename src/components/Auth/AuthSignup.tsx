@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Auth from './Auth';
 import Input from '../UI/Input/Input';
@@ -13,10 +13,49 @@ function AuthSignup() {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
   const passwordPlalceholder = t('Password');
   const emailPlalceholder = t('Email');
   const namePlalceholder = t('Name');
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
+
+  async function authButtonHandler() {
+    authStore.signup(name, email, password);
+    modalStore.closeModal();
+  }
+
+  function nameChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setName(event.target.value);
+  }
+
+  function emailChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value);
+  }
+
+  function passwordChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value);
+  }
+
+  function nameKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      if (emailInputRef.current !== null) emailInputRef.current.focus();
+    }
+  }
+
+  function emailKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      if (passwordInputRef.current !== null) passwordInputRef.current.focus();
+    }
+  }
+
+  function passwordKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      if (passwordInputRef.current !== null) passwordInputRef.current.blur();
+      authStore.signup(name, email, password);
+      modalStore.closeModal();
+    }
+  }
 
   return (
     <Modal>
@@ -26,25 +65,31 @@ function AuthSignup() {
           <Input
             name="name"
             type="text"
+            ref={nameInputRef}
             placeholder={namePlalceholder}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={nameChangeHandler}
+            onKeyDown={nameKeyDownHandler}
           />
           <Input
             name="email"
             type="text"
+            ref={emailInputRef}
             placeholder={emailPlalceholder}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={emailChangeHandler}
+            onKeyDown={emailKeyDownHandler}
           />
           <Input
             name="password"
             type="password"
+            ref={passwordInputRef}
             placeholder={passwordPlalceholder}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={passwordChangeHandler}
+            onKeyDown={passwordKeyDownHandler}
           />
-          <Button className="auth__button" onClick={() => authStore.signup(name, email, password)}>
+          <Button className="auth__button" onClick={authButtonHandler}>
             <>{t('Sign Up')}</>
           </Button>
           <Button className="button_back" onClick={() => modalStore.closeModal()}>
