@@ -1,7 +1,17 @@
+.footer.light {
+  --color-border: 0px;
+}
+
+.footer.dark {
+  --color-border: 3px solid #35383f;
+}
+
 .footer {
   width: 100%;
   padding: 20px 40px;
-  background-color:  #ffffff;
+  background-color:  var(--color-bg);
+  border-top: var(--color-border);
+  transition: all 0.2s linear;
 }
 
 .footer__container {

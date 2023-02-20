@@ -9,6 +9,7 @@ html.dark {
 }
 
 html {
+  transition: all 0.2s linear;
   background-color: var(--color-bg);
   color: var(--color-text);
 }

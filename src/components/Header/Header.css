@@ -1,6 +1,20 @@
+.header.light {
+  --color-bg: #265B91;
+  --color-text: #000000;
+  --color-border: 0px solid #265B91;
+}
+
+.header.dark {
+  --color-bg: #232529;
+  --color-text: #cdcfd7;
+  --color-border: 3px solid #35383f;
+}
+
 .header {
   padding: 20px 40px;
-  background-color: #265B91;
+  background-color: var(--color-bg);
+  border-bottom: var(--color-border);
+  transition: all 0.2s linear;
 }
 
 .header__container {

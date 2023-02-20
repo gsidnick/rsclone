@@ -1,3 +1,14 @@
+
+.modal.light {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+}
+
+.modal.dark {
+  --color-bg: #181b229c;
+  --color-text: #cdcfd7;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -8,5 +19,5 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
+  background-color: var(--color-bg);
 }

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { setDarkTheme, setLightTheme } from '../../theme/theme'; 
 import Nav from '../Nav/Nav';
 import './Header.css';
 import MoonSvg from '../../images/moon.svg';
@@ -13,21 +14,27 @@ function Header() {
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
   const navRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    if (localStorage.getItem('theme') === 'dark') {
-      setImage(SunSvg);
-    } else {setImage(MoonSvg)};
-  },[])
-
   function changeImage () {
     if (image === MoonSvg) {
       setImage(SunSvg);
+      setDarkTheme();
       localStorage.setItem('theme', 'dark');
     } else {
-      setImage(MoonSvg)
-      localStorage.setItem('theme', 'light')
+      setImage(MoonSvg);
+      setLightTheme();
+      localStorage.setItem('theme', 'light');
     }
   };
+  
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'dark') {
+      setImage(SunSvg);
+      setDarkTheme();
+    } else {
+      setImage(MoonSvg);
+      setLightTheme();
+    };
+  },[]);
 
   function deleteCurrentLink () {
     const elements = document.querySelectorAll('.nav__current');

@@ -1,5 +1,5 @@
 import './GameCards.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { libraryGames } from '../../config/LibraryGames';
 
@@ -7,6 +7,20 @@ function GameCards() {
 
   const [lang] = useState(localStorage.getItem('i18nextLng'));
 
+  useEffect(() => {
+    const cards = document.querySelectorAll('.gamecards__link');
+    if(localStorage.getItem('theme') === 'dark') {
+      cards.forEach((card) => {
+        card.classList.remove('light');
+        card.classList.add('dark');
+      });
+    } else {
+      cards.forEach((card) => {
+        card.classList.remove('dark');
+        card.classList.add('light');
+      });
+    }
+  },[]);
  
   return (
     <main className="gamecards">

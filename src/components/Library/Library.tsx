@@ -1,5 +1,5 @@
 import './Library.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
@@ -13,6 +13,19 @@ function Library() {
 
   const { wordStore } = useStores();
   const [word, setWord] = useState<string>('');
+
+  useEffect(() => {
+
+    const list = document.querySelector('.library__list');
+
+    if(localStorage.getItem('theme') === 'dark') {
+        list?.classList.remove('light');
+        list?.classList.add('dark');
+      } else {
+        list?.classList.remove('dark');
+        list?.classList.add('light');
+      }
+  }, []);
 
   function renderRows() {
     return wordStore.words.map((item, index) => {
