@@ -79,7 +79,7 @@ class AuthStore {
   public async verifyAuth(): Promise<void> {
     try {
       this.setIsLoading(true);
-      const response = await axios.get<IAuthResponse>(`${process.env.REACT_APP_RAILWAY_URL}/api/refresh`, {
+      const response = await axios.get<IAuthResponse>(`https://rsclone-api.up.railway.app/api/refresh`, {
         withCredentials: true,
       });
       console.log(response);

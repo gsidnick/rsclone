@@ -24,7 +24,7 @@ function AuthLogin() {
     <Modal>
       <Auth>
         <div className="auth__form">
-          <h1 className="auth__heading">Log In</h1>
+          <h1 className="auth__heading">{t('Log In')}</h1>
           <Input
             name="email"
             type="text"

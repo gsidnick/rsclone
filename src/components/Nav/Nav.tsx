@@ -12,13 +12,16 @@ function Nav() {
 
   const checkCurrentLink = (event: React.MouseEvent<HTMLElement>) => {
     navRef?.current?.querySelectorAll('a').forEach((link) => {
-      link.classList.remove('nav__current');
+      link.classList.remove('nav__current', 'dark', 'light');
     });
     navRef?.current?.querySelectorAll('span').forEach((link) => {
-      link.classList.remove('nav__current');
+      link.classList.remove('nav__current', 'dark', 'light');
     });
-
-    (event.target as HTMLElement).classList.add('nav__current');
+    if(localStorage.getItem('theme') === 'dark'){
+      (event.target as HTMLElement).classList.add('nav__current', 'dark');
+    } else {
+      (event.target as HTMLElement).classList.add('nav__current' ,'light');
+    };
   };
 
   return (
@@ -48,7 +51,7 @@ function Nav() {
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={() => authStore.logout()} to="/">
-                Log Out
+                {t('Log Out')}
               </Link>
             </li>
           </>

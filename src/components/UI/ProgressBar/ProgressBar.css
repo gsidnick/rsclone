@@ -1,3 +1,23 @@
+.progress__bar.light {
+  --color-bgg1: rgba(114,229,138,1);
+  --color-bgg2: rgba(155,255,176,1);
+  --color-bgg3: rgba(114,229,138,1);
+}
+
+.progress__bar.dark {
+  --color-bgg1: rgb(229, 114, 114);
+  --color-bgg2: rgb(255, 155, 155);
+  --color-bgg3: rgb(229, 114, 114);
+}
+
+.progress.light {
+  --color-pr: #e9ebf1;
+}
+
+.progress.dark {
+  --color-pr: #ffffff0f;
+}
+
 .progress {
   width: 100%;
   height: 10px;
@@ -10,6 +30,6 @@
 .progress__bar {
   height: 100%;
   display: block;
-  background: linear-gradient(90deg, rgba(114,229,138,1) 0%, rgba(155,255,176,1) 50%, rgba(114,229,138,1) 100%);
+  background: linear-gradient(90deg, var(--color-bgg1) 0%, var(--color-bgg2) 50%, var(--color-bgg3) 100%);
   transition: all 0.4s ease-in-out 0.2s;
 }
