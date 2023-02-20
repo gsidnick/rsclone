@@ -17,15 +17,31 @@
 }
 
 .header__options {
-  width: 150px;
+  width: 160px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.header__button {
+.header__button-lang {
   width: 35px;
   height: 20px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header__button-lang:hover {
+  transform: scale(1.15);
+}
+
+.header__button-theme {
+  width: 25px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header__button-theme:hover {
+  transform: scale(1.15);
 }

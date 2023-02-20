@@ -4,19 +4,28 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Nav from '../Nav/Nav';
 import './Header.css';
+import MoonSvg from '../../images/moon.svg';
+import SunSvg from '../../images/sun.svg';
 
 function Header() {
   const { t, i18n } = useTranslation();
+  const [image, setImage] = useState(MoonSvg);
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng'));
   const navRef = useRef<HTMLElement>(null);
 
-  const deleteCurrentLink = () => {
+  function changeImage () {
+    if (image === MoonSvg) {
+      setImage(SunSvg)
+    } else setImage(MoonSvg);
+  };
+
+  function deleteCurrentLink () {
     const elements = document.querySelectorAll('.nav__current');
     elements.forEach((element) => {
       element.classList.remove('nav__current');
     });
     (document.getElementById('Home') as HTMLElement).classList.add('nav__current');
-  }
+  };
 
   function changeLanguage (language1: string) {
     i18n.changeLanguage(language1);
@@ -30,7 +39,7 @@ function Header() {
       changeLanguage("ru");
       setLanguage('ru');
     }
-  }
+  };
 
   return (
     <div className="header">
@@ -39,8 +48,10 @@ function Header() {
         <Link className="header__logo" to="/" onClick={deleteCurrentLink}>
           LOGO
         </Link>
-        <button onClick={changeButton} className="header__button">{language?.toUpperCase()}
-          </button>
+        <button onClick={changeButton} className="header__button-lang">
+          {language?.toUpperCase()}
+        </button>
+        <img src={image} onClick={changeImage} className="header__button-theme" alt="" />
         </div>
         <Nav />
       </div>
