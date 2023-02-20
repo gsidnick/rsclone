@@ -14,19 +14,6 @@ function Library() {
   const { wordStore } = useStores();
   const [word, setWord] = useState<string>('');
 
-  useEffect(() => {
-
-    const list = document.querySelector('.library__list');
-
-    if(localStorage.getItem('theme') === 'dark') {
-        list?.classList.remove('light');
-        list?.classList.add('dark');
-      } else {
-        list?.classList.remove('dark');
-        list?.classList.add('light');
-      }
-  }, []);
-
   function renderRows() {
     return wordStore.words.map((item, index) => {
       return (
@@ -42,7 +29,19 @@ function Library() {
         </div>
       );
     });
-  }
+  };
+
+  useEffect(() => {
+    const list = document.querySelector('.library__list');
+    
+    if(localStorage.getItem('theme') === 'dark') {
+        list?.classList.remove('light');
+        list?.classList.add('dark');
+      } else {
+        list?.classList.remove('dark');
+        list?.classList.add('light');
+      }
+  }, []);
 
   return (
     <main className="library">

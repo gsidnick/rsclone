@@ -11,9 +11,13 @@ export function setDarkTheme () {
   footer?.classList.remove('light');
   footer?.classList.add('dark');
 
-  const progressBar = document.querySelector('.progress');
+  const progressBar = document.querySelector('.progress__bar');
   progressBar?.classList.remove('light');
   progressBar?.classList.add('dark');
+
+  const progress = document.querySelector('.progress');
+  progress?.classList.remove('light');
+  progress?.classList.add('dark');
 
   const gamecardsLinks = document.querySelector('.gamecards__link');
   gamecardsLinks?.classList.remove('light');
@@ -24,8 +28,12 @@ export function setDarkTheme () {
   currentNav?.classList.add('dark');
 
   const libraryLists = document.querySelector('.library__list');
-  libraryLists?.classList.remove('light')
-  libraryLists?.classList.remove('dark')
+  libraryLists?.classList.remove('light');
+  libraryLists?.classList.add('dark');
+
+  const loader = document.querySelector('.loader');
+  loader?.classList.remove('light');
+  loader?.classList.add('dark');
 
   const libraryList = document.querySelectorAll('.library__list');
 
@@ -56,9 +64,13 @@ export function setLightTheme () {
   footer?.classList.remove('dark');
   footer?.classList.add('light');
 
-  const progressBar = document.querySelector('.progress');
+  const progressBar = document.querySelector('.progress__bar');
   progressBar?.classList.remove('dark');
   progressBar?.classList.add('light');
+
+  const progress = document.querySelector('.progress');
+  progress?.classList.remove('dark');
+  progress?.classList.add('light');
 
   const gamecardsLinks = document.querySelector('.gamecards__link');
   gamecardsLinks?.classList.remove('dark');
@@ -69,8 +81,12 @@ export function setLightTheme () {
   currentNav?.classList.add('light');
 
   const libraryLists = document.querySelector('.library__list');
-  libraryLists?.classList.remove('dark')
-  libraryLists?.classList.remove('light')
+  libraryLists?.classList.remove('dark');
+  libraryLists?.classList.add('light');
+
+  const loader = document.querySelector('.loader');
+  loader?.classList.remove('dark');
+  loader?.classList.add('light');
 
   const gamecards = document.querySelectorAll('.gamecards__link');
 

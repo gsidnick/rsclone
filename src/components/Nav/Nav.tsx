@@ -51,7 +51,7 @@ function Nav() {
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={() => authStore.logout()} to="/">
-                Log Out
+                {t('Log Out')}
               </Link>
             </li>
           </>
