@@ -54,6 +54,7 @@ function App() {
           </Router>
         </>
       )}
+      <Modal className={modalStore.isModal ? 'modal_open' : ''} />
     </div>
   );
 }

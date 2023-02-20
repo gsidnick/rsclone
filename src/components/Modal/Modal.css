@@ -8,6 +8,25 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
-  z-index: 1000;
+  background-color: rgba(128, 128, 128, 0.5);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal__container {
+  padding: 40px;
+  background-color: white;
+  border-radius: 12px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out 0.1s;
+}
+
+.modal_open {
+  z-index: 100;
+  opacity: 1;
+}
+
+.modal_open .modal__container {
+  opacity: 1;
 }
