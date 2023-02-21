@@ -2,21 +2,21 @@
   --color-bg: var(--rss-white);
   --color-bg-icon: var(--rss-black);
   --color-bg-icon-hover: var(--rss-green-dark);
-  --color-border: 3px solid var(--rss-white);
+  --color-border: var(--rss-white);
 }
 
 .dark .footer {
   --color-bg: var(--rss-grey-dark);
   --color-bg-icon: var(--rss-grey-light);
   --color-bg-icon-hover: var(--rss-orange-dark);
-  --color-border: 3px solid var(--rss-grey-dark-lighter);
+  --color-border: var(--rss-grey-dark-lighter);
 }
 
 .footer {
   width: 100%;
   padding: 20px 40px;
   background-color:  var(--color-bg);
-  border-top: var(--color-border);
+  border-top: 3px solid var(--color-border);
   transition: all 0.2s linear;
 }
 

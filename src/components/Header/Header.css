@@ -1,19 +1,19 @@
 .light .header {
   --color-bg: var(--rss-blue);
   --color-text: var(--rss-black);
-  --color-border: 3px solid var(--rss-blue);
+  --color-border: var(--rss-blue);
 }
 
 .dark .header {
   --color-bg: var(--rss-grey-dark);
   --color-text: var(--rss-grey-light);
-  --color-border: 3px solid var(--rss-grey-dark-lighter);
+  --color-border: var(--rss-grey-dark-lighter);
 }
 
 .header {
   padding: 20px 40px;
   background-color: var(--color-bg);
-  border-bottom: var(--color-border);
+  border-bottom: 3px solid var(--color-border);
   transition: all 0.2s linear;
 }
 

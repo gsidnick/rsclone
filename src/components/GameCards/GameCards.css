@@ -1,13 +1,13 @@
 .light .gamecards__link {
   --color-bg: var(--rss-grey-light-lighter);
   --color-text: var(--rss-black);
-  --color-border: 8px solid var(--rss-green);
+  --color-border: var(--rss-green);
 }
 
 .dark .gamecards__link {
   --color-bg: var(--rss-grey-dark-lighter);
   --color-text: var(--rss-grey-light);
-  --color-border: 8px solid var(--rss-orange);
+  --color-border: var(--rss-orange);
 }
 
 .gamecards {
@@ -40,7 +40,7 @@
   padding: 20px 30px;
   background-color: var(--color-bg);
   border-radius: 8px;
-  border-top: var(--color-border);
+  border-top: 8px solid var(--color-border);
   transition: all 0.1s linear;
   box-shadow: 0 0 0 0 rgba(34, 60, 80, 0.2);
 }
