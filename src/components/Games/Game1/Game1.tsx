@@ -40,14 +40,14 @@ function Game1() {
           <h2 className="game__word-answer">{wordSpeechStore.answer}</h2>
           <div className="game__group-controls">
             <Button onClick={() => wordSpeechStore.recognizeSpeech()} disabled={wordSpeechStore.isSpeeching}>
-              {wordSpeechStore.isSpeeching ? <span>{t('Speak now...')}</span> : <span>{t('Start Speaking')}</span>}
+              {wordSpeechStore.isSpeeching ? <>{t('Speak now...')}</> : <>{t('Start Speaking')}</>}
             </Button>
             <Button
               className={wordSpeechStore.isSpeeching ? 'button_disabled' : 'button_red'}
               onClick={() => wordIteratorStore.nextWord()}
               disabled={wordSpeechStore.isSpeeching}
             >
-              <span>{t('Skit it')}</span>
+              <>{t('Skit it')}</>
             </Button>
           </div>
         </>
