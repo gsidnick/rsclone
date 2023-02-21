@@ -12,16 +12,13 @@ function Nav() {
 
   const checkCurrentLink = (event: React.MouseEvent<HTMLElement>) => {
     navRef?.current?.querySelectorAll('a').forEach((link) => {
-      link.classList.remove('nav__current', 'dark', 'light');
+      (event.target as HTMLElement).classList.add('nav__current');
+      link.classList.remove('nav__current');
     });
     navRef?.current?.querySelectorAll('span').forEach((link) => {
-      link.classList.remove('nav__current', 'dark', 'light');
+      (event.target as HTMLElement).classList.add('nav__current');
+      link.classList.remove('nav__current');
     });
-    if(localStorage.getItem('theme') === 'dark'){
-      (event.target as HTMLElement).classList.add('nav__current', 'dark');
-    } else {
-      (event.target as HTMLElement).classList.add('nav__current' ,'light');
-    };
   };
 
   return (

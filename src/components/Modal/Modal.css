@@ -1,12 +1,13 @@
-
-.modal.light {
-  --color-bg: #8080807F;
-  --color-text: #000000;
+.light .modal {
+  --color-bg: var(--rss-grey-transparent);
+  --color-container-bg: var(--rss-white);
+  --color-text: var(--rss-black);
 }
 
-.modal.dark {
-  --color-bg: #181b229c;
-  --color-text: #cdcfd7;
+.dark .modal {
+  --color-bg: var(--rss-grey-transparent);
+  --color-container-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
 }
 
 .modal {
@@ -27,7 +28,7 @@
 
 .modal__container {
   padding: 40px;
-  background-color: var(--color-bg);
+  background-color: var(--color-container-bg);
   border-radius: 12px;
   opacity: 0;
   transition: all 0.2s ease-in-out 0.1s;

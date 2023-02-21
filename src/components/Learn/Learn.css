@@ -1,8 +1,16 @@
+.light .learn {
+  --color-primary: var(--rss-blue);
+}
+
+.dark .learn {
+  --color-primary: var(--rss-orange);
+}
+
 .learn {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 135px);
+  min-height: calc(100vh - 145px);
   position: relative;
   padding: 40px 0;
 }
@@ -38,7 +46,7 @@
 .learn__word-learn {
   font-size: 36px;
   font-weight: 900;
-  color: #1A90C8;
+  color: var(--color-primary);
 }
 
 .learn__word-from {
@@ -49,7 +57,7 @@
 .learn__word-to {
   font-size: 38px;
   font-weight: 500;
-  color: #124F85;
+  color: var(--color-primary);
 }
 
 .learn__group-controls {

@@ -1,17 +1,17 @@
-.gamecards__link.light {
-  --color-bg: #f9f9f9;
-  --color-text: #000000;
-  --color-border: 8px solid #69d37f;
+.light .gamecards__link {
+  --color-bg: var(--rss-grey-light-lighter);
+  --color-text: var(--rss-black);
+  --color-border: 8px solid var(--rss-green);
 }
 
-.gamecards__link.dark {
-  --color-bg: #35383f;
-  --color-text: #cdcfd7;
-  --color-border: 8px solid #e3796a;
+.dark .gamecards__link {
+  --color-bg: var(--rss-grey-dark-lighter);
+  --color-text: var(--rss-grey-light);
+  --color-border: 8px solid var(--rss-orange);
 }
 
 .gamecards {
-  min-height: calc(100vh - 135px);
+  min-height: calc(100vh - 145px);
   padding: 80px 0;
 }
 

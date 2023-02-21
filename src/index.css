@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
 
+:root {
+  --rss-blue: #265b91;
+  --rss-green: #72e58a;
+  --rss-green-dark: #69d37f;
+  --rss-green-shadow: #69d37f7f;
+  --rss-orange: #e3796a;
+  --rss-orange-dark: #d26f61;
+  --rss-orange-shadow: #e3796a80;
+  --rss-white: #ffffff;
+  --rss-black: #000000;
+  --rss-grey-dark: #232529;
+  --rss-grey-dark-lighter: #545454;
+  --rss-grey-light: #cdcfd7;
+  --rss-grey-light-lighter: #f9f9f9;
+  --rss-grey-transparent: #8080807F;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,6 +24,22 @@
 html {
   overflow-x: hidden;
   margin-right: calc(-1 * (100vw - 100%));
+}
+
+html.light {
+  --color-bg: var(--rss-white);
+  --color-text: var(--rss-black);
+}
+
+html.dark {
+  --color-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
+}
+
+html {
+  transition: all 0.2s linear;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 body {

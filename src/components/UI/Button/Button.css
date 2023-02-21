@@ -1,3 +1,21 @@
+.light .button {
+  --color-bg: var(--rss-green);
+  --color-bg-hover: var(--rss-green-dark);
+  --color-bg-shadow: var(--rss-green-shadow);
+  --color-text: var(--rss-white);
+  --color-bg-arrow: var(--rss-grey-dark-lighter);
+  --color-bg-arrow-hover: var(--rss-grey-dark)
+}
+
+.dark .button {
+  --color-bg: var(--rss-orange);
+  --color-bg-hover: var(--rss-orange-dark);
+  --color-bg-shadow: var(--rss-orange-shadow);
+  --color-text: var(--rss-white);
+  --color-bg-arrow: var(--rss-grey-light-lighter);
+  --color-bg-arrow-hover: var(--rss-grey-light)
+}
+
 .button {
   display: inline-block;
   font-size: 16px;
@@ -7,9 +25,9 @@
   border: none;
   color: #ffffff;
   border-radius: 8px;
-  background-color: #72e58a;
+  background-color: var(--color-bg);
   padding: 16px 32px;
-  box-shadow: 0 4px 4px rgba(72, 145, 88, 0.5);
+  box-shadow: 0 4px 4px var(--color-bg-shadow);
   outline: none;
   cursor: pointer;
   transition: all 0.1s linear;
@@ -24,22 +42,23 @@ a.button {
 }
 
 .button:hover {
-  background-color: #69d37f;
+  background-color: var(--color-bg-hover);
 }
 
 .button:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 2px rgba(72, 145, 88, 0.5);
+  box-shadow: 0 2px 2px var(--color-bg-shadow);
 }
 
 .button_outline {
-  color: #69d37f;
-  border: 2px solid #69d37f;
+  color: var(--color-bg);
+  border: 2px solid var(--color-bg);
   background-color: transparent;
 }
 
 .button_outline:hover {
-  color: #ffffff;
+  color: var(--color-text);
+  border: 2px solid var(--color-bg-hover);
 }
 
 .button.button_back {
@@ -60,12 +79,12 @@ a.button {
 }
 
 .button .button__arrow {
-  fill: #d9d9d9;
+  fill: var(--color-bg-arrow);
   transition: all 0.1s linear;
 }
 
 .button:hover .button__arrow {
-  fill: #aaaaaa;
+  fill: var(--color-bg-arrow-hover);
 }
 
 .button_small {

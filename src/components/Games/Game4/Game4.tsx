@@ -19,8 +19,8 @@ function Game4() {
   wordWriteStore.setWords(wordStore.words);
 
   function CheckAnswer() {
-    const value = (document.querySelector('input')?.value)?.toLowerCase();
-    const correct = (wordWriteStore.question?.word)?.toLowerCase();
+    const value = document.querySelector('input')?.value?.toLowerCase();
+    const correct = wordWriteStore.question?.word?.toLowerCase();
     if (value === correct) {
       wordIteratorStore.nextWord();
       gameStore.setCorrect();
@@ -28,7 +28,7 @@ function Game4() {
       wordIteratorStore.nextWord();
       gameStore.setWrong();
     }
-  };
+  }
 
   return (
     <main className="game">
@@ -36,21 +36,20 @@ function Game4() {
       {!wordStore.isLoading && (
         <>
           {wordWriteStore.setQuestion(wordIteratorStore.current)}
-          <div className="game__container container">
-            <h3 className="game__word">
-              {t('Write a translation for this word')} <span className="game__main-traslation">{wordWriteStore.question?.translation}</span> ?
-            </h3>
-            <div className="game__input-container">
-              <div className="game__input-submit">
-                <input className="game__input-rounded" name='answer' type='text'></input>
-                <Button className="game__btn-rounded" onClick={() => CheckAnswer()}>
-                  <>{t('Ok')}</>
-                </Button>
-              </div>
-              <Button onClick={() => CheckAnswer()} className="game__btn-next">
-                <>{t('Next word')}</>
+          <h3 className="game__word">
+            {t('Write a translation for this word')}{' '}
+            <span className="game__main-traslation">{wordWriteStore.question?.translation}</span> ?
+          </h3>
+          <div className="game__input-container">
+            <div className="game__input-submit">
+              <input className="game__input-rounded" name="answer" type="text"></input>
+              <Button className="game__btn-rounded" onClick={() => CheckAnswer()}>
+                <>{t('Ok')}</>
               </Button>
             </div>
+            <Button onClick={() => CheckAnswer()} className="game__btn-next">
+              <>{t('Next word')}</>
+            </Button>
           </div>
         </>
       )}
