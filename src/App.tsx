@@ -15,16 +15,20 @@ import GamePage from './components/GamePage/GamePage';
 import useStores from './hooks/useStores';
 import Modal from './components/Modal/Modal';
 import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
+import Statistic from './components/Statistic/Statistic';
 
 function App() {
-  const { authStore, wordStore, modalStore } = useStores();
+  const { authStore, statisticStore, wordStore, modalStore } = useStores();
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
       if (authStore.isAuth === false) {
         authStore
           .verifyAuth()
-          .then(() => wordStore.fetchWords())
+          .then(() => {
+            statisticStore.fetchStatistic();
+            wordStore.fetchWords();
+          })
           .catch((error) => console.error(error));
       }
     }
@@ -38,9 +42,16 @@ function App() {
           <Router>
             <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
+              {!authStore.isAuth && (
+                <>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login/" element={<AuthLogin />} />
+                  <Route path="/signup/" element={<AuthSignup />} />
+                </>
+              )}
               {authStore.isAuth && (
                 <>
+                  <Route path="/" element={<Statistic />} />
                   <Route path="/library/" element={<Library />} />
                   <Route path="/learn/" element={<Learn />} />
                   <Route path="/games/" element={<GameCards />} />
@@ -48,8 +59,6 @@ function App() {
                   <Route path="/logout/" element={<AuthLogin />} />
                 </>
               )}
-              <Route path="/login/" element={<AuthLogin />} />
-              <Route path="/signup/" element={<AuthSignup />} />
             </Routes>
             <Footer />
           </Router>
