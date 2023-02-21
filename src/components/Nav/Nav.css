@@ -1,3 +1,11 @@
+.dark .nav__current, .dark .nav__current::before {
+  --color-text: var(--rss-orange);
+}
+
+.light .nav__current, .light .nav__current:before {
+  --color-text: var(--rss-green);
+}
+
 .nav__list {
   display: flex;
   gap: 20px;
@@ -7,29 +15,21 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #ffffff;
+  color: var(--rss-white);
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
 }
 
-.nav__current.dark, .nav__current.dark::before {
-  --color-bgс: #e3796a;
-}
-
-.nav__current.light, .nav__current.light:before {
-  --color-bgс: #81F499;
-}
-
 .nav__current {
-  color: var(--color-bgс);
+  color: var(--color-text);
 }
 
 .nav__current:before {
   content: "";
   width: 100%;
   height: 3px;
-  background-color: var(--color-bgс);
+  background-color: var(--color-text);
   position: absolute;
   bottom: -10px
 }

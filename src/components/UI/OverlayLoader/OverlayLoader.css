@@ -1,9 +1,9 @@
-.overlay.light {
-  --color-bg: #8080807F;
+.light .overlay {
+  --color-bg: var(--rss-white);
 }
 
-.overlay.dark {
-  --color-bg: #181b229c;
+.dark .overlay {
+  --color-bg: var(--rss-grey-dark);
 }
 
 .overlay {

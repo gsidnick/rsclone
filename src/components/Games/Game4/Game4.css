@@ -1,11 +1,15 @@
-.input.light {
-  --color-bg: #ffffff;
-  --color-text: black;
+.light .game {
+  --color-bg: var(--rss-white);
+  --color-primary: var(--rss-blue);
+  --color-text: var(--rss-black);
+  --color-border: var(--rss-grey-light);
 }
 
-.input.dark {
-  --color-bg: #232529;
-  --color-text: #cdcfd7;
+.dark .game {
+  --color-bg: var(--rss-grey-dark);
+  --color-primary: var(--rss-orange);
+  --color-text: var(--rss-grey-light);
+  --color-border: var(--rss-grey-light);
 }
 
 .game__container {
@@ -20,7 +24,7 @@
 }
 
 .game__main-traslation {
-  color:#265B91;;
+  color: var(--color-primary);
 }
 
 .game__btn-next {
@@ -38,10 +42,7 @@
 }
 
 .game__btn-rounded {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+ border-radius: 0 8px 8px 0;
   box-shadow: none;
 }
 
@@ -52,12 +53,9 @@
   font-size: 16px;
   font-weight: 400;
   font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  border: 1px solid #cccccc;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  padding: 16px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px 0 0 8px;
+  padding: 16px;
   background-color: var(--color-bg);
   color: var(--color-text);
   outline: none;

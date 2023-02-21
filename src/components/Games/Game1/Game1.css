@@ -1,7 +1,7 @@
 .game__word-label {
   text-align: center;
   display: block;
-  color: #aaaaaa;
+  color: var(--rss-grey-dark-lighter);
   margin: 0 0 10px 0;
 }
 

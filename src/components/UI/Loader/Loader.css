@@ -1,11 +1,11 @@
-.loader.light {
-  --color-bg-loader: #72e58a;
-  --color-box: rgba(72, 145, 88, 0.5);
+.light .loader {
+  --color-bg: var(--rss-green);
+  --color-bg-shadow: var(--rss-green-shadow);
 }
 
-.loader.dark {
-  --color-bg-loader: #e3796a;
-  --color-box: rgba(100, 0, 0, 0.856);
+.dark .loader {
+  --color-bg: var(--rss-orange);
+  --color-bg-shadow: var(--rss-orange-shadow);
 }
 
 .loader {
@@ -41,8 +41,8 @@
   top: 0;
   width: 24px;
   height: 24px;
-  background: var(--color-bg-loader);
-  box-shadow: 0 0 10px var(--color-box);
+  background: var(--color-bg);
+  box-shadow: 0 0 10px var(--color-bg-shadow);
   animation: flip2 2s ease infinite;
 }
 
@@ -51,25 +51,25 @@
     box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
   }
   12% {
-    box-shadow: 0 24px var(--color-bg-loader), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+    box-shadow: 0 24px var(--color-bg), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
   }
   25% {
-    box-shadow: 0 24px var(--color-bg-loader), 24px 24px var(--color-bg-loader), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+    box-shadow: 0 24px var(--color-bg), 24px 24px var(--color-bg), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
   }
   37% {
-    box-shadow: 0 24px var(--color-bg-loader), 24px 24px var(--color-bg-loader), 24px 48px var(--color-bg-loader), 0 48px rgba(255, 255, 255, 0);
+    box-shadow: 0 24px var(--color-bg), 24px 24px var(--color-bg), 24px 48px var(--color-bg), 0 48px rgba(255, 255, 255, 0);
   }
   50% {
-    box-shadow: 0 24px var(--color-bg-loader), 24px 24px var(--color-bg-loader), 24px 48px var(--color-bg-loader), 0 48px var(--color-bg-loader);
+    box-shadow: 0 24px var(--color-bg), 24px 24px var(--color-bg), 24px 48px var(--color-bg), 0 48px var(--color-bg);
   }
   62% {
-    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px var(--color-bg-loader), 24px 48px var(--color-bg-loader), 0 48px var(--color-bg-loader);
+    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px var(--color-bg), 24px 48px var(--color-bg), 0 48px var(--color-bg);
   }
   75% {
-    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px var(--color-bg-loader), 0 48px var(--color-bg-loader);
+    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px var(--color-bg), 0 48px var(--color-bg);
   }
   87% {
-    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px var(--color-bg-loader);
+    box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px var(--color-bg);
   }
   100% {
     box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);

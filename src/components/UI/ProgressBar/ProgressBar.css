@@ -1,21 +1,15 @@
-.progress__bar.light {
-  --color-bgg1: rgba(114,229,138,1);
-  --color-bgg2: rgba(155,255,176,1);
-  --color-bgg3: rgba(114,229,138,1);
+.light .progress {
+  --color-progress: var(--rss-grey-transparent);
+  --color-bgg1: var(--rss-green-dark);
+  --color-bgg2: var(--rss-green);
+  --color-bgg3: var(--rss-green-dark);
 }
 
-.progress__bar.dark {
-  --color-bgg1: rgb(229, 114, 114);
-  --color-bgg2: rgb(255, 155, 155);
-  --color-bgg3: rgb(229, 114, 114);
-}
-
-.progress.light {
-  --color-pr: #e9ebf1;
-}
-
-.progress.dark {
-  --color-pr: #ffffff0f;
+.dark .progress {
+  --color-progress: var(--rss-grey-transparent);
+  --color-bgg1: var(--rss-orange-dark);
+  --color-bgg2: var(--rss-orange);
+  --color-bgg3: var(--rss-orange-dark);
 }
 
 .progress {
@@ -24,7 +18,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #E9EBF1;
+  background: var(--color-progress);
 }
 
 .progress__bar {

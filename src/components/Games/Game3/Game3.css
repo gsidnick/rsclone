@@ -1,3 +1,11 @@
+.light .game {
+  --color-primary: var(--rss-blue);
+}
+
+.dark .game {
+  --color-primary: var(--rss-orange);
+}
+
 .game__container {
   height: 100%;
   display: flex;
@@ -16,7 +24,7 @@
 }
 
 .game__main-traslation {
-  color:#265B91;;
+  color: var(--color-primary);
 }
 
 .game__btn-next {

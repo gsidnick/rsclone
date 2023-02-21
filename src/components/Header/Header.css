@@ -1,19 +1,19 @@
-.header.light {
-  --color-bg: #265B91;
-  --color-text: #000000;
-  --color-border: 0px solid #265B91;
+.light .header {
+  --color-bg: var(--rss-blue);
+  --color-text: var(--rss-black);
+  --color-border: var(--rss-blue);
 }
 
-.header.dark {
-  --color-bg: #232529;
-  --color-text: #cdcfd7;
-  --color-border: 3px solid #35383f;
+.dark .header {
+  --color-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
+  --color-border: var(--rss-grey-dark-lighter);
 }
 
 .header {
   padding: 20px 40px;
   background-color: var(--color-bg);
-  border-bottom: var(--color-border);
+  border-bottom: 3px solid var(--color-border);
   transition: all 0.2s linear;
 }
 
@@ -24,7 +24,7 @@
 
 .header__logo {
   text-decoration: none;
-  color: #fff;
+  color: var(--rss-white);
   display: flex;
   align-items: center;
   font-weight: 900;

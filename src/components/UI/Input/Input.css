@@ -1,11 +1,15 @@
-.input.light {
-  --color-bg: #ffffff;
-  --color-text: black;
+.light .input{
+  --color-bg: var(--rss-white);
+  --color-text: var(--rss-black);
+  --color-bg-outline: var(--rss-green-dark);
+  --color-bg-shadow: var(--rss-green-shadow)
 }
 
-.input.dark {
-  --color-bg: #232529;
-  --color-text: #cdcfd7;
+.dark .input {
+  --color-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
+  --color-bg-outline: var(--rss-orange-dark);
+  --color-bg-shadow: var(--rss-orange-shadow)
 }
 
 .input {
@@ -15,7 +19,7 @@
   font-size: 16px;
   font-weight: 400;
   font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--rss-grey-light);
   border-radius: 8px;
   padding: 16px 16px;
   background-color: var(--color-bg);
@@ -25,6 +29,6 @@
 }
 
 .input:focus {
-  border: 1px solid #69d37f;
-  box-shadow: 0 0 0 4px rgba(105, 211, 127, 0.5);
+  border: 1px solid var(--color-bg-outline);
+  box-shadow: 0 0 0 4px var(--color-bg-shadow);
 }
