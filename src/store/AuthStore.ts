@@ -7,6 +7,7 @@ import TokenService from '../services/TokenService';
 
 const authService = new AuthService();
 const tokenService = new TokenService();
+const SERVER_URL = process.env.REACT_APP_RAILWAY_URL;
 
 class AuthStore {
   public user: IUser = {} as IUser;
@@ -79,7 +80,7 @@ class AuthStore {
   public async verifyAuth(): Promise<void> {
     try {
       this.setIsLoading(true);
-      const response = await axios.get<IAuthResponse>(`https://rsclone-api.up.railway.app/api/refresh`, {
+      const response = await axios.get<IAuthResponse>(`${SERVER_URL}/api/refresh`, {
         withCredentials: true,
       });
       console.log(response);
