@@ -4,9 +4,12 @@ import { observer } from 'mobx-react-lite';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import Loader from '../UI/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 function Statistic() {
-  const { statisticStore } = useStores();
+  const { statisticStore, gameStore } = useStores();
+  const navigate = useNavigate();
+  gameStore.generateGame();
 
   return (
     <main className="statistic">
@@ -16,8 +19,9 @@ function Statistic() {
           <div className="statistic__grid">
             <div className="statistic__game">
               <div className="statistic__card-label">Game</div>
-              <div className="statistic__game-title">Start random game</div>
-              <Button className="statistic__start-button" onClick={() => console.log('Start random game...')}>
+              <div className="statistic__game-title">{gameStore.game.name}</div>
+              <div className="statistic__game-description">{gameStore.game.description}</div>
+              <Button className="statistic__start-button" onClick={() => navigate(gameStore.game.link)}>
                 Play
               </Button>
             </div>
@@ -29,7 +33,7 @@ function Statistic() {
               <div className="statistic__card-label">Level</div>
               <div className="statistic__card-value">{String(statisticStore.statistic.level)} level</div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </main>

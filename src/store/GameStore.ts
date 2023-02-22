@@ -1,15 +1,18 @@
 import { makeAutoObservable } from 'mobx';
 import { GameFunctionalComponent } from '../types/GameFunctionalComponent';
+import IGame from '../interfaces/IGame';
 import Game1 from '../components/Games/Game1/Game1';
 import Game2 from '../components/Games/Game2/Game2';
 import Game3 from '../components/Games/Game3/Game3';
 import Game4 from '../components/Games/Game4/Game4';
 import Game5 from '../components/Games/Game5/Game5';
 import Game6 from '../components/Games/Game6/Game6';
+import { libraryGames } from '../config/LibraryGames';
 
 class GameStore {
   public correct: number = 0;
   public wrong: number = 0;
+  public game: IGame = {} as IGame;
   private games: Array<GameFunctionalComponent> = [Game1, Game2, Game3, Game4, Game5, Game6];
 
   constructor() {
@@ -21,6 +24,12 @@ class GameStore {
     if (index >= 0 && index < this.games.length) {
       return this.games[number - 1];
     }
+  }
+
+  public generateGame() {
+    const index = Math.floor(Math.random() * this.games.length);
+    const game = libraryGames[index];
+    this.game = { link: `/games/${index + 1}`, name: game.name, description: game.description, image: game.image };
   }
 
   public setCorrect() {
