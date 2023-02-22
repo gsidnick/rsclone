@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Nav.css';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
@@ -10,41 +10,30 @@ function Nav() {
   const { t } = useTranslation();
   const navRef = useRef<HTMLElement>(null);
 
-  const checkCurrentLink = (event: React.MouseEvent<HTMLElement>) => {
-    navRef?.current?.querySelectorAll('a').forEach((link) => {
-      (event.target as HTMLElement).classList.add('nav__current');
-      link.classList.remove('nav__current');
-    });
-    navRef?.current?.querySelectorAll('span').forEach((link) => {
-      (event.target as HTMLElement).classList.add('nav__current');
-      link.classList.remove('nav__current');
-    });
-  };
-
   return (
     <nav ref={navRef} className="nav">
       <ul className="nav__list">
         {authStore.isAuth && (
           <>
             <li className="nav__item">
-              <Link className="nav__link" onClick={checkCurrentLink} to="/">
+              <NavLink className="nav__link" to="/" end>
                 {t('Home')}
-              </Link>
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link className="nav__link" onClick={checkCurrentLink} to="/games/">
+              <NavLink className="nav__link" to="/games/">
                 {t('Games')}
-              </Link>
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link className="nav__link" onClick={checkCurrentLink} to="/library/">
+              <NavLink className="nav__link" to="/library/">
                 {t('Library')}
-              </Link>
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link className="nav__link" onClick={checkCurrentLink} to="/learn/">
+              <NavLink className="nav__link" to="/learn/">
                 {t('Learn')}
-              </Link>
+              </NavLink>
             </li>
             <li className="nav__item">
               <Link className="nav__link" onClick={() => authStore.logout()} to="/">
