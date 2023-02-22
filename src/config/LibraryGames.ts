@@ -17,10 +17,10 @@ export const libraryGames = [
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
   {
-    nameRU: 'Слушаем и переводим',
-    name: 'Listen and translate ',
-    descriptionRU: 'Послушайте перевод и выберите правильный ответ',
-    description: 'Listen to the translation and choose the right answer',
+    nameRU: 'Выбери правильный перевод',
+    name: 'Choose the right translation',
+    descriptionRU: 'Выберите правильный перевод из трёх предложенных ангийских слов',
+    description: 'Choose the correct translation of the three English words suggested',
     image:
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
@@ -33,20 +33,20 @@ export const libraryGames = [
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
   {
-    nameRU: 'Проверьте правильность',
-    name: 'Check the correct one',
-    descriptionRU: 'Произнесите слово на экране и проверьте его написание',
-    description: 'Say the word on the screen and check your spelling',
+    nameRU: 'Выбери правильное слово',
+    name: 'Choose the right word',
+    descriptionRU: 'Выберите правильное слово из трёх предложенных русских переводов',
+    description: 'Choose the correct word from the three suggested Russian translations',
     image:
       'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
   {
-    nameRU: 'Выберите правильный перевод',
-    name: 'Select the right translation',
-    descriptionRU: 'Произнесите слово на экране и проверьте его написание',
-    description: 'Say the word on the screen and check your spelling',
+    nameRU: 'Слушаем и переводим',
+    name: 'Listen and translate ',
+    descriptionRU: 'Послушайте перевод и выберите правильный ответ',
+    description: 'Listen to the translation and choose the right answer',
     image:
-      'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
+    'https://ouch-cdn2.icons8.com/z6SdE9V5igFri3ElNWyAuv3Fy3mw70QtNAbJBnCiSQw/rs:fit:252:456/extend:false/wm:1:re:0:0:0.8/wmid:ouch/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODUx/L2RhODljOTg1LWJi/ZTMtNGEwNC1hZTNm/LWY2ZjBlNjRjNjdm/Yi5zdmc.png',
   },
   {
     nameRU: 'Спринт путем угадывания',
