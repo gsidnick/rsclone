@@ -25,12 +25,11 @@ function Game2() {
   useEffect(() => {
     if (wordCharsStore.isCorrect === true) {
       gameStore.setCorrect();
-      wordIteratorStore.nextWord();
     }
     if (wordCharsStore.notIsCorrect === true) {
       gameStore.setWrong();
-      wordIteratorStore.nextWord();
     }
+    wordIteratorStore.nextWord();
   }, [wordCharsStore.isCorrect, wordCharsStore.notIsCorrect]);
 
   useEffect(() => {
@@ -49,12 +48,12 @@ function Game2() {
         <>
           <div className="game__wrapper">
             <div className="game__word-row">
-              {wordCharsStore.word?.map((char, index) => {
+              {wordCharsStore.word.map((char, index) => {
                 return <span className="game__char" key={index}></span>;
               })}
             </div>
             <div className="game__word-row">
-              {wordCharsStore.currentWord?.map((char, index) => {
+              {wordCharsStore.currentWord.map((char, index) => {
                 return (
                   <span className="game__char" key={index}>
                     {char}
@@ -64,11 +63,11 @@ function Game2() {
             </div>
           </div>
           <div className="game__word-row">
-            {wordCharsStore.shuffleWord?.map((char, index) => {
+            {wordCharsStore.shuffleWord.map((char, index) => {
               return (
                 <Button
                   className="button_square game__char-button"
-                  onClick={() => wordCharsStore.check(char)}
+                  onClick={() => wordCharsStore.check(index)}
                   key={index}
                 >
                   {char}
