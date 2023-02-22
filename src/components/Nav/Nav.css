@@ -1,8 +1,8 @@
-.dark .nav__current, .dark .nav__current::before {
+.dark .active, .dark .active::before {
   --color-text: var(--rss-orange);
 }
 
-.light .nav__current, .light .nav__current:before {
+.light .active, .light .active:before {
   --color-text: var(--rss-green);
 }
 
@@ -21,11 +21,11 @@
   position: relative;
 }
 
-.nav__current {
+.active {
   color: var(--color-text);
 }
 
-.nav__current:before {
+.active:before {
   content: "";
   width: 100%;
   height: 3px;
