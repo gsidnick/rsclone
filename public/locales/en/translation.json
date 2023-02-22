@@ -6,6 +6,9 @@
   "Skit it" : "Skit it",
   "Write a translation for this word" : "Write a translation for this word : ",
   "Ok" : "OK",
+  "Select the correct translation" : "Select the correct translation of the word :",
+  "Next word" : "Next word",
+  "Sorry, you need to add at least 3 words to your library for this game" : "Sorry, you need to add at least 3 words to your library for this game",
 
   "NAV" : "NAV",
   "Home" : "Home",
@@ -28,7 +31,7 @@
   "Add" : "Add",
   "Word" : "Word",
   "Translation" : "Translation",
-  "Type new word here..." : "Type new word here...",
+  "Type new word here..." : "Enter new word here...",
 
   "FOOTER" : "FOOTER",
   "© 2023, All Rights Reserved" : "© 2023, All Rights Reserved",
