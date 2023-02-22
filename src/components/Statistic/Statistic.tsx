@@ -13,7 +13,7 @@ function Statistic() {
       <div className="statistic__container container">
         {statisticStore.isLoading && <Loader />}
         {!statisticStore.isLoading && (
-          <>
+          <div className="statistic__grid">
             <div className="statistic__game">
               <div className="statistic__card-label">Game</div>
               <div className="statistic__game-title">Start random game</div>

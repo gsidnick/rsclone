@@ -24,6 +24,13 @@
 }
 
 .statistic__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistic__grid {
   display: grid;
   grid-template-columns: 360px 600px;
   gap: 40px;
@@ -50,6 +57,15 @@
 .statistic__game-title {
   font-size: 36px;
   font-weight: 900;
+  width: 400px;
+  margin: 20px;
+}
+
+.statistic__game-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 400px;
 }
 
 .statistic__start-button {
