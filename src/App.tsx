@@ -7,7 +7,6 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import AuthLogin from './components/Auth/AuthLogin';
-import AuthSignup from './components/Auth/AuthSignup';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import GameCards from './components/GameCards/GameCards';
@@ -15,6 +14,7 @@ import GamePage from './components/GamePage/GamePage';
 import useStores from './hooks/useStores';
 import Modal from './components/Modal/Modal';
 import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
+import Page404 from './components/Page404/Page404';
 
 function App() {
   const { authStore, wordStore, modalStore } = useStores();
@@ -31,7 +31,7 @@ function App() {
   }, [authStore.isAuth]);
 
   return (
-    <div className="App">
+    <>
       {authStore.isLoading && <OverlayLoader />}
       {!authStore.isLoading && (
         <>
@@ -48,15 +48,14 @@ function App() {
                   <Route path="/logout/" element={<AuthLogin />} />
                 </>
               )}
-              <Route path="/login/" element={<AuthLogin />} />
-              <Route path="/signup/" element={<AuthSignup />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
           </Router>
         </>
       )}
       <Modal className={modalStore.isModal ? 'modal_open' : ''} />
-    </div>
+    </>
   );
 }
 
