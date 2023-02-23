@@ -17,11 +17,17 @@ function Learn() {
 
   return (
     <main className="learn">
-      {!wordStore.isLoading && <ProgressBar value={wordIteratorStore.setProgress()} />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       <div className="learn__container container">
         <div className="learn__content">
           {wordStore.isLoading && <Loader />}
-          {!wordStore.isLoading && (
+          {!wordStore.isLoading && wordStore.words.length === 0 && (
+            <>
+              <h1>You don't have the words to study yet</h1>
+              <Button to="/library">Go Library</Button>
+            </>
+          )}
+          {!wordStore.isLoading && wordStore.words.length > 0 && (
             <>
               <div className="learn__wrapper">
                 <span className="learn__word-learn">{wordIteratorStore.current.learn}%</span>
