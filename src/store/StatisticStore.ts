@@ -20,6 +20,14 @@ class StatisticStore {
     this.statistic = statistic;
   }
 
+  public setScore(score: number) {
+    this.statistic.score = score;
+  }
+
+  public setLevel(level: number) {
+    this.statistic.level = level;
+  }
+
   public async fetchStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
@@ -32,9 +40,10 @@ class StatisticStore {
     }
   }
 
-  public async updateStatistic(score: number, level: number): Promise<void> {
+  public async updateStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
+      const { score, level } = this.statistic;
       const response = await statisticService.setStatistic(score, level);
       this.setStatistic(response.data);
       this.setIsLoading(false);
