@@ -1,5 +1,5 @@
 import './Auth.css';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
@@ -15,6 +15,10 @@ function AuthLogin() {
   const emailPlalceholder = t('Email');
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    emailInputRef.current?.focus();
+  }, []);
 
   function authButtonHandler() {
     authStore.login(email, password);
