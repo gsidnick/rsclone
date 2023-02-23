@@ -31,7 +31,7 @@ function App() {
   }, [authStore.isAuth]);
 
   return (
-    <div className="App">
+    <>
       {authStore.isLoading && <OverlayLoader />}
       {!authStore.isLoading && (
         <>
@@ -56,7 +56,7 @@ function App() {
         </>
       )}
       <Modal className={modalStore.isModal ? 'modal_open' : ''} />
-    </div>
+    </>
   );
 }
 
