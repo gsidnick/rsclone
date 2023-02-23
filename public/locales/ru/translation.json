@@ -54,6 +54,8 @@
   "GAME NOT FOUND" : "GAME NOT FOUND",
   "Sorry, this game not found!" : "Извините, эта игра не найдена!",
   "Choose another game" : "Выбрать другую игру",
+  "Sorry, this page not found!" : "Извините, эта страница не найдена!",
+  "Go home" : "Вернуться домой",
 
   "cards": [
     {

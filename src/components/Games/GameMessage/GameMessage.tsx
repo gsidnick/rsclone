@@ -12,7 +12,7 @@ function GameMessage() {
       <h2>{t('Sorry, you need to add at least 3 words to your library for this game')}</h2>
       <div className="game__button-container">
         <Button className="" to="/games/">
-          <span>{t('Choose another game')}</span>
+          <>{t('Choose another game')}</>
         </Button>
       </div>
     </main>
