@@ -48,7 +48,6 @@ function Game6() {
 
   function skipWord() {
     wordIteratorStore.nextWord();
-    gameStore.setWrong();
   };
 
   return (
