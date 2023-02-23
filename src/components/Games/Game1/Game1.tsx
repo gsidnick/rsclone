@@ -20,11 +20,13 @@ function Game1() {
     const compareResult = wordSpeechStore.compareWords();
     if (compareResult === true) {
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
       wordIteratorStore.nextWord();
     }
 
     if (compareResult === false) {
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
       wordIteratorStore.nextWord();
     }
   }, [gameStore]);

@@ -10,6 +10,7 @@ import Game6 from '../components/Games/Game6/Game6';
 class GameStore {
   public correct: number = 0;
   public wrong: number = 0;
+  public points: number = 0;
   private games: Array<GameFunctionalComponent> = [Game1, Game2, Game3, Game4, Game5, Game6];
 
   constructor() {
@@ -29,6 +30,20 @@ class GameStore {
 
   public setWrong() {
     this.wrong = this.wrong + 1;
+  }
+
+  public setIncrementPoints() {
+    this.points = this.points + 1;
+  }
+
+  public setDecrementPoints() {
+    if (this.points === 0) return;
+    this.points = this.points - 1;
+  }
+
+  public reset() {
+    this.correct = 0;
+    this.wrong = 0;
   }
 }
 export default GameStore;

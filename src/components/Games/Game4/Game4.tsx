@@ -24,9 +24,11 @@ function Game4() {
     if (value === correct) {
       wordIteratorStore.nextWord();
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
     } else {
       wordIteratorStore.nextWord();
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
     }
   }
 
