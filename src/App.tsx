@@ -16,20 +16,21 @@ import useStores from './hooks/useStores';
 import Modal from './components/Modal/Modal';
 import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
 import Statistic from './components/Statistic/Statistic';
+import TokenService from './services/TokenService';
+
+const tokenService = new TokenService();
 
 function App() {
   const { authStore, statisticStore, wordStore, modalStore } = useStores();
 
   useEffect(() => {
-    if (localStorage.getItem('accessToken')) {
+    if (tokenService.getAccessToken()) {
+      if (authStore.isAuth === true) {
+        statisticStore.fetchStatistic().catch((error) => console.error(error));
+        wordStore.fetchWords().catch((error) => console.error(error));
+      }
       if (authStore.isAuth === false) {
-        authStore
-          .verifyAuth()
-          .then(() => {
-            statisticStore.fetchStatistic();
-            wordStore.fetchWords();
-          })
-          .catch((error) => console.error(error));
+        authStore.verifyAuth().catch((error) => console.error(error));
       }
     }
   }, [authStore.isAuth]);

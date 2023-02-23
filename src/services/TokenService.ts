@@ -2,12 +2,21 @@ const ACCESS_TOKEN_NAME = 'accessToken';
 const REFRESH_TOKEN_NAME = 'refreshToken';
 
 class TokenService {
+  public getAccessToken() {
+    return localStorage.getItem(ACCESS_TOKEN_NAME);
+  }
+
   public setAccessToken(token: string) {
     localStorage.setItem(ACCESS_TOKEN_NAME, token);
   }
   public removeAccessToken() {
     localStorage.removeItem(ACCESS_TOKEN_NAME);
   }
+
+  public getRefreshToken() {
+    return localStorage.getItem(REFRESH_TOKEN_NAME);
+  }
+
   public setRefreshToken(token: string) {
     document.cookie = `${REFRESH_TOKEN_NAME}=${token}; Path=/; Max-Age=864000;`;
   }
