@@ -37,28 +37,30 @@ function App() {
   return (
     <div className="App">
       {authStore.isLoading && <OverlayLoader />}
-      {!authStore.isLoading && (
+      {!authStore.isLoading && !authStore.isAuth && (
         <>
           <Router>
             <Header />
             <Routes>
-              {!authStore.isAuth && (
-                <>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login/" element={<AuthLogin />} />
-                  <Route path="/signup/" element={<AuthSignup />} />
-                </>
-              )}
-              {authStore.isAuth && (
-                <>
-                  <Route path="/" element={<Statistic />} />
-                  <Route path="/library/" element={<Library />} />
-                  <Route path="/learn/" element={<Learn />} />
-                  <Route path="/games/" element={<GameCards />} />
-                  <Route path="/games/:id" element={<GamePage />} />
-                  <Route path="/logout/" element={<AuthLogin />} />
-                </>
-              )}
+              <Route path="/" element={<Home />} />
+              <Route path="/login/" element={<AuthLogin />} />
+              <Route path="/signup/" element={<AuthSignup />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </>
+      )}
+      {!authStore.isLoading && authStore.isAuth && (
+        <>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Statistic />} />
+              <Route path="/library/" element={<Library />} />
+              <Route path="/learn/" element={<Learn />} />
+              <Route path="/games/" element={<GameCards />} />
+              <Route path="/games/:id" element={<GamePage />} />
+              <Route path="/logout/" element={<AuthLogin />} />
             </Routes>
             <Footer />
           </Router>
