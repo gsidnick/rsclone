@@ -13,6 +13,7 @@
   min-height: calc(100vh - 145px);
   position: relative;
   padding: 40px 0;
+  outline: none;
 }
 
 .learn__container {

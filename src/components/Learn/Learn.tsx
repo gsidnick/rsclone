@@ -6,17 +6,24 @@ import Loader from '../UI/Loader/Loader';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import WordIteratorStore from '../../store/WordIteratorStore';
+import React, { useEffect } from 'react';
 
 const wordIteratorStore = new WordIteratorStore();
 
 function Learn() {
   const { t } = useTranslation();
-
   const { wordStore } = useStores();
-  wordIteratorStore.setWords(wordStore.words);
+  useEffect(() => {
+    if (!wordStore.isLoading) wordIteratorStore.setWords(wordStore.words);
+  }, [wordStore.isLoading]);
+
+  function learnKeyDownHandler(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'ArrowRight') wordIteratorStore.nextWord();
+    if (event.key === 'ArrowLeft') wordIteratorStore.prevWord();
+  }
 
   return (
-    <main className="learn">
+    <main className="learn" tabIndex={0} onKeyDown={learnKeyDownHandler}>
       {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       <div className="learn__container container">
         <div className="learn__content">
