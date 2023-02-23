@@ -33,11 +33,11 @@ function Statistic() {
             </div>
             <div className="statistic__score">
               <div className="statistic__card-label">Score</div>
-              <div className="statistic__card-value">{String(statisticStore.statistic.score)} points</div>
+              <div className="statistic__card-value">{statisticStore.statistic.score} points</div>
             </div>
             <div className="statistic__level">
               <div className="statistic__card-label">Level</div>
-              <div className="statistic__card-value">{String(statisticStore.statistic.level)} level</div>
+              <div className="statistic__card-value">{statisticStore.statistic.level} level</div>
             </div>
           </div>
         )}
