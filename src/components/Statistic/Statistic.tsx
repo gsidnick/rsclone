@@ -5,11 +5,17 @@ import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import Loader from '../UI/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import IGame from '../../interfaces/IGame';
 
 function Statistic() {
+  const { t } = useTranslation();
+  const card = t('cards', { returnObjects: true }) as [];
   const { statisticStore, gameStore } = useStores();
   const navigate = useNavigate();
-  gameStore.generateGame();
+  const index: number = gameStore.generateIndexGame();
+  const game: IGame = card[index];
+  game.link = `/games/${index + 1}`;
 
   return (
     <main className="statistic">
@@ -19,9 +25,9 @@ function Statistic() {
           <div className="statistic__grid">
             <div className="statistic__game">
               <div className="statistic__card-label">Game</div>
-              <div className="statistic__game-title">{gameStore.game.name}</div>
-              <div className="statistic__game-description">{gameStore.game.description}</div>
-              <Button className="statistic__start-button" onClick={() => navigate(gameStore.game.link)}>
+              <div className="statistic__game-title">{game.name}</div>
+              <div className="statistic__game-description">{game.description}</div>
+              <Button className="statistic__start-button" onClick={() => navigate(game.link)}>
                 Play
               </Button>
             </div>
