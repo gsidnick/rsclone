@@ -12,14 +12,6 @@ function Header() {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
 
-  function deleteCurrentLink() {
-    const elements = document.querySelectorAll('.nav__current');
-    elements.forEach((element) => {
-      element.classList.remove('nav__current');
-    });
-    (document.getElementById('Home') as HTMLElement).classList.add('nav__current');
-  }
-
   function changeLanguage(language1: string) {
     i18n.changeLanguage(language1);
   }
@@ -38,7 +30,7 @@ function Header() {
     <div className="header">
       <div className="header__container">
         <div className="header__options">
-          <Link className="header__logo" to="/" onClick={deleteCurrentLink}>
+          <Link className="header__logo" to="/">
             LOGO
           </Link>
           <button onClick={changeButton} className="header__button-lang">

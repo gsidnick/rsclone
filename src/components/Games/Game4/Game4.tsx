@@ -24,10 +24,16 @@ function Game4() {
     if (value === correct) {
       wordIteratorStore.nextWord();
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
     } else {
       wordIteratorStore.nextWord();
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
     }
+  }
+
+  function skipWord() {
+    wordIteratorStore.nextWord();
   }
 
   return (
@@ -47,7 +53,7 @@ function Game4() {
                 <>{t('Ok')}</>
               </Button>
             </div>
-            <Button onClick={() => CheckAnswer()} className="game__btn-next">
+            <Button onClick={() => skipWord()} className="game__btn-next">
               <>{t('Next word')}</>
             </Button>
           </div>

@@ -3,20 +3,20 @@ import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import useStores from './hooks/useStores';
+import TokenService from './services/TokenService';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
-import AuthLogin from './components/Auth/AuthLogin';
-import AuthSignup from './components/Auth/AuthSignup';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import GameCards from './components/GameCards/GameCards';
 import GamePage from './components/GamePage/GamePage';
-import useStores from './hooks/useStores';
+import AuthLogin from './components/Auth/AuthLogin';
 import Modal from './components/Modal/Modal';
 import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
+import Page404 from './components/Page404/Page404';
 import Statistic from './components/Statistic/Statistic';
-import TokenService from './services/TokenService';
 
 const tokenService = new TokenService();
 
@@ -36,7 +36,7 @@ function App() {
   }, [authStore.isAuth]);
 
   return (
-    <div className="App">
+    <>
       {authStore.isLoading && <OverlayLoader />}
       {!authStore.isLoading && !authStore.isAuth && (
         <>
@@ -45,7 +45,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login/" element={<AuthLogin />} />
-              <Route path="/signup/" element={<AuthSignup />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
           </Router>
@@ -62,13 +62,14 @@ function App() {
               <Route path="/games/" element={<GameCards />} />
               <Route path="/games/:id" element={<GamePage />} />
               <Route path="/logout/" element={<AuthLogin />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
           </Router>
         </>
       )}
       <Modal className={modalStore.isModal ? 'modal_open' : ''} />
-    </div>
+    </>
   );
 }
 

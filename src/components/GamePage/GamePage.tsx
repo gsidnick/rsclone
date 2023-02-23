@@ -7,6 +7,7 @@ import GameNotFound from '../Games/GameNotFound/GameNotFound';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
+import GameStore from '../../store/GameStore';
 
 function GamePage() {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ function GamePage() {
               <div className="gamepage__score">
                 <span className="gamepage__wrong">{t('Wrong')} : {gameStore.wrong}</span>
                 <span className="gamepage__correct">{t('Correct')} : {gameStore.correct}</span>
-                <span className="gamepage__points">{t('Points')} : {0}</span>
+                <span className="gamepage__points">{t('Points')} : {gameStore.points}</span>
               </div>
             </div>
             <div className="gamepage__content">

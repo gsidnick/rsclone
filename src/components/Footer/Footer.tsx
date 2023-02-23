@@ -19,7 +19,7 @@ function Footer() {
           </a>
         </div>
         <div className="footer__copyright">
-          <span>{t('© 2023, All Rights Reserved')}</span>
+          <>{t('© 2023, All Rights Reserved')}</>
         </div>
         <div className="footer__links">
           <a className="footer__link" href="https://github.com/alexkaroh/">

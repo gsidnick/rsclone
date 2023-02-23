@@ -43,10 +43,10 @@ function Learn() {
               </div>
               <div className="learn__group-controls">
                 <Button className="learn__button button_outline" onClick={() => wordIteratorStore.prevWord()}>
-                  <span>{t('Previous')}</span>
+                  <>{t('Previous')}</>
                 </Button>
                 <Button className="learn__button " onClick={() => wordIteratorStore.nextWord()}>
-                  <span>{t('Next')}</span>
+                  <>{t('Next')}</>
                 </Button>
               </div>
             </>
