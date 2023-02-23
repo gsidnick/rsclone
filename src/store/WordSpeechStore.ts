@@ -1,12 +1,17 @@
 import { makeAutoObservable } from 'mobx';
 
 class WordSpeechStore {
+  public word: string = '';
   public question: string | null = null;
   public answer: string | null = null;
   public isSpeeching: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  public setWord(word: string) {
+    this.word = word;
   }
 
   public setQuestion(question: string) {
@@ -47,11 +52,15 @@ class WordSpeechStore {
   }
 
   public compareWords(): boolean | undefined {
-    const question = this.question;
+    const word = this.word;
     const answer = this.answer;
-    if (question !== null && answer !== null) {
-      return question === answer;
+    if (word !== null && answer !== null) {
+      return word === answer;
     }
+  }
+
+  public cleanAnswer() {
+    this.answer = null;
   }
 }
 

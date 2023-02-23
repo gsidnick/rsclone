@@ -14,22 +14,36 @@ const wordSpeechStore = new WordSpeechStore();
 function Game1() {
   const { t } = useTranslation();
   const { wordStore, gameStore } = useStores();
-  wordIteratorStore.setWords(wordStore.words);
 
   useEffect(() => {
-    const compareResult = wordSpeechStore.compareWords();
-    if (compareResult === true) {
-      gameStore.setCorrect();
-      gameStore.setIncrementPoints();
-      wordIteratorStore.nextWord();
+    if (wordStore.isLoading === false) {
+      wordIteratorStore.setWords(wordStore.words);
+      wordSpeechStore.setWord(wordIteratorStore.current.translation);
     }
+  }, [wordStore.isLoading]);
 
-    if (compareResult === false) {
-      gameStore.setWrong();
-      gameStore.setDecrementPoints();
-      wordIteratorStore.nextWord();
+  useEffect(() => {
+    if (wordSpeechStore.answer !== null) {
+      const compareResult = wordSpeechStore.compareWords();
+      if (compareResult === true) {
+        gameStore.setCorrect();
+        gameStore.setIncrementPoints();
+        wordSpeechStore.cleanAnswer();
+        wordIteratorStore.nextWord();
+      } else {
+        gameStore.setWrong();
+        gameStore.setDecrementPoints();
+        wordSpeechStore.cleanAnswer();
+        wordIteratorStore.nextWord();
+      }
     }
-  }, [gameStore]);
+  }, [wordSpeechStore.answer]);
+
+  useEffect(() => {
+    if (wordIteratorStore.current !== undefined && wordStore.isLoading === false) {
+      wordSpeechStore.setWord(wordIteratorStore.current.translation);
+    }
+  }, [wordIteratorStore.current]);
 
   return (
     <div className="game">

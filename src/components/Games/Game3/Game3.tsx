@@ -24,8 +24,6 @@ function Game3() {
 
   function skipWord() {
     updateWords();
-    gameStore.setWrong();
-    gameStore.setDecrementPoints();
   }
 
   function isCorrect(element: React.MouseEvent<HTMLElement>) {
@@ -33,7 +31,11 @@ function Game3() {
       updateWords();
       gameStore.setCorrect();
       gameStore.setIncrementPoints();
-    } else skipWord();
+    } else {
+      skipWord();
+      gameStore.setWrong();
+      gameStore.setDecrementPoints();
+    }
   }
 
   useEffect(() => {
