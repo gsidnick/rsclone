@@ -11,7 +11,7 @@ function GameNotFound() {
     <div className="gamenotfound">
       <h1 className="gamenotfound__heading">{t('Sorry, this game not found!')}</h1>
       <Button className="" to="/games/">
-        <span>{t('Choose another game')}</span>
+        <>{t('Choose another game')}</>
       </Button>
     </div>
   );
