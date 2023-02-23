@@ -24,14 +24,18 @@ function Game3() {
 
   function skipWord() {
     updateWords();
-    gameStore.setWrong();
   }
 
   function isCorrect(element: React.MouseEvent<HTMLElement>) {
     if ((element.target as HTMLElement).innerHTML === wordTranslationEnStore.current.translation) {
       updateWords();
       gameStore.setCorrect();
-    } else skipWord();
+      gameStore.setIncrementPoints();
+    } else {
+      skipWord();
+      gameStore.setWrong();
+      gameStore.setDecrementPoints();
+    }
   }
 
   useEffect(() => {

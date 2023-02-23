@@ -25,11 +25,14 @@ function Game2() {
   useEffect(() => {
     if (wordCharsStore.isCorrect === true) {
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
+      wordIteratorStore.nextWord();
     }
     if (wordCharsStore.notIsCorrect === true) {
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
+      wordIteratorStore.nextWord();
     }
-    wordIteratorStore.nextWord();
   }, [wordCharsStore.isCorrect, wordCharsStore.notIsCorrect]);
 
   useEffect(() => {

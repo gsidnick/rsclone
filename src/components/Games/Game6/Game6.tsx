@@ -24,9 +24,11 @@ function Game6() {
     let flag = wordListenStore.isCorrect;
     if (flag === true) {
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
       wordIteratorStore.nextWord();
     } else {
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
       wordIteratorStore.nextWord();
     }
   };
@@ -35,16 +37,17 @@ function Game6() {
     let flag = wordListenStore.isCorrect;
     if (flag === false) {
       gameStore.setCorrect();
+      gameStore.setIncrementPoints();
       wordIteratorStore.nextWord();
     } else {
       gameStore.setWrong();
+      gameStore.setDecrementPoints();
       wordIteratorStore.nextWord();
     }
   };
 
   function skipWord() {
     wordIteratorStore.nextWord();
-    gameStore.setWrong();
   };
 
   return (
