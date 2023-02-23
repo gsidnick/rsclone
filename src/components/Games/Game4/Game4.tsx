@@ -32,6 +32,10 @@ function Game4() {
     }
   }
 
+  function skipWord() {
+    wordIteratorStore.nextWord();
+  }
+
   return (
     <main className="game">
       {wordStore.isLoading && <Loader />}
@@ -49,7 +53,7 @@ function Game4() {
                 <>{t('Ok')}</>
               </Button>
             </div>
-            <Button onClick={() => CheckAnswer()} className="game__btn-next">
+            <Button onClick={() => skipWord()} className="game__btn-next">
               <>{t('Next word')}</>
             </Button>
           </div>
