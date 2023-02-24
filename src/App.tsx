@@ -48,6 +48,7 @@ function App() {
               <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
+            <Modal className={modalStore.isModal ? 'modal_open' : ''} />
           </Router>
         </>
       )}
@@ -65,10 +66,10 @@ function App() {
               <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
+            <Modal className={modalStore.isModal ? 'modal_open' : ''} />
           </Router>
         </>
       )}
-      <Modal className={modalStore.isModal ? 'modal_open' : ''} />
     </>
   );
 }
