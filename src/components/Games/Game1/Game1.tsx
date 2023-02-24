@@ -63,7 +63,7 @@ function Game1() {
               onClick={() => wordIteratorStore.nextWord()}
               disabled={wordSpeechStore.isSpeeching}
             >
-              <>{t('Skit it')}</>
+              <>{t('Skip it')}</>
             </Button>
           </div>
         </>
