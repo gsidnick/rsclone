@@ -7,8 +7,6 @@ const wordService = new WordService();
 class WordStore {
   public isLoading: boolean = true;
   public words: IWord[] = [] as IWord[];
-  public currentWord: IWord = {} as IWord;
-  private index: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,11 +14,6 @@ class WordStore {
 
   public setIsLoading(bool: boolean) {
     this.isLoading = bool;
-  }
-
-  public setWords(words: IWord[]) {
-    this.words = words;
-    this.currentWord = this.words[this.index];
   }
 
   private setWord(word: IWord) {
@@ -31,36 +24,11 @@ class WordStore {
     this.words = this.words.filter((item) => id !== item._id);
   }
 
-  public prevWord() {
-    const index = this.index - 1;
-    if (index !== -1) {
-      this.currentWord = this.words[index];
-      this.index = index;
-    }
-  }
-
-  public nextWord() {
-    const index = this.index + 1;
-    if (this.words[index] !== undefined) {
-      this.currentWord = this.words[index];
-      this.index = index;
-    }
-  }
-
-  public resetWord() {
-    this.index = 0;
-    this.currentWord = this.words[this.index];
-  }
-
-  public setProgress() {
-    return ((this.index + 1) * 100) / this.words.length;
-  }
-
   public async fetchWords(): Promise<void> {
     try {
       this.setIsLoading(true);
       const response = await wordService.getAllWords();
-      this.setWords(response.data);
+      this.words = response.data;
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -72,7 +40,11 @@ class WordStore {
       this.setIsLoading(true);
       word = word.toLowerCase();
       const duplicate = this.words.find((item) => word === item.word);
-      if (duplicate) return;
+      if (duplicate) {
+        console.log(`${word} is already exist in library`);
+        this.setIsLoading(false);
+        return;
+      }
       const response = await wordService.addWord(word);
       this.setWord(response.data);
       this.setIsLoading(false);

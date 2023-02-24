@@ -1,5 +1,5 @@
 import './Library.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
@@ -50,19 +50,7 @@ function Library() {
         </div>
       );
     });
-  };
-
-  useEffect(() => {
-    const list = document.querySelector('.library__list');
-    
-    if(localStorage.getItem('theme') === 'dark') {
-        list?.classList.remove('light');
-        list?.classList.add('dark');
-      } else {
-        list?.classList.remove('dark');
-        list?.classList.add('light');
-      }
-  }, []);
+  }
 
   return (
     <main className="library">
@@ -81,7 +69,12 @@ function Library() {
           </Button>
         </div>
         {wordStore.isLoading && <Loader />}
-        {!wordStore.isLoading && (
+        {!wordStore.isLoading && wordStore.words.length === 0 && (
+          <>
+            <h1 className="library__message">Add a few words to start learning them</h1>
+          </>
+        )}
+        {!wordStore.isLoading && wordStore.words.length > 0 && (
           <>
             <div className="library__list">
               <div className="library__row-head">

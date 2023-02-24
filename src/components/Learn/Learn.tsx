@@ -6,22 +6,35 @@ import Loader from '../UI/Loader/Loader';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import WordIteratorStore from '../../store/WordIteratorStore';
+import React, { useEffect } from 'react';
 
 const wordIteratorStore = new WordIteratorStore();
 
 function Learn() {
   const { t } = useTranslation();
-
   const { wordStore } = useStores();
-  wordIteratorStore.setWords(wordStore.words);
+  useEffect(() => {
+    if (!wordStore.isLoading) wordIteratorStore.setWords(wordStore.words);
+  }, [wordStore.isLoading]);
+
+  function learnKeyDownHandler(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'ArrowRight') wordIteratorStore.nextWord();
+    if (event.key === 'ArrowLeft') wordIteratorStore.prevWord();
+  }
 
   return (
-    <main className="learn">
-      {!wordStore.isLoading && <ProgressBar value={wordIteratorStore.setProgress()} />}
+    <main className="learn" tabIndex={0} onKeyDown={learnKeyDownHandler}>
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       <div className="learn__container container">
         <div className="learn__content">
           {wordStore.isLoading && <Loader />}
-          {!wordStore.isLoading && (
+          {!wordStore.isLoading && wordStore.words.length === 0 && (
+            <>
+              <h1>You don't have the words to study yet</h1>
+              <Button to="/library">Go Library</Button>
+            </>
+          )}
+          {!wordStore.isLoading && wordStore.words.length > 0 && (
             <>
               <div className="learn__wrapper">
                 <span className="learn__word-learn">{wordIteratorStore.current.learn}%</span>

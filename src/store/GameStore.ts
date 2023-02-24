@@ -24,6 +24,10 @@ class GameStore {
     }
   }
 
+  public generateIndexGame() {
+    return Math.floor(Math.random() * this.games.length);
+  }
+
   public setCorrect() {
     this.correct = this.correct + 1;
   }

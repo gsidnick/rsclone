@@ -3,29 +3,34 @@ import './App.css';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import useStores from './hooks/useStores';
+import TokenService from './services/TokenService';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
-import AuthLogin from './components/Auth/AuthLogin';
 import Library from './components/Library/Library';
 import Learn from './components/Learn/Learn';
 import GameCards from './components/GameCards/GameCards';
 import GamePage from './components/GamePage/GamePage';
-import useStores from './hooks/useStores';
+import AuthLogin from './components/Auth/AuthLogin';
 import Modal from './components/Modal/Modal';
 import OverlayLoader from './components/UI/OverlayLoader/OverlayLoader';
 import Page404 from './components/Page404/Page404';
+import Statistic from './components/Statistic/Statistic';
+
+const tokenService = new TokenService();
 
 function App() {
-  const { authStore, wordStore, modalStore } = useStores();
+  const { authStore, statisticStore, wordStore, modalStore } = useStores();
 
   useEffect(() => {
-    if (localStorage.getItem('accessToken')) {
+    if (tokenService.getAccessToken()) {
+      if (authStore.isAuth === true) {
+        statisticStore.fetchStatistic().catch((error) => console.error(error));
+        wordStore.fetchWords().catch((error) => console.error(error));
+      }
       if (authStore.isAuth === false) {
-        authStore
-          .verifyAuth()
-          .then(() => wordStore.fetchWords())
-          .catch((error) => console.error(error));
+        authStore.verifyAuth().catch((error) => console.error(error));
       }
     }
   }, [authStore.isAuth]);
@@ -33,21 +38,30 @@ function App() {
   return (
     <>
       {authStore.isLoading && <OverlayLoader />}
-      {!authStore.isLoading && (
+      {!authStore.isLoading && !authStore.isAuth && (
         <>
           <Router>
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              {authStore.isAuth && (
-                <>
-                  <Route path="/library/" element={<Library />} />
-                  <Route path="/learn/" element={<Learn />} />
-                  <Route path="/games/" element={<GameCards />} />
-                  <Route path="/games/:id" element={<GamePage />} />
-                  <Route path="/logout/" element={<AuthLogin />} />
-                </>
-              )}
+              <Route path="/login/" element={<AuthLogin />} />
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </>
+      )}
+      {!authStore.isLoading && authStore.isAuth && (
+        <>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Statistic />} />
+              <Route path="/library/" element={<Library />} />
+              <Route path="/learn/" element={<Learn />} />
+              <Route path="/games/" element={<GameCards />} />
+              <Route path="/games/:id" element={<GamePage />} />
+              <Route path="/logout/" element={<AuthLogin />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
