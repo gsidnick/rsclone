@@ -25,11 +25,11 @@ function App() {
 
   useEffect(() => {
     if (tokenService.getAccessToken()) {
-      if (authStore.isAuth === true) {
+      if (authStore.isAuth) {
         statisticStore.fetchStatistic().catch((error) => console.error(error));
         wordStore.fetchWords().catch((error) => console.error(error));
       }
-      if (authStore.isAuth === false) {
+      if (!authStore.isAuth) {
         authStore.verifyAuth().catch((error) => console.error(error));
       }
     }
