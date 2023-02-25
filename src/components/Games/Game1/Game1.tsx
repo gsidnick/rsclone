@@ -20,7 +20,7 @@ function Game1() {
     setTimeout(() => {
       wordSpeechStore.resetAnswer();
       wordIteratorStore.nextWord();
-    }, 2000);
+    }, 1000);
   }
 
   function speechButtonHandler() {
