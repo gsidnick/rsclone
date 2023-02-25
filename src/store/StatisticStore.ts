@@ -1,12 +1,12 @@
 import { makeAutoObservable } from 'mobx';
-import IStatistic from '../interfaces/IStatistic';
 import StatisticService from '../services/StatisticService';
 
 const statisticService = new StatisticService();
 
 class StatisticStore {
   public isLoading: boolean = true;
-  public statistic: IStatistic = {} as IStatistic;
+  public score: number = 0;
+  public level: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,23 +16,20 @@ class StatisticStore {
     this.isLoading = bool;
   }
 
-  public setStatistic(statistic: IStatistic) {
-    this.statistic = statistic;
-  }
-
   public setScore(score: number) {
-    this.statistic.score = score;
+    this.score = score;
   }
 
   public setLevel(level: number) {
-    this.statistic.level = level;
+    this.level = level;
   }
 
   public async fetchStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
       const response = await statisticService.getStatistic();
-      this.setStatistic(response.data);
+      this.setScore(response.data.score);
+      this.setLevel(response.data.level);
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -43,9 +40,9 @@ class StatisticStore {
   public async updateStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
-      const { score, level } = this.statistic;
-      const response = await statisticService.setStatistic(score, level);
-      this.setStatistic(response.data);
+      const response = await statisticService.setStatistic(this.score, this.level);
+      this.setScore(response.data.score);
+      this.setLevel(response.data.level);
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);
