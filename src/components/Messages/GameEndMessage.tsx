@@ -16,14 +16,14 @@ function GameEndMessage() {
   }
 
   async function againButtonHandler() {
-    await savePoints();
     await modalStore.closeModal();
+    await savePoints();
     gameStore.reset();
   }
 
   async function exitButtonHandler() {
-    await savePoints();
     await modalStore.closeModal();
+    await savePoints();
     navigate('/');
     gameStore.reset();
   }
