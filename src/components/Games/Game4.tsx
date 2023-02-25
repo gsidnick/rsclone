@@ -1,11 +1,11 @@
-import './Game4.css';
+import './Game.css';
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import Button from '../../UI/Button/Button';
-import Loader from '../../UI/Loader/Loader';
-import useStores from '../../../hooks/useStores';
-import WordIteratorStore from '../../../store/WordIteratorStore';
-import WordWriteStore from '../../../store/WordWriteStore';
+import Button from '../UI/Button/Button';
+import Loader from '../UI/Loader/Loader';
+import useStores from '../../hooks/useStores';
+import WordIteratorStore from '../../store/WordIteratorStore';
+import WordWriteStore from '../../store/WordWriteStore';
 import { useTranslation } from 'react-i18next';
 
 const wordIteratorStore = new WordIteratorStore();
@@ -42,19 +42,19 @@ function Game4() {
       {!wordStore.isLoading && (
         <>
           {wordWriteStore.setQuestion(wordIteratorStore.current)}
-          <h3 className="game__word">
-            {t('Write a translation for this word')}{' '}
-            <span className="game__main-traslation">{wordWriteStore.question?.translation}</span> ?
-          </h3>
-          <div className="game__input-container">
-            <div className="game__input-submit">
+          <span className="game__word-label">{t('Write a translation for this word')}</span>
+          <h2 className="game__word">{wordWriteStore.question?.translation}</h2>
+          <div className="game__group-controls">
+            <div className="game__input-control">
               <input className="game__input-rounded" name="answer" type="text"></input>
               <Button className="game__btn-rounded" onClick={() => CheckAnswer()}>
                 <>{t('Ok')}</>
               </Button>
             </div>
-            <Button onClick={() => skipWord()} className="game__btn-next">
-              <>{t('Next word')}</>
+          </div>
+          <div className="game__group-controls">
+            <Button onClick={() => skipWord()} className="button_red">
+              <>{t('Skip it')}</>
             </Button>
           </div>
         </>

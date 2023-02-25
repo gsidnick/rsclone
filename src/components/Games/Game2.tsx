@@ -1,12 +1,12 @@
-import './Game2.css';
+import './Game.css';
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import Button from '../../UI/Button/Button';
-import Loader from '../../UI/Loader/Loader';
-import useStores from '../../../hooks/useStores';
-import WordIteratorStore from '../../../store/WordIteratorStore';
-import WordCharsStore from '../../../store/WordCharsStore';
-import GameEndMessage from '../../Messages/GameEndMessage';
+import Button from '../UI/Button/Button';
+import Loader from '../UI/Loader/Loader';
+import useStores from '../../hooks/useStores';
+import WordIteratorStore from '../../store/WordIteratorStore';
+import WordCharsStore from '../../store/WordCharsStore';
+import GameEndMessage from '../Messages/GameEndMessage';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordCharsStore = new WordCharsStore();

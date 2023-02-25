@@ -1,13 +1,13 @@
-import './Game1.css';
+import './Game.css';
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import Button from '../../UI/Button/Button';
-import Loader from '../../UI/Loader/Loader';
-import useStores from '../../../hooks/useStores';
-import WordIteratorStore from '../../../store/WordIteratorStore';
-import WordSpeechStore from '../../../store/WordSpeechStore';
+import Button from '../UI/Button/Button';
+import Loader from '../UI/Loader/Loader';
+import useStores from '../../hooks/useStores';
+import WordIteratorStore from '../../store/WordIteratorStore';
+import WordSpeechStore from '../../store/WordSpeechStore';
 import { useTranslation } from 'react-i18next';
-import GameEndMessage from '../../Messages/GameEndMessage';
+import GameEndMessage from '../Messages/GameEndMessage';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordSpeechStore = new WordSpeechStore();
@@ -35,9 +35,9 @@ function Game1() {
   useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
+      gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
       wordSpeechStore.setWord(wordIteratorStore.current.translation);
-      gameStore.setTotal(wordStore.words.length);
     }
   }, [wordStore.isLoading]);
 
@@ -73,8 +73,8 @@ function Game1() {
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Say this word')}</span>
-          <h2 className="game__word-question">{wordSpeechStore.question}</h2>
-          <h2 className="game__word-answer">{wordSpeechStore.answer}</h2>
+          <h2 className="game__word">{wordSpeechStore.question}</h2>
+          <h2 className="game__word">{wordSpeechStore.answer}</h2>
           <div className="game__group-controls">
             <Button
               className={wordSpeechStore.isSpeeching || wordSpeechStore.isSaid ? 'button_disabled' : ''}

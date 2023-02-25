@@ -128,9 +128,3 @@ a.button {
 .button_disabled:hover {
   background-color: #aaaaaa;
 }
-
-.button_square {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

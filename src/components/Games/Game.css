@@ -1,0 +1,132 @@
+.light .game {
+  --color-bg: var(--rss-white);
+  --color-primary: var(--rss-blue);
+  --color-text: var(--rss-black);
+  --color-border: var(--rss-grey-light);
+}
+
+.dark .game {
+  --color-bg: var(--rss-grey-dark);
+  --color-primary: var(--rss-orange);
+  --color-text: var(--rss-grey-light);
+  --color-border: var(--rss-grey-light);
+}
+
+.game {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game__word-label {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--rss-grey-dark-lighter);
+}
+
+.game__word {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  min-height: 36px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__group-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 600px;
+  gap: 20px;
+}
+
+.game__input-control {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.game__input-control .button {
+  border-radius: 0 8px 8px 0;
+}
+
+.game__wrapper {
+  height: 50px;
+  position: relative;
+}
+
+.game__word-row {
+  display: flex;
+  min-height: 50px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.game__char {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game__wrapper .game__word-row {
+  position: absolute;
+}
+
+.game__char-button.button {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__img-hear {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.game__button-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.game__button {
+  width: 100%;
+}
+
+.game__btn-rounded {
+  border-radius: 0 8px 8px 0;
+  box-shadow: none;
+}
+
+.game__input-rounded {
+  display: block;
+  width: 100%;
+  min-width: 300px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  border: 1px solid var(--color-border);
+  border-radius: 8px 0 0 8px;
+  padding: 16px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: all 0.1s linear;
+}

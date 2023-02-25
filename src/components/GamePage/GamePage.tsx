@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { GameFunctionalComponent } from '../../types/GameFunctionalComponent';
-import GameNotFound from '../Games/GameNotFound/GameNotFound';
+import GameNotFound from '../GameNotFound/GameNotFound';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';

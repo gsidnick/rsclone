@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import './Game5.css';
+import './Game.css';
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import Button from '../../UI/Button/Button';
-import Loader from '../../UI/Loader/Loader';
-import useStores from '../../../hooks/useStores';
-import WordTranslationRuStore from '../../../store/WordTranslationRuStore';
+import Button from '../UI/Button/Button';
+import Loader from '../UI/Loader/Loader';
+import useStores from '../../hooks/useStores';
+import WordTranslationRuStore from '../../store/WordTranslationRuStore';
 import { useTranslation } from 'react-i18next';
 import GameMessage from '../GameMessage/GameMessage';
 
@@ -22,17 +21,17 @@ function Game5() {
     wordTranslationRuStore.randomAnswers();
   }
 
-  function skipWord() {
+  function skipButtonHandler() {
     updateWords();
   }
 
-  function isCorrect(element: React.MouseEvent<HTMLElement>) {
+  function wordButtonHandler(element: React.MouseEvent<HTMLElement>) {
     if ((element.target as HTMLElement).innerHTML === wordTranslationRuStore.current.word) {
       updateWords();
       gameStore.setCorrect();
       gameStore.setIncrementPoints();
     } else {
-      skipWord();
+      skipButtonHandler();
       gameStore.setWrong();
       gameStore.setDecrementPoints();
     }
@@ -51,25 +50,21 @@ function Game5() {
       {!wordStore.isLoading && wordStore.words.length < 3 && <GameMessage />}
       {!wordStore.isLoading && wordStore.words.length >= 3 && (
         <>
-          <div className="game__container container">
-            <h3 className="game__word">
-              {t('Select the correct translation')}{' '}
-              <span className="game__main-traslation">{wordTranslationRuStore.current.translation}</span>
-            </h3>
-            <div className="game__listen-container">
-              <Button className="game__btn-next button_red" onClick={skipWord}>
-                <>{t('Next word')}</>
-              </Button>
-            </div>
-            <div className="game__answer-container">
-              {wordTranslationRuStore.answersArr.map((item, index) => {
-                return (
-                  <Button onClick={isCorrect} key={index}>
-                    {item as string}
-                  </Button>
-                );
-              })}
-            </div>
+          <span className="game__word-label">{t('Select the correct translation')}</span>
+          <h2 className="game__word">{wordTranslationRuStore.current.translation}</h2>
+          <div className="game__group-controls">
+            {wordTranslationRuStore.answersArr.map((item, index) => {
+              return (
+                <Button className="game__button" onClick={wordButtonHandler} key={index}>
+                  {item as string}
+                </Button>
+              );
+            })}
+          </div>
+          <div className="game__group-controls">
+            <Button className="button_red" onClick={skipButtonHandler}>
+              <>{t('Skip it')}</>
+            </Button>
           </div>
         </>
       )}

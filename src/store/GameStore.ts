@@ -1,11 +1,11 @@
 import { makeAutoObservable } from 'mobx';
 import { GameFunctionalComponent } from '../types/GameFunctionalComponent';
-import Game1 from '../components/Games/Game1/Game1';
-import Game2 from '../components/Games/Game2/Game2';
-import Game3 from '../components/Games/Game3/Game3';
-import Game4 from '../components/Games/Game4/Game4';
-import Game5 from '../components/Games/Game5/Game5';
-import Game6 from '../components/Games/Game6/Game6';
+import Game1 from '../components/Games/Game1';
+import Game2 from '../components/Games/Game2';
+import Game3 from '../components/Games/Game3';
+import Game4 from '../components/Games/Game4';
+import Game5 from '../components/Games/Game5';
+import Game6 from '../components/Games/Game6';
 import WordIteratorStore from './WordIteratorStore';
 
 class GameStore {

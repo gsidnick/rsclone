@@ -1,13 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import './Game6.css';
+import './Game.css';
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import Button from '../../UI/Button/Button';
-import Loader from '../../UI/Loader/Loader';
-import useStores from '../../../hooks/useStores';
-import WordIteratorStore from '../../../store/WordIteratorStore';
-import WordListenStore from '../../../store/WordListenStore';
-import EarSvg from '../../../images/ear.svg';
+import Button from '../UI/Button/Button';
+import Loader from '../UI/Loader/Loader';
+import useStores from '../../hooks/useStores';
+import WordIteratorStore from '../../store/WordIteratorStore';
+import WordListenStore from '../../store/WordListenStore';
+import EarSvg from '../../images/ear.svg';
 import { useTranslation } from 'react-i18next';
 
 const wordIteratorStore = new WordIteratorStore();
@@ -31,7 +30,7 @@ function Game6() {
       gameStore.setDecrementPoints();
       wordIteratorStore.nextWord();
     }
-  };
+  }
 
   function checkNo() {
     let flag = wordListenStore.isCorrect;
@@ -44,11 +43,11 @@ function Game6() {
       gameStore.setDecrementPoints();
       wordIteratorStore.nextWord();
     }
-  };
+  }
 
-  function skipWord() {
+  function skipButtonHandler() {
     wordIteratorStore.nextWord();
-  };
+  }
 
   return (
     <main className="game">
@@ -57,24 +56,23 @@ function Game6() {
         <>
           {wordListenStore.setQuestion(wordIteratorStore.current)}
           {wordListenStore.randomWord()}
-          <div className="game__container container">
-            <h3 className="game__word">
-              {t('It translates as')} <span className="game__main-traslation">{wordListenStore.question?.word}</span> ?
-            </h3>
-            <div className="game__listen-container">
-              <img src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
-              <Button className="game__btn-next" onClick={() => skipWord()}>
-                <>{t('Next word')}</>
-              </Button>
-            </div>
-            <div className="game__answer-container">
-              <Button onClick={checkYes}>
-                <>{t('Yes')}</>
-              </Button>
-              <Button className="button_red" onClick={checkNo}>
-                <>{t('No')}</>
-              </Button>
-            </div>
+          <span className="game__word-label">{t('It translates as')}</span>
+          <h2 className="game__word">{wordListenStore.question?.word}</h2>
+          <div className="game__group-controls">
+            <img src={EarSvg} onClick={() => wordListenStore.wiretap()} className="game__img-hear" alt="Ear" />
+          </div>
+          <div className="game__group-controls">
+            <Button onClick={checkYes}>
+              <>{t('Yes')}</>
+            </Button>
+            <Button className="button_red" onClick={checkNo}>
+              <>{t('No')}</>
+            </Button>
+          </div>
+          <div className="game__group-controls">
+            <Button className="button_red" onClick={skipButtonHandler}>
+              <>{t('Skip it')}</>
+            </Button>
           </div>
         </>
       )}
