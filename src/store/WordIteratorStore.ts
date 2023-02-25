@@ -29,6 +29,8 @@ class WordIteratorStore {
     if (this.words[index] !== undefined) {
       this.current = this.words[index];
       this.index = index;
+    } else {
+      this.isEnd = true;
     }
   }
 
