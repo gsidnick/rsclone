@@ -5,6 +5,7 @@ class WordSpeechStore {
   public question: string | null = null;
   public answer: string | null = null;
   public isSpeeching: boolean = false;
+  public isSaid: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -28,10 +29,15 @@ class WordSpeechStore {
 
   public resetAnswer() {
     this.answer = null;
+    this.setSaid(false);
   }
 
   public setSpeech(bool: boolean) {
     this.isSpeeching = bool;
+  }
+
+  public setSaid(bool: boolean) {
+    this.isSaid = bool;
   }
 
   public recognizeSpeech() {
@@ -47,6 +53,9 @@ class WordSpeechStore {
     };
     SpeechRecognition.onaudioend = () => {
       this.setSpeech(false);
+    };
+    SpeechRecognition.onspeechend = () => {
+      this.setSaid(true);
     };
     SpeechRecognition.start();
   }
