@@ -19,10 +19,6 @@ class WordSpeechStore {
     this.question = question;
   }
 
-  public resetQuestion() {
-    this.question = null;
-  }
-
   public setAnswer(answer: string) {
     this.answer = answer;
   }
@@ -66,10 +62,6 @@ class WordSpeechStore {
     if (word !== null && answer !== null) {
       return word === answer;
     }
-  }
-
-  public cleanAnswer() {
-    this.answer = null;
   }
 }
 
