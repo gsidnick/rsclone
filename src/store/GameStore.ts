@@ -38,8 +38,6 @@ class GameStore {
 
   public setWrong() {
     this.wrong = this.wrong + 1;
-    if (this.points === 0) return;
-    this.points = this.points - 1;
   }
 
   public setTotal(total: number) {
