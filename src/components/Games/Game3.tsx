@@ -4,14 +4,14 @@ import { observer } from 'mobx-react-lite';
 import Button from '../UI/Button/Button';
 import Loader from '../UI/Loader/Loader';
 import useStores from '../../hooks/useStores';
-import WordTranslationEnStore from '../../store/WordTranslationStore';
+import WordTranslationStore from '../../store/WordTranslationStore';
 import { useTranslation } from 'react-i18next';
 import GameMessage from '../GameMessage/GameMessage';
 import GameEndMessage from '../Messages/GameEndMessage';
 import WordIteratorStore from '../../store/WordIteratorStore';
 
 const wordIteratorStore = new WordIteratorStore();
-const wordTranslationStore = new WordTranslationEnStore();
+const wordTranslationStore = new WordTranslationStore();
 
 function Game3() {
   const { t } = useTranslation();
@@ -39,12 +39,6 @@ function Game3() {
   }
 
   useEffect(() => {
-    if (wordIteratorStore.isEnd) {
-      modalStore.openModal(<GameEndMessage />);
-    }
-  }, [wordIteratorStore.isEnd]);
-
-  useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
       wordTranslationStore.setWords(wordStore.words);
@@ -54,6 +48,12 @@ function Game3() {
       gameStore.iterator = wordIteratorStore;
     }
   }, [wordStore.isLoading]);
+
+  useEffect(() => {
+    if (wordIteratorStore.isEnd) {
+      modalStore.openModal(<GameEndMessage />);
+    }
+  }, [wordIteratorStore.isEnd]);
 
   return (
     <main className="game">
