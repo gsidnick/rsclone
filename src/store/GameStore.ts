@@ -58,6 +58,8 @@ class GameStore {
   public reset() {
     this.correct = 0;
     this.wrong = 0;
+    this.points = 0;
+    this.iterator?.reset();
   }
 }
 export default GameStore;
