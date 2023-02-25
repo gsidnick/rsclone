@@ -40,9 +40,7 @@ class StatisticStore {
   public async updateStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
-      const response = await statisticService.setStatistic(this.score, this.level);
-      this.setScore(response.data.score);
-      this.setLevel(response.data.level);
+      await statisticService.setStatistic(this.score, this.level);
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);
