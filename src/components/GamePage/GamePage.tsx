@@ -7,7 +7,6 @@ import GameNotFound from '../Games/GameNotFound/GameNotFound';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
-import GameStore from '../../store/GameStore';
 
 function GamePage() {
   const { t } = useTranslation();
@@ -22,7 +21,7 @@ function GamePage() {
         {Game !== undefined && (
           <>
             <div className="gamepage__panel">
-              <Button className="button_back" to="/games/">
+              <Button className="button_back" to="/games/" onClick={() => gameStore.reset()}>
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     className="button__arrow"
@@ -32,9 +31,15 @@ function GamePage() {
                 </svg>
               </Button>
               <div className="gamepage__score">
-                <span className="gamepage__wrong">{t('Wrong')} : {gameStore.wrong}</span>
-                <span className="gamepage__correct">{t('Correct')} : {gameStore.correct}</span>
-                <span className="gamepage__points">{t('Points')} : {gameStore.points}</span>
+                <span className="gamepage__wrong">
+                  {t('Wrong')} : {gameStore.wrong}
+                </span>
+                <span className="gamepage__correct">
+                  {t('Correct')} : {gameStore.correct}
+                </span>
+                <span className="gamepage__points">
+                  {t('Points')} : {gameStore.points}
+                </span>
               </div>
             </div>
             <div className="gamepage__content">
