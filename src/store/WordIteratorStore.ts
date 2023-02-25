@@ -34,6 +34,12 @@ class WordIteratorStore {
     }
   }
 
+  public reset() {
+    this.index = 0;
+    this.current = this.words[this.index];
+    this.isEnd = false;
+  }
+
   public setProgress() {
     return ((this.index + 1) * 100) / this.words.length;
   }
