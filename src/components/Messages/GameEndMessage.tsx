@@ -1,20 +1,29 @@
 import './Message.css';
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useNavigate } from 'react-router-dom';
 
 function GameEndMessage() {
-  const { gameStore, modalStore } = useStores();
+  const { gameStore, modalStore, statisticStore } = useStores();
   const navigate = useNavigate();
 
+  function savePoints() {
+    const score = statisticStore.score + gameStore.points;
+    statisticStore.setScore(score);
+    statisticStore.updateStatistic();
+  }
+
   function againButtonHandler() {
+    savePoints();
     gameStore.reset();
     modalStore.closeModal();
   }
 
   function exitButtonHandler() {
     navigate('/games');
+    savePoints();
     gameStore.reset();
     modalStore.closeModal();
   }
@@ -68,4 +77,4 @@ function GameEndMessage() {
   );
 }
 
-export default GameEndMessage;
+export default observer(GameEndMessage);
