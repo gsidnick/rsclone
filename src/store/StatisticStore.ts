@@ -20,7 +20,7 @@ class StatisticStore {
     this.score = score;
   }
 
-  public setLevel(level: number) {
+  private setLevel(level: number) {
     this.level = level;
   }
 
