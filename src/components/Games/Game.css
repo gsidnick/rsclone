@@ -52,6 +52,10 @@
   gap: 0;
 }
 
+.game__input-control .input {
+  border-radius: 8px 0 0 8px;
+}
+
 .game__input-control .button {
   border-radius: 0 8px 8px 0;
 }
@@ -108,25 +112,4 @@
 
 .game__button {
   width: 100%;
-}
-
-.game__btn-rounded {
-  border-radius: 0 8px 8px 0;
-  box-shadow: none;
-}
-
-.game__input-rounded {
-  display: block;
-  width: 100%;
-  min-width: 300px;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  border: 1px solid var(--color-border);
-  border-radius: 8px 0 0 8px;
-  padding: 16px;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  outline: none;
-  transition: all 0.1s linear;
 }
