@@ -30,6 +30,7 @@ class GameStore {
 
   public setCorrect() {
     this.correct = this.correct + 1;
+    this.points = this.points + 1;
   }
 
   public setWrong() {
