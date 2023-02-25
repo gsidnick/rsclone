@@ -4,6 +4,7 @@ import { makeAutoObservable } from 'mobx';
 class WordIteratorStore {
   public words: IWord[] = {} as IWord[];
   public current: IWord = {} as IWord;
+  public isEnd: boolean = false;
   private index: number = 0;
 
   constructor() {
