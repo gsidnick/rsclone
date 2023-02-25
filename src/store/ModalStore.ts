@@ -9,6 +9,10 @@ class ModalStore {
     makeAutoObservable(this);
   }
 
+  private setIsModal(bool: boolean) {
+    this.isModal = bool;
+  }
+
   public openModal(body: React.ReactElement) {
     this.isModal = true;
     this.body = null;
@@ -16,7 +20,12 @@ class ModalStore {
   }
 
   public closeModal() {
-    this.isModal = false;
+    return new Promise((resolve) => {
+      this.setIsModal(false);
+      setTimeout(() => {
+        resolve(true);
+      }, 200);
+    });
   }
 }
 

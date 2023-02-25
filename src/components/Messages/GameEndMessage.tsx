@@ -9,23 +9,23 @@ function GameEndMessage() {
   const { gameStore, modalStore, statisticStore } = useStores();
   const navigate = useNavigate();
 
-  function savePoints() {
+  async function savePoints() {
     const score = statisticStore.score + gameStore.points;
     statisticStore.setScore(score);
-    statisticStore.updateStatistic();
+    await statisticStore.updateStatistic();
   }
 
-  function againButtonHandler() {
-    savePoints();
+  async function againButtonHandler() {
+    await savePoints();
+    await modalStore.closeModal();
     gameStore.reset();
-    modalStore.closeModal();
   }
 
-  function exitButtonHandler() {
-    navigate('/games');
-    savePoints();
+  async function exitButtonHandler() {
+    await savePoints();
+    await modalStore.closeModal();
+    navigate('/');
     gameStore.reset();
-    modalStore.closeModal();
   }
 
   return (
