@@ -6,7 +6,7 @@ const statisticService = new StatisticService();
 class StatisticStore {
   public isLoading: boolean = true;
   public score: number = 0;
-  public level: number = 0;
+  public level: number = 1;
 
   constructor() {
     makeAutoObservable(this);
