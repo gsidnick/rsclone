@@ -39,7 +39,7 @@ class WordSpeechStore {
 
     SpeechRecognition.lang = 'en-EN';
     SpeechRecognition.onresult = (event: { results: { transcript: string }[][] }) => {
-      let word = event.results[0][0].transcript;
+      let word = event.results[0][0].transcript.toLowerCase();
       this.setAnswer(word);
     };
     SpeechRecognition.onaudiostart = () => {
