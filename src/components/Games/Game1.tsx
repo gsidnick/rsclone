@@ -28,7 +28,6 @@ function Game1() {
   }
 
   function skipButtonHandler() {
-    gameStore.setWrong();
     wordIteratorStore.nextWord();
   }
 

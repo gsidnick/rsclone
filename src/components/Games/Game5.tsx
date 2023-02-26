@@ -18,7 +18,6 @@ function Game5() {
   const { wordStore, gameStore, modalStore } = useStores();
 
   function skipButtonHandler() {
-    gameStore.setWrong();
     wordIteratorStore.nextWord();
     wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
   }

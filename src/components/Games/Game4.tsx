@@ -58,7 +58,6 @@ function Game4() {
   }
 
   function skipButtonHandler() {
-    gameStore.setWrong();
     wordIteratorStore.nextWord();
     wordInputRef.current?.focus();
   }
