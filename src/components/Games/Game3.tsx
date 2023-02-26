@@ -11,7 +11,7 @@ import GameEndMessage from '../Messages/GameEndMessage';
 import WordIteratorStore from '../../store/WordIteratorStore';
 
 const wordIteratorStore = new WordIteratorStore();
-const wordTranslationStore = new WordTranslationStore();
+const wordTranslationStore = new WordTranslationStore('en');
 
 function Game3() {
   const { t } = useTranslation();
@@ -21,19 +21,16 @@ function Game3() {
     gameStore.setWrong();
     wordIteratorStore.nextWord();
     wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
-    wordTranslationStore.randomAnswers();
   }
 
   function wordButtonHandler(element: React.MouseEvent<HTMLElement>) {
     if ((element.target as HTMLElement).innerHTML === wordIteratorStore.current.translation) {
       wordIteratorStore.nextWord();
       wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
-      wordTranslationStore.randomAnswers();
       gameStore.setCorrect();
     } else {
       wordIteratorStore.nextWord();
       wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
-      wordTranslationStore.randomAnswers();
       gameStore.setWrong();
     }
   }
@@ -43,7 +40,6 @@ function Game3() {
       wordIteratorStore.setWords(wordStore.words);
       wordTranslationStore.setWords(wordStore.words);
       wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
-      wordTranslationStore.randomAnswers();
       gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
     }
