@@ -1,5 +1,5 @@
 import './Statistic.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
@@ -10,12 +10,19 @@ import IGame from '../../interfaces/IGame';
 
 function Statistic() {
   const { t } = useTranslation();
-  const card = t('cards', { returnObjects: true }) as [];
+  const cards = t('cards', { returnObjects: true }) as [];
   const { statisticStore, gameStore } = useStores();
   const navigate = useNavigate();
-  const index: number = gameStore.generateIndexGame();
-  const game: IGame = card[index];
-  game.link = `/games/${index + 1}`;
+  const [game, setGame] = useState({} as IGame);
+
+  useEffect(() => {
+    if (!statisticStore.isLoading) {
+      const index: number = gameStore.generateIndexGame();
+      const link = `/games/${index + 1}`;
+      const { name, description, image } = cards[index];
+      setGame({ name, description, image, link });
+    }
+  }, [statisticStore.isLoading]);
 
   return (
     <main className="statistic">
