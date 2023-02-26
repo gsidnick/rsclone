@@ -1,15 +1,22 @@
 import { makeAutoObservable } from 'mobx';
 import IWord from '../interfaces/IWord';
 
+enum Locale {
+  RU = 'ru',
+  EN = 'en',
+}
+
 class WordTranslationStore {
   public answers: (string | null | undefined)[] = [];
   private words: IWord[] = {} as IWord[];
   private correctAnswer: IWord | null = null;
   private firstWrongAnswer: IWord | null = null;
   private secondWrongAnswer: IWord | null = null;
+  private lang: string = Locale.EN;
 
-  constructor() {
+  constructor(lang: string) {
     makeAutoObservable(this);
+    this.lang = lang;
   }
 
   public setWords(words: IWord[]) {
@@ -18,6 +25,7 @@ class WordTranslationStore {
 
   public setCorrectAnswer(answer: IWord) {
     this.correctAnswer = answer;
+    this.randomAnswers();
   }
 
   private setFirstAnswer(answer: IWord) {
@@ -32,7 +40,7 @@ class WordTranslationStore {
     this.answers = arr;
   }
 
-  public randomAnswers() {
+  private randomAnswers() {
     if (this.words.length < 3) {
       this.setAnswers([]);
     } else {
@@ -61,19 +69,26 @@ class WordTranslationStore {
   }
 
   private createArr() {
-    let newArr: (string | null | undefined)[] = [];
-    newArr.push(
-      this.firstWrongAnswer?.translation,
-      this.secondWrongAnswer?.translation,
-      this.correctAnswer?.translation,
-    );
+    let answers: (string | null | undefined)[] = [];
 
-    for (let i = newArr.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    if (this.lang === Locale.EN) {
+      answers.push(
+        this.firstWrongAnswer?.translation,
+        this.secondWrongAnswer?.translation,
+        this.correctAnswer?.translation,
+      );
     }
 
-    this.setAnswers(newArr);
+    if (this.lang === Locale.RU) {
+      answers.push(this.firstWrongAnswer?.word, this.secondWrongAnswer?.word, this.correctAnswer?.word);
+    }
+
+    for (let i = answers.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [answers[i], answers[j]] = [answers[j], answers[i]];
+    }
+
+    this.setAnswers(answers);
   }
 }
 
