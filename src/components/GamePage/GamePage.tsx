@@ -1,6 +1,6 @@
 import './GamePage.css';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GameFunctionalComponent } from '../../types/GameFunctionalComponent';
 import GameNotFound from '../GameNotFound/GameNotFound';
@@ -15,6 +15,10 @@ function GamePage() {
   const params = useParams();
   const gameNumber = Number(params.id);
   const Game: GameFunctionalComponent | undefined = gameStore.loadGame(gameNumber);
+
+  useEffect(() => {
+    gameStore.points = statisticStore.score;
+  }, []);
 
   return (
     <>

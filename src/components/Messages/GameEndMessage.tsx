@@ -10,8 +10,7 @@ function GameEndMessage() {
   const navigate = useNavigate();
 
   async function savePoints() {
-    const score = statisticStore.score + gameStore.points;
-    statisticStore.setScore(score);
+    statisticStore.setScore(gameStore.points);
     await statisticStore.updateStatistic();
   }
 
