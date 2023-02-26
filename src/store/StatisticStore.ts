@@ -1,12 +1,13 @@
 import { makeAutoObservable } from 'mobx';
-import IStatistic from '../interfaces/IStatistic';
 import StatisticService from '../services/StatisticService';
 
 const statisticService = new StatisticService();
 
 class StatisticStore {
   public isLoading: boolean = true;
-  public statistic: IStatistic = {} as IStatistic;
+  public score: number = 0;
+  public level: number = 1;
+  private breakpoints = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
   constructor() {
     makeAutoObservable(this);
@@ -16,23 +17,32 @@ class StatisticStore {
     this.isLoading = bool;
   }
 
-  public setStatistic(statistic: IStatistic) {
-    this.statistic = statistic;
-  }
-
   public setScore(score: number) {
-    this.statistic.score = score;
+    this.score = score;
+    this.updateLevel();
   }
 
-  public setLevel(level: number) {
-    this.statistic.level = level;
+  private setLevel(level: number) {
+    this.level = level;
+  }
+
+  private updateLevel() {
+    let level: number = 1;
+    this.breakpoints.forEach((bp, i) => {
+      if (this.score >= bp) level = i + 2;
+    });
+    if (this.level < level) {
+      this.setLevel(level);
+      this.updateStatistic();
+    }
   }
 
   public async fetchStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
       const response = await statisticService.getStatistic();
-      this.setStatistic(response.data);
+      this.setLevel(response.data.level);
+      this.setScore(response.data.score);
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -43,9 +53,7 @@ class StatisticStore {
   public async updateStatistic(): Promise<void> {
     try {
       this.setIsLoading(true);
-      const { score, level } = this.statistic;
-      const response = await statisticService.setStatistic(score, level);
-      this.setStatistic(response.data);
+      await statisticService.setStatistic(this.score, this.level);
       this.setIsLoading(false);
     } catch (error) {
       console.error(error);

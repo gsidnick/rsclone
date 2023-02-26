@@ -4,6 +4,7 @@ import { makeAutoObservable } from 'mobx';
 class WordIteratorStore {
   public words: IWord[] = {} as IWord[];
   public current: IWord = {} as IWord;
+  public isEnd: boolean = false;
   private index: number = 0;
 
   constructor() {
@@ -28,7 +29,15 @@ class WordIteratorStore {
     if (this.words[index] !== undefined) {
       this.current = this.words[index];
       this.index = index;
+    } else {
+      this.isEnd = true;
     }
+  }
+
+  public reset() {
+    this.index = 0;
+    this.current = this.words[this.index];
+    this.isEnd = false;
   }
 
   public setProgress() {

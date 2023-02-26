@@ -5,6 +5,7 @@ class WordSpeechStore {
   public question: string | null = null;
   public answer: string | null = null;
   public isSpeeching: boolean = false;
+  public isSaid: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -18,20 +19,21 @@ class WordSpeechStore {
     this.question = question;
   }
 
-  public resetQuestion() {
-    this.question = null;
-  }
-
   public setAnswer(answer: string) {
     this.answer = answer;
   }
 
   public resetAnswer() {
     this.answer = null;
+    this.setSaid(false);
   }
 
   public setSpeech(bool: boolean) {
     this.isSpeeching = bool;
+  }
+
+  public setSaid(bool: boolean) {
+    this.isSaid = bool;
   }
 
   public recognizeSpeech() {
@@ -39,7 +41,7 @@ class WordSpeechStore {
 
     SpeechRecognition.lang = 'en-EN';
     SpeechRecognition.onresult = (event: { results: { transcript: string }[][] }) => {
-      let word = event.results[0][0].transcript;
+      let word = event.results[0][0].transcript.toLowerCase();
       this.setAnswer(word);
     };
     SpeechRecognition.onaudiostart = () => {
@@ -47,6 +49,9 @@ class WordSpeechStore {
     };
     SpeechRecognition.onaudioend = () => {
       this.setSpeech(false);
+    };
+    SpeechRecognition.onspeechend = () => {
+      this.setSaid(true);
     };
     SpeechRecognition.start();
   }
@@ -57,10 +62,6 @@ class WordSpeechStore {
     if (word !== null && answer !== null) {
       return word === answer;
     }
-  }
-
-  public cleanAnswer() {
-    this.answer = null;
   }
 }
 

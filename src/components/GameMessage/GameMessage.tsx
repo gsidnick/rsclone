@@ -1,10 +1,9 @@
 import './GameMessage.css';
 import React from 'react';
-import Button from '../../UI/Button/Button';
+import Button from '../UI/Button/Button';
 import { useTranslation } from 'react-i18next';
 
 function GameMessage() {
-  
   const { t } = useTranslation();
 
   return (
