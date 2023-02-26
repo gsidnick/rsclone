@@ -4,43 +4,50 @@ import { observer } from 'mobx-react-lite';
 import Button from '../UI/Button/Button';
 import Loader from '../UI/Loader/Loader';
 import useStores from '../../hooks/useStores';
-import WordTranslationRuStore from '../../store/WordTranslationRuStore';
+import WordTranslationStore from '../../store/WordTranslationStore';
 import { useTranslation } from 'react-i18next';
 import GameMessage from '../GameMessage/GameMessage';
+import GameEndMessage from '../Messages/GameEndMessage';
+import WordIteratorStore from '../../store/WordIteratorStore';
 
-const wordTranslationRuStore = new WordTranslationRuStore();
+const wordIteratorStore = new WordIteratorStore();
+const wordTranslationStore = new WordTranslationStore('ru');
 
 function Game5() {
   const { t } = useTranslation();
-
-  const { wordStore, gameStore } = useStores();
-
-  function updateWords() {
-    wordTranslationRuStore.nextWord();
-    wordTranslationRuStore.setWords(wordStore.words);
-    wordTranslationRuStore.randomAnswers();
-  }
+  const { wordStore, gameStore, modalStore } = useStores();
 
   function skipButtonHandler() {
-    updateWords();
+    gameStore.setWrong();
+    wordIteratorStore.nextWord();
+    wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
   }
 
   function wordButtonHandler(element: React.MouseEvent<HTMLElement>) {
-    if ((element.target as HTMLElement).innerHTML === wordTranslationRuStore.current.word) {
-      updateWords();
+    if ((element.target as HTMLElement).innerHTML === wordIteratorStore.current.word) {
+      wordIteratorStore.nextWord();
+      wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
       gameStore.setCorrect();
-      gameStore.setIncrementPoints();
     } else {
-      skipButtonHandler();
+      wordIteratorStore.nextWord();
+      wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
       gameStore.setWrong();
-      gameStore.setDecrementPoints();
     }
   }
 
   useEffect(() => {
-    if (wordStore.isLoading === false) {
-      wordTranslationRuStore.setWords(wordStore.words);
-      wordTranslationRuStore.setQuestion(wordTranslationRuStore.current);
+    if (wordIteratorStore.isEnd) {
+      modalStore.openModal(<GameEndMessage />);
+    }
+  }, [wordIteratorStore.isEnd]);
+
+  useEffect(() => {
+    if (!wordStore.isLoading) {
+      wordIteratorStore.setWords(wordStore.words);
+      wordTranslationStore.setWords(wordStore.words);
+      wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
+      gameStore.setTotal(wordStore.words.length);
+      gameStore.iterator = wordIteratorStore;
     }
   }, [wordStore.isLoading]);
 
@@ -51,9 +58,9 @@ function Game5() {
       {!wordStore.isLoading && wordStore.words.length >= 3 && (
         <>
           <span className="game__word-label">{t('Select the correct translation')}</span>
-          <h2 className="game__word">{wordTranslationRuStore.current.translation}</h2>
+          <h2 className="game__word">{wordIteratorStore.current.translation}</h2>
           <div className="game__group-controls">
-            {wordTranslationRuStore.answersArr.map((item, index) => {
+            {wordTranslationStore.answers.map((item, index) => {
               return (
                 <Button className="game__button" onClick={wordButtonHandler} key={index}>
                   {item as string}
