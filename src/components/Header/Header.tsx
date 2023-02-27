@@ -7,6 +7,7 @@ import useStores from '../../hooks/useStores';
 import { observer } from 'mobx-react-lite';
 import ruImage from '../../images/ru.svg';
 import enImage from '../../images/en.svg';
+import logo from '../../images/logo.svg';
 
 function Header() {
   const { themeStore } = useStores();
@@ -35,7 +36,7 @@ function Header() {
       <div className="header__container">
         <div className="header__left-bar">
           <Link className="header__logo" to="/">
-            LOGO
+            <img className="header__logo-image" src={logo} alt="" />
           </Link>
           <div className="header__options">
             <img className="header__button-lang" src={langImage} onClick={changeButton} alt="" />
