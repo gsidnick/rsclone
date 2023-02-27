@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 import AuthLogin from '../Auth/AuthLogin';
 import AuthSignup from '../Auth/AuthSignup';
+import cover from '../../images/cover.svg';
 
 function Home() {
   const { modalStore } = useStores();
@@ -23,6 +24,9 @@ function Home() {
     <>
       <main className="home">
         <div className="home__container container">
+          <div className="home__cover">
+            <img className="home__cover-image" src={cover} alt="cover" />
+          </div>
           <div className="home__greeting">
             <h1 className="home__greeting-text">{t(`Hey, friend, let's start our journey!`)}</h1>
             <span className="home__greeting-description">

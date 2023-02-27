@@ -7,17 +7,28 @@
 
 .home__container {
   padding: 40px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  justify-items: center;
+}
+
+.home__cover {
+  width: 100%;
+}
+
+.home__cover-image {
+  object-fit: cover;
 }
 
 .home__greeting {
-  max-width: 300px;
+  max-width: 340px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
 }
 
 .home__greeting-text,
