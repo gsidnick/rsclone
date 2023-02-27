@@ -57,3 +57,15 @@
 .home__group-controls .button {
   min-width: 160px;
 }
+
+@media (max-width: 1024px) {
+
+  .home__greeting-text {
+    font-size: 36px;
+  }
+
+  .home__group-controls {
+    gap: 10px;
+  }
+
+}

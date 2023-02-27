@@ -12,12 +12,10 @@
   align-items: center;
   min-height: calc(100vh - 160px);
   position: relative;
-  padding: 40px 0;
   outline: none;
 }
 
 .learn__container {
-  padding: 40px 0;
   display: flex;
   justify-content: center;
 }

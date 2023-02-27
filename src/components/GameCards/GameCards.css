@@ -12,7 +12,7 @@
 
 .gamecards {
   min-height: calc(100vh - 160px);
-  padding: 80px 0;
+  display: flex;
 }
 
 .gamecards__title {
@@ -31,8 +31,6 @@
 }
 
 .gamecards__link {
-  width: 100%;
-  height: 100%;
   text-decoration: none;
   color: var(--color-text);
   display: flex;
@@ -76,5 +74,22 @@
 }
 
 .gamecards__card-image {
+  width: 100%;
   height: 152px;
+}
+
+@media (max-width: 1024px) {
+
+  .gamecards__list {
+    gap: 10px;
+  }
+
+  .gamecards__link {
+    padding: 10px;
+  }
+
+  .gamecards__card-title {
+    font-size: 18px;
+  }
+
 }

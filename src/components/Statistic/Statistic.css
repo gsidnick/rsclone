@@ -20,14 +20,6 @@
   color: var(--color-text);
   min-height: calc(100vh - 160px);
   position: relative;
-  padding: 40px 0;
-}
-
-.statistic__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .statistic__grid {
@@ -100,4 +92,33 @@
   font-size: 36px;
   font-weight: 900;
   text-align: right;
+}
+
+@media (max-width: 1024px) {
+
+  .statistic__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .statistic__game {
+    padding: 20px;
+  }
+
+  .statistic__score {
+    padding: 20px;
+  }
+
+  .statistic__level {
+    padding: 20px;
+  }
+
+  .statistic__card-value {
+      font-size: 24px;
+  }
+
+  .statistic__game-title {
+    font-size: 24px;
+  }
+
 }
