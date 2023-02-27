@@ -22,3 +22,11 @@
   display: block;
   width: 100%;
 }
+
+@media (max-width: 480px) {
+  
+  .form {
+    margin: 0 10px;
+  }
+
+}

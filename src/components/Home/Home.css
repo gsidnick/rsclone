@@ -57,3 +57,47 @@
 .home__group-controls .button {
   min-width: 160px;
 }
+
+@media (max-width: 1024px) {
+
+  .home__greeting-text {
+    font-size: 36px;
+  }
+
+  .home__group-controls {
+    gap: 10px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .home__container {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: end;
+    justify-items: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .home {
+    padding: 20px 0;
+  }
+
+  .home__greeting-text {
+    font-size: 24px;
+  }
+
+  .home__group-controls {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 40px 0 0 0;
+  }
+
+}

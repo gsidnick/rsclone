@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Nav from '../Nav/Nav';
+import BurgerMenu from '../UI/BurgerMenu/BurgerMenu';
 import useStores from '../../hooks/useStores';
 import { observer } from 'mobx-react-lite';
 import ruImage from '../../images/ru.svg';
@@ -49,6 +50,7 @@ function Header() {
           </div>
         </div>
         <Nav />
+        <BurgerMenu />
       </div>
     </div>
   );

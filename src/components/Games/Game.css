@@ -13,7 +13,7 @@
 }
 
 .game {
-  padding: 40px 0;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -112,4 +112,38 @@
 
 .game__button {
   width: 100%;
+}
+
+@media (max-width: 768px) {
+
+  .game {
+    gap: 30px;
+  }
+
+  .game__group-controls {
+    width: 450px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+
+  .game {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .game__group-controls {
+    width: 300px;
+    flex-direction: column;
+  }
+
+  .game__img-hear {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+  }
+  
 }
