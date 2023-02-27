@@ -68,3 +68,15 @@
 .learn__button {
   min-width: 160px
 }
+
+@media (max-width: 768px) {
+
+  .learn__word-from {
+    font-size: 46px;
+  }
+
+  .learn__word-to {
+    font-size: 32px;
+  }
+
+}

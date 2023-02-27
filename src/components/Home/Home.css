@@ -69,3 +69,16 @@
   }
 
 }
+
+@media (max-width: 768px) {
+
+  .home__container {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: end;
+    justify-items: center;
+  }
+
+}

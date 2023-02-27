@@ -16,7 +16,6 @@
 
 .statistic {
   display: flex;
-  justify-content: center;
   color: var(--color-text);
   min-height: calc(100vh - 160px);
   position: relative;
@@ -99,6 +98,36 @@
   .statistic__grid {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+  }
+
+  .statistic__game {
+    padding: 20px;
+  }
+
+  .statistic__score {
+    padding: 20px;
+  }
+
+  .statistic__level {
+    padding: 20px;
+  }
+
+  .statistic__card-value {
+      font-size: 24px;
+  }
+
+  .statistic__game-title {
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .statistic__grid {
+    grid-template-areas:
+      "level score"
+      "game game";
   }
 
   .statistic__game {

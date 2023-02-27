@@ -33,3 +33,15 @@
   position: absolute;
   bottom: -10px
 }
+
+@media (max-width: 768px) {
+
+  .nav__list {
+    gap: 10px;
+  }
+
+  .nav__link {
+    font-size: 12px;
+  }
+
+}

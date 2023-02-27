@@ -62,6 +62,7 @@
 
 .library__col {
   padding: 10px;
+  overflow: scroll;
 }
 
 .library__row-body {
@@ -91,6 +92,23 @@
 
   .library__list {
     min-height: 200px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .library__row-head {
+    grid-template-columns: 1fr 1fr 1fr 50px;
+  }
+
+  .library__item {
+    grid-template-columns: 1fr 1fr 1fr 50px;
+  }
+
+  .library__row-body {
+    font-size: 18px;
+    line-height: 20px;
   }
 
 }
