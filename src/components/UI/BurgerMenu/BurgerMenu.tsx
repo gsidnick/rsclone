@@ -12,7 +12,7 @@ function BurgerMenu() {
 
   function toggleBurgerMenu() {
     const NAV = document.querySelector('#nav');
-    NAV?.classList.toggle('active')
+    NAV?.classList.toggle('activated');
   }
 
   return (

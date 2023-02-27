@@ -34,7 +34,6 @@ class AuthStore {
     try {
       this.setIsLoading(true);
       const response = await authService.signup(name, email, password);
-      console.log(response);
       tokenService.setAccessToken(response.data.accessToken);
       tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);
@@ -50,7 +49,6 @@ class AuthStore {
     try {
       this.setIsLoading(true);
       const response = await authService.login(email, password);
-      console.log(response);
       tokenService.setAccessToken(response.data.accessToken);
       tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);
@@ -83,7 +81,6 @@ class AuthStore {
       const response = await axios.get<IAuthResponse>(`${SERVER_URL}/api/refresh`, {
         withCredentials: true,
       });
-      console.log(response);
       tokenService.setAccessToken(response.data.accessToken);
       tokenService.setRefreshToken(response.data.refreshToken);
       this.setUser(response.data.user);

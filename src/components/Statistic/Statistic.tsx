@@ -14,10 +14,10 @@ function Statistic() {
   const { statisticStore, gameStore } = useStores();
   const navigate = useNavigate();
   const [game, setGame] = useState({} as IGame);
+  const index: number = gameStore.generateIndexGame();
 
   useEffect(() => {
     if (!statisticStore.isLoading) {
-      const index: number = gameStore.generateIndexGame();
       const link = `/games/${index + 1}`;
       const { name, description, image } = cards[index];
       setGame({ name, description, image, link });
@@ -31,20 +31,20 @@ function Statistic() {
         {!statisticStore.isLoading && (
           <div className="statistic__grid">
             <div className="statistic__game">
-              <div className="statistic__card-label">Game</div>
-              <div className="statistic__game-title">{game.name}</div>
-              <div className="statistic__game-description">{game.description}</div>
+              <div className="statistic__card-label">{t('Game')}</div>
+              <div className="statistic__game-title">{(cards[index] as { name: string}).name}</div>
+              <div className="statistic__game-description">{(cards[index] as { description: string}).description}</div>
               <Button className="statistic__start-button" onClick={() => navigate(game.link)}>
                 <>{t('Play')}</>
               </Button>
             </div>
             <div className="statistic__score">
-              <div className="statistic__card-label">Score</div>
-              <div className="statistic__card-value">{statisticStore.score} points</div>
+              <div className="statistic__card-label">{t('Score')}</div>
+              <div className="statistic__card-value">{statisticStore.score} {t('points')}</div>
             </div>
             <div className="statistic__level">
-              <div className="statistic__card-label">Level</div>
-              <div className="statistic__card-value">{statisticStore.level} level</div>
+              <div className="statistic__card-label">{t('Level')}</div>
+              <div className="statistic__card-value">{statisticStore.level} {t('level')}</div>
             </div>
           </div>
         )}

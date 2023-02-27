@@ -1,15 +1,13 @@
 .light .progress {
   --color-progress: var(--rss-grey-transparent);
   --color-bgg1: var(--rss-green-dark);
-  --color-bgg2: var(--rss-green);
-  --color-bgg3: var(--rss-green-dark);
+  --color-bgg2: var(--rss-green-darkest);
 }
 
 .dark .progress {
   --color-progress: var(--rss-grey-transparent);
   --color-bgg1: var(--rss-orange-dark);
-  --color-bgg2: var(--rss-orange);
-  --color-bgg3: var(--rss-orange-dark);
+  --color-bgg2: var(--rss-orange-darkest);
 }
 
 .progress {
@@ -24,6 +22,17 @@
 .progress__bar {
   height: 100%;
   display: block;
-  background: linear-gradient(90deg, var(--color-bgg1) 0%, var(--color-bgg2) 50%, var(--color-bgg3) 100%);
+  background-color: var(--color-bgg1);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, var(--color-bgg2) 3px, var(--color-bgg2) 6px);
   transition: all 0.4s ease-in-out 0.2s;
+  animation: slide 8s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 200px;
+  }
 }
