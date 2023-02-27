@@ -12,9 +12,12 @@ import logo from '../../images/logo.svg';
 
 function Header() {
   const { themeStore } = useStores();
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
   const [langImage, setLangImage] = useState(ruImage);
+
+  const savedLang = localStorage.getItem('i18nextLng');
+  if (!savedLang) localStorage.setItem('i18nextLng', 'en');
 
   function changeLanguage(language1: string) {
     i18n.changeLanguage(language1);
