@@ -29,3 +29,4 @@ $ npm run build
 1. i18next
 1. TypeScript
 1. ESlint, Prettier
+1. Axios
