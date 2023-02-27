@@ -1,14 +1,13 @@
 import './Input.css';
 import React, { ForwardedRef } from 'react';
-import { observer } from 'mobx-react-lite';
 import { IInputProps } from '../../../interfaces/IInputProps';
 
 function Input(
-  { className, name, type, placeholder, value, onChange, onKeyDown, onBlur }: IInputProps,
+  { className, name, type, placeholder, value, error, errorText, onChange, onKeyDown, onBlur }: IInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  let classnames = className ? `input ${className}` : 'input input_invalid';
-
+  let classnames = className ? `input ${className}` : 'input';
+  if (error) classnames = `${classnames} input_invalid`;
   return (
     <label className={classnames}>
       <input
@@ -23,10 +22,10 @@ function Input(
         onBlur={onBlur}
       />
       <span className="input__error">
-        <span className="tooltip">error.message error.message error.message error.message</span>
+        <span className="tooltip">{errorText}</span>
       </span>
     </label>
   );
 }
 
-export default observer(React.forwardRef(Input));
+export default React.forwardRef(Input);

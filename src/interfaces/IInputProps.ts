@@ -6,6 +6,8 @@ export interface IInputProps {
   className?: string;
   value?: string;
   placeholder?: string;
+  error?: boolean;
+  errorText?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
