@@ -58,7 +58,6 @@ function Library() {
         <div className="library__group-controls">
           <div className="library__input-control">
             <Input
-              className="input_invalid"
               name="word"
               type="text"
               placeholder={placeholder}
