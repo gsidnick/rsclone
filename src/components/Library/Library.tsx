@@ -56,22 +56,24 @@ function Library() {
     <main className="library">
       <div className="library__container container">
         <div className="library__group-controls">
-          <Input
-            name="word"
-            type="text"
-            placeholder={placeholder}
-            value={word}
-            onChange={wordChangeHandler}
-            onKeyDown={wordKeyDownHandler}
-          />
-          <Button className="" onClick={addClickHandler}>
-            <>{t('Add')}</>
-          </Button>
+          <div className="library__input-control">
+            <Input
+              name="word"
+              type="text"
+              placeholder={placeholder}
+              value={word}
+              onChange={wordChangeHandler}
+              onKeyDown={wordKeyDownHandler}
+            />
+            <Button className="" onClick={addClickHandler}>
+              <>{t('Add')}</>
+            </Button>
+          </div>
         </div>
         {wordStore.isLoading && <Loader />}
         {!wordStore.isLoading && wordStore.words.length === 0 && (
           <>
-            <h1 className="library__message">Add a few words to start learning them</h1>
+            <h1 className="library__message">{t('Add at least 3 words to start learning them')}</h1>
           </>
         )}
         {!wordStore.isLoading && wordStore.words.length > 0 && (

@@ -25,8 +25,8 @@ class WordCharsStore {
 
   public setShuffleWord() {
     const wordTmp = [...this.word];
-    wordTmp.sort((a, b) => 0.5 - Math.random());
-		this.shuffleWord = wordTmp;
+    wordTmp.sort(() => 0.5 - Math.random());
+    this.shuffleWord = wordTmp;
   }
 
   private remoweShuffleWord(index: number) {

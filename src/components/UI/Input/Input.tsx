@@ -1,23 +1,30 @@
+import './Input.css';
 import React, { ForwardedRef } from 'react';
 import { IInputProps } from '../../../interfaces/IInputProps';
-import './Input.css';
 
 function Input(
-  { className, name, type, placeholder, value, onChange, onKeyDown }: IInputProps,
+  { className, name, type, placeholder, value, error, errorText, onChange, onKeyDown, onBlur }: IInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const classnames = className ? `input ${className}` : 'input';
+  let classnames = className ? `input ${className}` : 'input';
+  if (error) classnames = `${classnames} input_invalid`;
   return (
-    <input
-      className={classnames}
-      name={name}
-      type={type}
-      value={value}
-      ref={ref}
-      placeholder={placeholder}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-    />
+    <label className={classnames}>
+      <input
+        className="input__field"
+        name={name}
+        type={type}
+        value={value}
+        ref={ref}
+        placeholder={placeholder}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        onBlur={onBlur}
+      />
+      <span className="input__error">
+        <span className="tooltip">{errorText}</span>
+      </span>
+    </label>
   );
 }
 

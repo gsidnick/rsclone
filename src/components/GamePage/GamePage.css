@@ -12,6 +12,7 @@
   position: relative;
   min-height: 50px;
   margin: 0 0 20px 0;
+  width: 600px;
 }
 
 .gamepage__score {
@@ -30,6 +31,30 @@
   align-items: center;
 }
 
+.gamepage__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.gamepage__message-heading {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .gamepage__panel {
+    width: 400px;
+  }
+
+  .gamepage__score {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
 @media (max-width: 480px) {
 
   .gamepage .container {
@@ -45,14 +70,12 @@
 
   .gamepage__panel {
     margin: 0;
+    width: 300px;
   }
 
   .gamepage__score {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
     font-size: 24px;
     font-weight: 900;
     line-height: 50px;

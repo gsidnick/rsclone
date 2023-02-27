@@ -30,8 +30,10 @@ function Learn() {
           {wordStore.isLoading && <Loader />}
           {!wordStore.isLoading && wordStore.words.length === 0 && (
             <>
-              <h1>You don't have the words to study yet</h1>
-              <Button to="/library">Go Library</Button>
+              <h1>{t("You don't have the words to study yet")}</h1>
+              <Button to="/library">
+                <>{t('Go Library')}</>
+              </Button>
             </>
           )}
           {!wordStore.isLoading && wordStore.words.length > 0 && (

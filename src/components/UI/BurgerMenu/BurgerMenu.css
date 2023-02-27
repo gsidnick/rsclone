@@ -1,19 +1,19 @@
+.light .header {
+  --color-bg: var(--rss-blue);
+  --color-text: var(--rss-white);
+}
+
+.dark .header {
+  --color-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
+}
+
 .burger-menu {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .dark .active,
-  .dark .active::before {
-    --color-text: var(--rss-orange);
-  }
-
-  .light .active,
-  .light .active:before {
-    --color-text: var(--rss-green);
-  }
-
-  .burger-menu {
+   .burger-menu {
     display: block;
   }
 
@@ -84,7 +84,7 @@
     flex-direction: column;
     overflow-y: auto;
     transition: 2s;
-    background-color: var(--rss-blue);
+    background-color: var(--color-bg);
   }
 
   .active {
@@ -119,6 +119,7 @@
     font-weight: 400;
     line-height: 60px;
     text-decoration: none;
+    color: var(--color-text);
   }
 
   .burger-menu__overlay {

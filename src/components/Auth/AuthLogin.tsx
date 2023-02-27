@@ -1,10 +1,14 @@
 import './Auth.css';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
+import ILoginFormInput from '../../interfaces/ILoginFormInput';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 function AuthLogin() {
   const { authStore, modalStore } = useStores();
@@ -13,15 +17,26 @@ function AuthLogin() {
   const [password, setPassword] = useState<string>('');
   const passwordPlalceholder = t('Password');
   const emailPlalceholder = t('Email');
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    emailInputRef.current?.focus();
-  }, []);
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .required('Email is required field')
+      .matches(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i, 'Email should have correct format'),
+    password: yup.string().required('Password is required field'),
+  });
 
-  function authButtonHandler() {
-    authStore.login(email, password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginFormInput>({
+    mode: 'onBlur',
+    resolver: yupResolver(schema),
+  });
+
+  function onSubmit(data: ILoginFormInput) {
+    authStore.login(data.email, data.password);
     modalStore.closeModal();
   }
 
@@ -33,42 +48,30 @@ function AuthLogin() {
     setPassword(event.target.value);
   }
 
-  function emailKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      if (passwordInputRef.current !== null) passwordInputRef.current.focus();
-    }
-  }
-
-  function passwordKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      if (passwordInputRef.current !== null) passwordInputRef.current.blur();
-      authStore.login(email, password);
-      modalStore.closeModal();
-    }
-  }
-
   return (
-    <div className="form">
-      <h1 className="form__heading">Log In</h1>
+    <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+      <h1 className="form__heading">{t('Log In')}</h1>
       <Input
+        {...register('email')}
         name="email"
         type="text"
-        ref={emailInputRef}
         placeholder={emailPlalceholder}
         value={email}
         onChange={emailChangeHandler}
-        onKeyDown={emailKeyDownHandler}
+        error={!!errors.email}
+        errorText={errors?.email?.message}
       />
       <Input
+        {...register('password')}
         name="password"
         type="password"
-        ref={passwordInputRef}
         placeholder={passwordPlalceholder}
         value={password}
         onChange={passwordChangeHandler}
-        onKeyDown={passwordKeyDownHandler}
+        error={!!errors.password}
+        errorText={errors?.password?.message}
       />
-      <Button className="form__button" onClick={authButtonHandler}>
+      <Button className="form__button" type="submit">
         <>{t('Log In')}</>
       </Button>
       <Button className="button_back" onClick={() => modalStore.closeModal()}>
@@ -80,7 +83,7 @@ function AuthLogin() {
           />
         </svg>
       </Button>
-    </div>
+    </form>
   );
 }
 

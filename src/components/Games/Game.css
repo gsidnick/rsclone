@@ -52,7 +52,7 @@
   gap: 0;
 }
 
-.game__input-control .input {
+.game__input-control .input__field {
   border-radius: 8px 0 0 8px;
 }
 

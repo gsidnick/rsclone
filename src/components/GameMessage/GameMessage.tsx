@@ -7,12 +7,16 @@ function GameMessage() {
   const { t } = useTranslation();
 
   return (
-    <main className="game">
-      <h2>{t('Sorry, you need to add at least 3 words to your library for this game')}</h2>
-      <div className="game__button-container">
-        <Button className="" to="/games/">
-          <>{t('Choose another game')}</>
-        </Button>
+    <main className="gamepage">
+      <div className="gamepage__container container">
+        <div className="gamepage__message">
+          <h1 className="gamepage__message-heading">
+            {t('Sorry, you need to add at least 3 words to your library for this game')}
+          </h1>
+          <Button to="/library">
+            <>{t('Go Library')}</>
+          </Button>
+        </div>
       </div>
     </main>
   );

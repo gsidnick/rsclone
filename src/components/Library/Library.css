@@ -39,6 +39,25 @@
   margin: 0 0 40px 0;
 }
 
+.library__group-controls .input {
+  width: 100%;
+}
+
+.library__input-control {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+}
+
+.library__input-control .input__field {
+  border-radius: 8px 0 0 8px;
+}
+
+.library__input-control .button {
+  border-radius: 0 8px 8px 0;
+}
+
 .library__message {
   text-align: center;
 }
@@ -62,7 +81,6 @@
 
 .library__col {
   padding: 10px;
-  overflow: scroll;
 }
 
 .library__row-body {
@@ -126,6 +144,14 @@
     justify-content: center;
     gap: 15px;
     margin: 0 0 40px 0;
+  }
+
+  .library__row-head {
+    font-size: 16px;
+  }
+
+  .library__row-body {
+    font-size: 14px;
   }
 
 }
