@@ -6,7 +6,6 @@ import Loader from '../UI/Loader/Loader';
 import useStores from '../../hooks/useStores';
 import WordTranslationStore from '../../store/WordTranslationStore';
 import { useTranslation } from 'react-i18next';
-import GameMessage from '../GameMessage/GameMessage';
 import GameEndMessage from '../Messages/GameEndMessage';
 import WordIteratorStore from '../../store/WordIteratorStore';
 
@@ -53,8 +52,7 @@ function Game5() {
   return (
     <main className="game">
       {wordStore.isLoading && <Loader />}
-      {!wordStore.isLoading && wordStore.words.length < 3 && <GameMessage />}
-      {!wordStore.isLoading && wordStore.words.length >= 3 && (
+      {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Select the correct translation')}</span>
           <h2 className="game__word">{wordIteratorStore.current.translation}</h2>
