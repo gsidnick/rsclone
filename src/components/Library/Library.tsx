@@ -73,7 +73,7 @@ function Library() {
         {wordStore.isLoading && <Loader />}
         {!wordStore.isLoading && wordStore.words.length === 0 && (
           <>
-            <h1 className="library__message">Add a few words to start learning them</h1>
+            <h1 className="library__message">{t('Add at least 3 words to start learning them')}</h1>
           </>
         )}
         {!wordStore.isLoading && wordStore.words.length > 0 && (

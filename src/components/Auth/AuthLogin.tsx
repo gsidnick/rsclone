@@ -50,7 +50,7 @@ function AuthLogin() {
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <h1 className="form__heading">Log In</h1>
+      <h1 className="form__heading">{t('Log In')}</h1>
       <Input
         {...register('email')}
         name="email"

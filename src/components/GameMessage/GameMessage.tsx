@@ -13,7 +13,9 @@ function GameMessage() {
           <h1 className="gamepage__message-heading">
             {t('Sorry, you need to add at least 3 words to your library for this game')}
           </h1>
-          <Button to="/library">Go Library</Button>
+          <Button to="/library">
+            <>{t('Go Library')}</>
+          </Button>
         </div>
       </div>
     </main>

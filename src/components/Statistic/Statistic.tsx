@@ -35,7 +35,7 @@ function Statistic() {
               <div className="statistic__game-title">{game.name}</div>
               <div className="statistic__game-description">{game.description}</div>
               <Button className="statistic__start-button" onClick={() => navigate(game.link)}>
-                Play
+                <>{t('Play')}</>
               </Button>
             </div>
             <div className="statistic__score">

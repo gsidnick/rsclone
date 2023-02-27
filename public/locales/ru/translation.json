@@ -56,6 +56,10 @@
   "Choose another game": "Выбрать другую игру",
   "Sorry, this page not found!": "Извините, эта страница не найдена!",
   "Go home": "Вернуться домой",
+  "Go Library": "В библиотеку",
+  "You don't have the words to study yet": "У вас еще нет слов для изучения",
+  "Add at least 3 words to start learning them": "Добавьте минимум 3 слова, чтобы начать их изучать",
+  "Play": "Играть",
 
   "cards": [
     {
