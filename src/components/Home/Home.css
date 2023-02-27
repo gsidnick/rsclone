@@ -82,3 +82,22 @@
   }
 
 }
+
+@media (max-width: 480px) {
+
+  .home {
+    padding: 20px 0;
+  }
+
+  .home__greeting-text {
+    font-size: 24px;
+  }
+
+  .home__group-controls {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 40px 0 0 0;
+  }
+
+}

@@ -125,3 +125,25 @@
   }
   
 }
+
+@media (max-width: 480px) {
+
+  .game {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .game__group-controls {
+    width: 300px;
+    flex-direction: column;
+  }
+
+  .game__img-hear {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+}

@@ -35,11 +35,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 0 60px 0;
-}
-
-.learn__wrapper > * + * {
-  margin: 20px 0 0 0;
+  gap: 20px;
+  margin-bottom: 60px;
 }
 
 .learn__word-learn {
@@ -77,6 +74,24 @@
 
   .learn__word-to {
     font-size: 32px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .learn__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .learn__group-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
 }

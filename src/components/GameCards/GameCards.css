@@ -104,3 +104,17 @@
   }
 
 }
+
+@media (max-width: 480px) {
+
+  .gamecards {
+    padding: 20px 0;
+  }
+
+  .gamecards__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+}

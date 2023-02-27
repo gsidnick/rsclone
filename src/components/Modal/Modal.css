@@ -42,3 +42,12 @@
 .modal_open .modal__container {
   opacity: 1;
 }
+
+@media (max-width: 480px) {
+
+  .modal__container {
+    margin: 0 10px;
+    padding: 20px;
+  }
+
+}

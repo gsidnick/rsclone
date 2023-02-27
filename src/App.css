@@ -18,3 +18,12 @@
   }
 
 }
+
+@media (max-width: 480px) {
+
+  .container {
+    width: 300px;
+    margin: auto;
+  }
+
+}

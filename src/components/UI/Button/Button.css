@@ -145,3 +145,12 @@ a.button {
   }
   
 }
+
+@media (max-width: 480px) {
+
+  .button.button_back {
+    top: 10px;
+    left: 10px;
+  }
+  
+}

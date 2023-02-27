@@ -112,3 +112,20 @@
   }
 
 }
+
+@media (max-width: 480px) {
+
+  .library {
+    padding: 30px 0;
+  }
+
+  .library__group-controls {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 0 40px 0;
+  }
+
+}
