@@ -1,24 +1,32 @@
-import React, { ForwardedRef } from 'react';
-import { IInputProps } from '../../../interfaces/IInputProps';
 import './Input.css';
+import React, { ForwardedRef } from 'react';
+import { observer } from 'mobx-react-lite';
+import { IInputProps } from '../../../interfaces/IInputProps';
 
 function Input(
-  { className, name, type, placeholder, value, onChange, onKeyDown }: IInputProps,
+  { className, name, type, placeholder, value, onChange, onKeyDown, onBlur }: IInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const classnames = className ? `input ${className}` : 'input';
+  let classnames = className ? `input ${className}` : 'input input_invalid';
+
   return (
-    <input
-      className={classnames}
-      name={name}
-      type={type}
-      value={value}
-      ref={ref}
-      placeholder={placeholder}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-    />
+    <label className={classnames}>
+      <input
+        className="input__field"
+        name={name}
+        type={type}
+        value={value}
+        ref={ref}
+        placeholder={placeholder}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        onBlur={onBlur}
+      />
+      <span className="input__error">
+        <span className="tooltip">error.message error.message error.message error.message</span>
+      </span>
+    </label>
   );
 }
 
-export default React.forwardRef(Input);
+export default observer(React.forwardRef(Input));

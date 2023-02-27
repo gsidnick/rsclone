@@ -48,7 +48,7 @@ function AuthLogin() {
   }
 
   return (
-    <div className="form">
+    <form className="form" onSubmit={() => console.log('Submit')}>
       <h1 className="form__heading">Log In</h1>
       <Input
         name="email"
@@ -80,7 +80,7 @@ function AuthLogin() {
           />
         </svg>
       </Button>
-    </div>
+    </form>
   );
 }
 
