@@ -36,6 +36,10 @@
 
 @media (max-width: 768px) {
 
+  .nav {
+    display: none;
+  }
+
   .nav__list {
     gap: 10px;
   }
