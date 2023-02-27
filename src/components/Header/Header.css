@@ -20,6 +20,13 @@
 .header__container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.header__left-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .header__logo {
@@ -28,17 +35,18 @@
   display: flex;
   align-items: center;
   font-weight: 900;
+  margin: 0 20px 0 0;
 }
 
 .header__options {
   width: 160px;
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   align-items: center;
 }
 
 .header__button-lang {
-  width: 35px;
+  width: 20px;
   height: 20px;
   border-radius: 20px;
   border: none;
@@ -51,7 +59,8 @@
 }
 
 .header__button-theme {
-  width: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   transition: all 0.2s;
 }
