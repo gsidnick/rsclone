@@ -81,7 +81,6 @@
 
 .library__col {
   padding: 10px;
-  overflow: scroll;
 }
 
 .library__row-body {
@@ -145,6 +144,10 @@
     justify-content: center;
     gap: 15px;
     margin: 0 0 40px 0;
+  }
+
+  .library__row-head {
+    font-size: 16px;
   }
 
 }

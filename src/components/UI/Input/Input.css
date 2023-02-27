@@ -88,3 +88,11 @@
 .input__error:hover .tooltip {
   display: block;
 }
+
+@media (max-width: 480px) {
+
+  .input__field {
+    min-width: auto;
+  }
+
+}
