@@ -1,7 +1,7 @@
 .gamepage {
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 145px);
+  min-height: calc(100vh - 160px);
   position: relative;
   padding: 40px 0;
 }
