@@ -14,10 +14,10 @@ function Statistic() {
   const { statisticStore, gameStore } = useStores();
   const navigate = useNavigate();
   const [game, setGame] = useState({} as IGame);
+  const index: number = gameStore.generateIndexGame();
 
   useEffect(() => {
     if (!statisticStore.isLoading) {
-      const index: number = gameStore.generateIndexGame();
       const link = `/games/${index + 1}`;
       const { name, description, image } = cards[index];
       setGame({ name, description, image, link });
@@ -32,8 +32,8 @@ function Statistic() {
           <div className="statistic__grid">
             <div className="statistic__game">
               <div className="statistic__card-label">Game</div>
-              <div className="statistic__game-title">{game.name}</div>
-              <div className="statistic__game-description">{game.description}</div>
+              <div className="statistic__game-title">{(cards[index] as { name: string}).name}</div>
+              <div className="statistic__game-description">{(cards[index] as { description: string}).description}</div>
               <Button className="statistic__start-button" onClick={() => navigate(game.link)}>
                 <>{t('Play')}</>
               </Button>
