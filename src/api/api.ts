@@ -1,7 +1,7 @@
 import axios from 'axios';
 import TokenService from '../services/TokenService';
 
-const SERVER_URL = process.env.REACT_APP_RAILWAY_URL;
+const SERVER_URL = 'https://rsclone-api.up.railway.app';
 const api = axios.create({
   withCredentials: true,
   baseURL: `${SERVER_URL}/api`,

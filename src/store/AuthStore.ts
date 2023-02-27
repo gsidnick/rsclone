@@ -7,7 +7,7 @@ import TokenService from '../services/TokenService';
 
 const authService = new AuthService();
 const tokenService = new TokenService();
-const SERVER_URL = process.env.REACT_APP_RAILWAY_URL;
+const SERVER_URL = 'https://rsclone-api.up.railway.app';
 
 class AuthStore {
   public user: IUser = {} as IUser;

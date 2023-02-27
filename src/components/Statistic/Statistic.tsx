@@ -31,7 +31,7 @@ function Statistic() {
         {!statisticStore.isLoading && (
           <div className="statistic__grid">
             <div className="statistic__game">
-              <div className="statistic__card-label">Game</div>
+              <div className="statistic__card-label">{t('Game')}</div>
               <div className="statistic__game-title">{(cards[index] as { name: string}).name}</div>
               <div className="statistic__game-description">{(cards[index] as { description: string}).description}</div>
               <Button className="statistic__start-button" onClick={() => navigate(game.link)}>
@@ -39,12 +39,12 @@ function Statistic() {
               </Button>
             </div>
             <div className="statistic__score">
-              <div className="statistic__card-label">Score</div>
-              <div className="statistic__card-value">{statisticStore.score} points</div>
+              <div className="statistic__card-label">{t('Score')}</div>
+              <div className="statistic__card-value">{statisticStore.score} {t('points')}</div>
             </div>
             <div className="statistic__level">
-              <div className="statistic__card-label">Level</div>
-              <div className="statistic__card-value">{statisticStore.level} level</div>
+              <div className="statistic__card-label">{t('Level')}</div>
+              <div className="statistic__card-value">{statisticStore.level} {t('level')}</div>
             </div>
           </div>
         )}
