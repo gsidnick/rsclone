@@ -1,9 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
+import ISignupFormInput from '../../interfaces/ISignupFormInput';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 function AuthSignup() {
   const { authStore, modalStore } = useStores();
@@ -14,16 +18,35 @@ function AuthSignup() {
   const passwordPlalceholder = t('Password');
   const emailPlalceholder = t('Email');
   const namePlalceholder = t('Name');
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    nameInputRef.current?.focus();
-  }, []);
+  const schema = yup.object().shape({
+    name: yup
+      .string()
+      .required('Name is required field')
+      .matches(/^([a-zA-Zа-яА-Я]){1,}/, 'Name should contain letter first')
+      .matches(/^([^0-9]*)$/, 'Name should not contain numbers')
+      .matches(/^([^!~`@"#№$;%^:&?()\\|/\-=_,.+*]*)$/, 'Name should not contain special characters'),
+    email: yup
+      .string()
+      .required('Email is required field')
+      .matches(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i, 'Email should have correct format'),
+    password: yup
+      .string()
+      .required('Password is required field')
+      .matches(/^(.){8,}$/, 'Password should contain at least 8 characters'),
+  });
 
-  async function authButtonHandler() {
-    authStore.signup(name, email, password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignupFormInput>({
+    mode: 'onBlur',
+    resolver: yupResolver(schema),
+  });
+
+  function onSubmit(data: ISignupFormInput) {
+    authStore.signup(data.name, data.email, data.password);
     modalStore.closeModal();
   }
 
@@ -39,57 +62,40 @@ function AuthSignup() {
     setPassword(event.target.value);
   }
 
-  function nameKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      if (emailInputRef.current !== null) emailInputRef.current.focus();
-    }
-  }
-
-  function emailKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      if (passwordInputRef.current !== null) passwordInputRef.current.focus();
-    }
-  }
-
-  function passwordKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      if (passwordInputRef.current !== null) passwordInputRef.current.blur();
-      authStore.signup(name, email, password);
-      modalStore.closeModal();
-    }
-  }
-
   return (
-    <div className="form">
+    <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <h1 className="form__heading">{t('Sign Up')}</h1>
       <Input
+        {...register('name')}
         name="name"
         type="text"
-        ref={nameInputRef}
         placeholder={namePlalceholder}
         value={name}
         onChange={nameChangeHandler}
-        onKeyDown={nameKeyDownHandler}
+        error={!!errors.name}
+        errorText={errors?.name?.message}
       />
       <Input
+        {...register('email')}
         name="email"
         type="text"
-        ref={emailInputRef}
         placeholder={emailPlalceholder}
         value={email}
         onChange={emailChangeHandler}
-        onKeyDown={emailKeyDownHandler}
+        error={!!errors.email}
+        errorText={errors?.email?.message}
       />
       <Input
+        {...register('password')}
         name="password"
         type="password"
-        ref={passwordInputRef}
         placeholder={passwordPlalceholder}
         value={password}
         onChange={passwordChangeHandler}
-        onKeyDown={passwordKeyDownHandler}
+        error={!!errors.password}
+        errorText={errors?.password?.message}
       />
-      <Button className="form__button" onClick={authButtonHandler}>
+      <Button className="form__button" type="submit">
         <>{t('Sign Up')}</>
       </Button>
       <Button className="button_back" onClick={() => modalStore.closeModal()}>
@@ -101,7 +107,7 @@ function AuthSignup() {
           />
         </svg>
       </Button>
-    </div>
+    </form>
   );
 }
 
