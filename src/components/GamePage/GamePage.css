@@ -30,6 +30,18 @@
   align-items: center;
 }
 
+.gamepage__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.gamepage__message-heading {
+  text-align: center;
+}
+
 @media (max-width: 480px) {
 
   .gamepage .container {
