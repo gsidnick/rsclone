@@ -150,4 +150,8 @@
     font-size: 16px;
   }
 
+  .library__row-body {
+    font-size: 14px;
+  }
+
 }
