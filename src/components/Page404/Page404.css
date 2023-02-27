@@ -6,7 +6,7 @@
 }
 
 .pagenotfound {
-  min-height: calc(100vh - 145px);
+  min-height: calc(100vh - 160px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,7 @@
 }
 
 @keyframes play {
-	100% { 
-    background-position: -1900px; 
+	100% {
+    background-position: -1900px;
   }
 }
