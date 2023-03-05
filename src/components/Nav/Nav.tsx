@@ -13,35 +13,31 @@ function Nav() {
   return (
     <nav ref={navRef} className="nav">
       <ul className="nav__list">
-        {authStore.isAuth && (
-          <>
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/" end>
-                {t('Home')}
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/games/">
-                {t('Games')}
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/library/">
-                {t('Library')}
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink className="nav__link" to="/learn/">
-                {t('Learn')}
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <Link className="nav__link" onClick={() => authStore.logout()} to="/">
-                {t('Log Out')}
-              </Link>
-            </li>
-          </>
-        )}
+        <li className="nav__item">
+          <NavLink className="nav__link" to="/" end>
+            {t('Home')}
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink className="nav__link" to="/games/">
+            {t('Games')}
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink className="nav__link" to="/library/">
+            {t('Library')}
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink className="nav__link" to="/learn/">
+            {t('Learn')}
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <Link className="nav__link" onClick={() => authStore.logout()} to="/">
+            {t('Log Out')}
+          </Link>
+        </li>
       </ul>
     </nav>
   );
