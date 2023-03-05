@@ -53,7 +53,7 @@ class WordCharsStore {
     }
   }
 
-  private cleanCurrentWord() {
+  public cleanCurrentWord() {
     this.word = [];
     this.currentWord = [];
   }
