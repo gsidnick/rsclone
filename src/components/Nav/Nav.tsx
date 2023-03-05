@@ -1,7 +1,7 @@
+import './Nav.css';
 import { useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Link, NavLink } from 'react-router-dom';
-import './Nav.css';
 import useStores from '../../hooks/useStores';
 import { useTranslation } from 'react-i18next';
 
