@@ -55,6 +55,11 @@ function Game2() {
       {wordStore.isLoading && <Loader />}
       {!wordStore.isLoading && (
         <>
+          <div className="game__word-row game__word-row-none">
+            {wordCharsStore.word.map((char, index) => {
+              return <span className="game__char game__char-none" key={index}></span>;
+            })}
+          </div>
           <div className="game__wrapper">
             <div className="game__word-row">
               {wordCharsStore.word.map((char, index) => {

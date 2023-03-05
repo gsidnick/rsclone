@@ -74,6 +74,11 @@
   gap: 10px;
 }
 
+.game__word-row-none {
+  min-height: 0;
+  height: 0;
+}
+
 .game__char {
   width: 50px;
   height: 50px;
@@ -84,6 +89,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.game__char-none {
+  height: 0;
+  min-height: 0;
+  border: none;
+  font-size: 0;
 }
 
 .game__wrapper .game__word-row {
