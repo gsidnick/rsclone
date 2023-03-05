@@ -18,8 +18,10 @@ function GamePage() {
   const Game: GameFunctionalComponent | undefined = gameStore.loadGame(gameNumber);
 
   useEffect(() => {
-    gameStore.points = statisticStore.score;
-  }, []);
+    if (!statisticStore.isLoading) {
+      gameStore.points = statisticStore.score;
+    }
+  }, [statisticStore.isLoading]);
 
   return (
     <>
