@@ -1,5 +1,5 @@
 import './Home.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../UI/Button/Button';
 import useStores from '../../hooks/useStores';
 import { observer } from 'mobx-react-lite';
@@ -11,6 +11,13 @@ import cover from '../../images/cover.svg';
 function Home() {
   const { modalStore } = useStores();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!localStorage.getItem('reloaded')) {
+      localStorage.setItem('reloaded', 'true');
+      window.location.reload();
+    }
+  }, []);
 
   function openLoginForm() {
     modalStore.openModal(<AuthLogin />);

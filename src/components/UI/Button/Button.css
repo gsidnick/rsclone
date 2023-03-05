@@ -4,7 +4,7 @@
   --color-bg-shadow: var(--rss-green-shadow);
   --color-text: var(--rss-white);
   --color-bg-arrow: var(--rss-grey-dark-lighter);
-  --color-bg-arrow-hover: var(--rss-grey-dark)
+  --color-bg-arrow-hover: var(--rss-grey-dark);
 }
 
 .dark .button {
@@ -13,7 +13,7 @@
   --color-bg-shadow: var(--rss-orange-shadow);
   --color-text: var(--rss-white);
   --color-bg-arrow: var(--rss-grey-light-lighter);
-  --color-bg-arrow-hover: var(--rss-grey-light)
+  --color-bg-arrow-hover: var(--rss-grey-light);
 }
 
 .button {
@@ -147,6 +147,11 @@ a.button {
 }
 
 @media (max-width: 480px) {
+
+  .button {
+    padding: 10px;
+    font-size: 14px;
+  }
 
   .button.button_back {
     top: 10px;

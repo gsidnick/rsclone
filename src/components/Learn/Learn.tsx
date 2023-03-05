@@ -15,7 +15,7 @@ function Learn() {
   const { wordStore } = useStores();
   useEffect(() => {
     if (!wordStore.isLoading) wordIteratorStore.setWords(wordStore.words);
-  }, [wordStore.isLoading]);
+  }, [wordStore.isLoading, wordIteratorStore]);
 
   function learnKeyDownHandler(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === 'ArrowRight') wordIteratorStore.nextWord();
@@ -39,9 +39,9 @@ function Learn() {
           {!wordStore.isLoading && wordStore.words.length > 0 && (
             <>
               <div className="learn__wrapper">
-                <span className="learn__word-learn">{wordIteratorStore.current.learn}%</span>
-                <span className="learn__word-from">{wordIteratorStore.current.word}</span>
-                <span className="learn__word-to">{wordIteratorStore.current.translation}</span>
+                <span className="learn__word-learn">{wordIteratorStore.current?.learn}%</span>
+                <span className="learn__word-from">{wordIteratorStore.current?.word}</span>
+                <span className="learn__word-to">{wordIteratorStore.current?.translation}</span>
               </div>
               <div className="learn__group-controls">
                 <Button className="learn__button button_outline" onClick={() => wordIteratorStore.prevWord()}>

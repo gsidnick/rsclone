@@ -8,6 +8,7 @@ import WordIteratorStore from '../../store/WordIteratorStore';
 import WordSpeechStore from '../../store/WordSpeechStore';
 import { useTranslation } from 'react-i18next';
 import GameEndMessage from '../Messages/GameEndMessage';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordSpeechStore = new WordSpeechStore();
@@ -31,13 +32,21 @@ function Game1() {
     wordIteratorStore.nextWord();
   }
 
+  function windowHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') wordIteratorStore.nextWord();
+  }
+
   useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
       gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
       wordSpeechStore.setWord(wordIteratorStore.current.translation);
+      window.addEventListener('keydown', windowHandler);
     }
+    return () => {
+      window.removeEventListener('keydown', windowHandler);
+    };
   }, [wordStore.isLoading]);
 
   useEffect(() => {
@@ -69,6 +78,7 @@ function Game1() {
   return (
     <div className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Say this word')}</span>

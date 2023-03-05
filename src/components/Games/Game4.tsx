@@ -9,6 +9,7 @@ import WordWriteStore from '../../store/WordWriteStore';
 import { useTranslation } from 'react-i18next';
 import GameEndMessage from '../Messages/GameEndMessage';
 import Input from '../UI/Input/Input';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordWriteStore = new WordWriteStore();
@@ -45,11 +46,6 @@ function Game4() {
       const target = event.target as HTMLInputElement;
       target.focus();
     }
-    if (event.key === 'Escape') {
-      gameStore.setWrong();
-      wordIteratorStore.nextWord();
-      setWord('');
-    }
   }
 
   function okButtonHandler() {
@@ -62,6 +58,13 @@ function Game4() {
     wordInputRef.current?.focus();
   }
 
+  function windowHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      wordIteratorStore.nextWord();
+      setWord('');
+    }
+  }
+
   useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
@@ -70,7 +73,11 @@ function Game4() {
       gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
       wordInputRef.current?.focus();
+      window.addEventListener('keydown', windowHandler);
     }
+    return () => {
+      window.removeEventListener('keydown', windowHandler);
+    };
   }, [wordStore.isLoading]);
 
   useEffect(() => {
@@ -90,6 +97,7 @@ function Game4() {
   return (
     <main className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Write a translation for this word')}</span>
