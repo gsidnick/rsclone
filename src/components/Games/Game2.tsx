@@ -60,6 +60,7 @@ function Game2() {
               return <span className="game__char game__char-none" key={index}></span>;
             })}
           </div>
+          <h2 className="game__word">{wordIteratorStore.current.word}</h2>
           <div className="game__wrapper">
             <div className="game__word-row">
               {wordCharsStore.word.map((char, index) => {
