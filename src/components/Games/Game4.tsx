@@ -46,11 +46,6 @@ function Game4() {
       const target = event.target as HTMLInputElement;
       target.focus();
     }
-    if (event.key === 'Escape') {
-      gameStore.setWrong();
-      wordIteratorStore.nextWord();
-      setWord('');
-    }
   }
 
   function okButtonHandler() {
@@ -63,6 +58,13 @@ function Game4() {
     wordInputRef.current?.focus();
   }
 
+  function windowHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      wordIteratorStore.nextWord();
+      setWord('');
+    }
+  }
+
   useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
@@ -71,7 +73,11 @@ function Game4() {
       gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
       wordInputRef.current?.focus();
+      window.addEventListener('keydown', windowHandler);
     }
+    return () => {
+      window.removeEventListener('keydown', windowHandler);
+    };
   }, [wordStore.isLoading]);
 
   useEffect(() => {

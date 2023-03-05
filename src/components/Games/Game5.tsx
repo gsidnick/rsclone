@@ -34,6 +34,10 @@ function Game5() {
     }
   }
 
+  function windowHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') wordIteratorStore.nextWord();
+  }
+
   useEffect(() => {
     if (wordIteratorStore.isEnd) {
       modalStore.openModal(<GameEndMessage />);
@@ -47,7 +51,11 @@ function Game5() {
       wordTranslationStore.setCorrectAnswer(wordIteratorStore.current);
       gameStore.setTotal(wordStore.words.length);
       gameStore.iterator = wordIteratorStore;
+      window.addEventListener('keydown', windowHandler);
     }
+    return () => {
+      window.removeEventListener('keydown', windowHandler);
+    };
   }, [wordStore.isLoading]);
 
   return (

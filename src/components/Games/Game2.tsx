@@ -22,6 +22,10 @@ function Game2() {
     wordCharsStore.cleanCurrentWord();
   }
 
+  function windowHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') wordIteratorStore.nextWord();
+  }
+
   useEffect(() => {
     if (!wordStore.isLoading) {
       wordIteratorStore.setWords(wordStore.words);
@@ -29,7 +33,11 @@ function Game2() {
       gameStore.iterator = wordIteratorStore;
       wordCharsStore.setWord(wordIteratorStore.current.translation);
       wordCharsStore.setShuffleWord();
+      window.addEventListener('keydown', windowHandler);
     }
+    return () => {
+      window.removeEventListener('keydown', windowHandler);
+    };
   }, [wordStore.isLoading]);
 
   useEffect(() => {
