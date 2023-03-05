@@ -22,7 +22,7 @@ function Statistic() {
       const { name, description, image } = cards[index];
       setGame({ name, description, image, link });
     }
-  }, [statisticStore.isLoading]);
+  }, [statisticStore.isLoading, index]);
 
   return (
     <main className="statistic">
