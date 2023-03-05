@@ -11,7 +11,7 @@ import enImage from '../../images/en.svg';
 import logo from '../../images/logo.svg';
 
 function Header() {
-  const { themeStore } = useStores();
+  const { authStore, themeStore } = useStores();
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
   const [langImage, setLangImage] = useState(ruImage);
@@ -52,8 +52,12 @@ function Header() {
             />
           </div>
         </div>
-        <Nav />
-        <BurgerMenu />
+        {authStore.isAuth && (
+          <>
+            <Nav />
+            <BurgerMenu />
+          </>
+        )}
       </div>
     </div>
   );
