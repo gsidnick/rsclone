@@ -1,0 +1,101 @@
+{
+  "NAV": "NAV",
+  "Home": "Домой",
+  "Games": "Игры",
+  "Game": "Игра",
+  "Score": "Счет",
+  "points": "баллов",
+  "Level": "Уровень",
+  "level": "уровень",
+  "Library": "Библиотека",
+  "Learn": "Изучение",
+  "Log Out": "Выйти",
+
+  "LEARN": "LEARN",
+  "Previous": "Назад",
+  "Next": "Вперед",
+
+  "HOME": "HOME",
+  "Hey, friend, let's start our journey!": "Друг, давай начнем наше путешествие!",
+  "Discover new opportunities for communication, career and travel": "Откройте для себя новые возможности для общения, карьеры и путешествий",
+  "Log In": "Войти",
+  "Sign Up": "Регистрация",
+
+  "LIBRARY": "LIBRARY",
+  "Add": "Добавить",
+  "Word": "Слово",
+  "Translation": "Перевод",
+  "Type new word here...": "Введите новое слово здесь...",
+
+  "FOOTER": "FOOTER",
+  "© 2023, All Rights Reserved": "© 2023, Все права защищены",
+
+  "AUTH LOGIN": "AUTH LOGIN",
+  "Password": "Пароль",
+  "Email": "Эл. почта",
+  "Name": "Имя",
+
+  "GAME PAGE": "GAME PAGE",
+  "Points": "Очки",
+  "Wrong": "Ошибки",
+  "Correct": "Правильно",
+
+  "GAME1": "GAME1",
+  "Say this word": "Произнесите это слово",
+  "Speak now...": "Говорите сейчас...",
+  "Start Speaking": "Начать говорить",
+  "Skip it": "Пропустить",
+  "Write a translation for this word": "Напишите перевод для этого слова : ",
+  "Ok": "Ввести",
+  "Select the correct translation": "Выберите правильный вариант перевода слова :",
+  "Sorry, you need to add at least 3 words to your library for this game": "Извините, для этой игры нужно добавить минимум 3 слова в библиотеку",
+
+  "GAME3": "GAME3",
+  "It translates as": "Переводится ли это как",
+  "Next word": "Следующее слово",
+  "Yes": "Да",
+  "No": "Нет",
+
+  "GAME NOT FOUND": "GAME NOT FOUND",
+  "Sorry, this game not found!": "Извините, эта игра не найдена!",
+  "Choose another game": "Выбрать другую игру",
+  "Sorry, this page not found!": "Извините, эта страница не найдена!",
+  "Go home": "Вернуться домой",
+  "Go Library": "В библиотеку",
+  "You don't have the words to study yet": "У вас еще нет слов для изучения",
+  "Add at least 3 words to start learning them": "Добавьте минимум 3 слова, чтобы начать их изучать",
+  "Play": "Играть",
+
+  "cards": [
+    {
+      "name": "Переведи и произнеси слово ",
+      "description": "Переведите и произнесите слово на экране",
+      "image": "/images/speak-and-check.svg"
+    },
+    {
+      "name": "Составь перевод",
+      "description": "Соберите правильный перевод предложенного слова по буквам",
+      "image": "/images/put-translation.svg"
+    },
+    {
+      "name": "Выбери правильный перевод",
+      "description": "Выберите правильный перевод из трёх предложенных ангийских слов",
+      "image": "/images/select-translation.svg"
+    },
+    {
+      "name": "Введи правильный перевод",
+      "description": "Введи правильный перевод предложенного слова",
+      "image": "/images/write-translation.svg"
+    },
+    {
+      "name": "Выбери правильное слово",
+      "description": "Выберите правильное слово из трёх предложенных русских переводов",
+      "image": "/images/remember-translation.svg"
+    },
+    {
+      "name": "Слушаем и переводим",
+      "description": "Послушайте перевод и выберите правильный ответ",
+      "image": "/images/listen-sprint.svg"
+    }
+  ]
+}

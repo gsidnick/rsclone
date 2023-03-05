@@ -1,0 +1,179 @@
+.light .statistic {
+  --color-bg: var(--rss-white);
+  --color-label: var(--rss-grey-light);
+  --color-text: var(--rss-black);
+  --color-bg-card: var(--rss-grey-light-lighter);
+  --color-border: var(--rss-green);
+}
+
+.dark .statistic {
+  --color-bg: var(--rss-grey-dark);
+  --color-label: var(--rss-white);
+  --color-text: var(--rss-grey-light);
+  --color-bg-card: var(--rss-grey-dark-lighter);
+  --color-border: var(--rss-orange);
+}
+
+.statistic {
+  display: flex;
+  color: var(--color-text);
+  min-height: calc(100vh - 160px);
+  position: relative;
+}
+
+.statistic__grid {
+  display: grid;
+  grid-template-columns: 360px 600px;
+  gap: 40px;
+  grid-template-areas:
+    "level game"
+    "level game"
+    "score game"
+    "score game";
+}
+
+.statistic__game {
+  grid-area: game;
+  padding: 40px;
+  background: var(--color-bg-card);
+  border-top: 10px solid var(--color-border);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistic__game-title {
+  font-size: 36px;
+  font-weight: 900;
+  width: 400px;
+  margin: 20px;
+}
+
+.statistic__game-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 400px;
+}
+
+.statistic__start-button {
+  margin: 40px 0 0 0;
+}
+
+.statistic__score {
+  grid-area: score;
+  padding: 40px;
+  background: var(--color-bg-card);
+  border-top: 10px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.statistic__level {
+  grid-area: level;
+  padding: 40px;
+  background: var(--color-bg-card);
+  border-top: 10px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.statistic__card-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  margin: 0 0 10px 0;
+  color: var(--color-label);
+}
+
+.statistic__card-value {
+  font-size: 36px;
+  font-weight: 900;
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+
+  .statistic__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .statistic__game {
+    padding: 20px;
+  }
+
+  .statistic__score {
+    padding: 20px;
+  }
+
+  .statistic__level {
+    padding: 20px;
+  }
+
+  .statistic__card-value {
+      font-size: 24px;
+  }
+
+  .statistic__game-title {
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .statistic__grid {
+    grid-template-areas:
+      "level score"
+      "game game";
+  }
+
+  .statistic__game {
+    padding: 20px;
+  }
+
+  .statistic__score {
+    padding: 20px;
+  }
+
+  .statistic__level {
+    padding: 20px;
+  }
+
+  .statistic__card-value {
+      font-size: 24px;
+  }
+
+  .statistic__game-title {
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .statistic {
+    padding: 20px 0;
+  }
+
+  .statistic__grid {
+    grid-template-areas:
+      "level level"
+      "score score"
+      "game game";
+  }
+
+  .statistic__game-title {
+    width: 300px;
+  }
+
+  .statistic__game-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 300px;
+  }
+
+}

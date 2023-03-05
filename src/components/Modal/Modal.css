@@ -1,0 +1,53 @@
+.light .modal {
+  --color-bg: var(--rss-grey-transparent);
+  --color-container-bg: var(--rss-white);
+  --color-text: var(--rss-black);
+}
+
+.dark .modal {
+  --color-bg: var(--rss-grey-transparent);
+  --color-container-bg: var(--rss-grey-dark);
+  --color-text: var(--rss-grey-light);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal__container {
+  padding: 40px;
+  background-color: var(--color-container-bg);
+  border-radius: 12px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out 0.1s;
+}
+
+.modal_open {
+  z-index: 100;
+  opacity: 1;
+}
+
+.modal_open .modal__container {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+
+  .modal__container {
+    margin: 0 10px;
+    padding: 20px;
+  }
+
+}

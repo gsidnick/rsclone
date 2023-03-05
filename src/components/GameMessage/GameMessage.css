@@ -1,0 +1,13 @@
+.gamenotfound {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gamenotfound__heading {
+  font-size: 48px;
+  text-align: center;
+  margin: 0 0 40px 0;
+}

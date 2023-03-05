@@ -1,0 +1,84 @@
+.gamepage {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  position: relative;
+  padding: 40px 0;
+}
+
+.gamepage__panel {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  min-height: 50px;
+  margin: 0 0 20px 0;
+  width: 600px;
+}
+
+.gamepage__score {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 50px;
+}
+
+.gamepage__content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gamepage__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.gamepage__message-heading {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .gamepage__panel {
+    width: 400px;
+  }
+
+  .gamepage__score {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .gamepage .container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gamepage {
+    padding: 20px 0;
+  }
+
+  .gamepage__panel {
+    margin: 0;
+    width: 300px;
+  }
+
+  .gamepage__score {
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 50px;
+  }
+
+}
