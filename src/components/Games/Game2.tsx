@@ -1,6 +1,7 @@
 import './Game.css';
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 import Button from '../UI/Button/Button';
 import Loader from '../UI/Loader/Loader';
 import useStores from '../../hooks/useStores';
@@ -13,7 +14,13 @@ const wordIteratorStore = new WordIteratorStore();
 const wordCharsStore = new WordCharsStore();
 
 function Game2() {
+  const { t } = useTranslation();
   const { wordStore, gameStore, modalStore } = useStores();
+
+  function skipButtonHandler() {
+    wordIteratorStore.nextWord();
+    wordCharsStore.cleanCurrentWord();
+  }
 
   useEffect(() => {
     if (!wordStore.isLoading) {
@@ -79,18 +86,25 @@ function Game2() {
               })}
             </div>
           </div>
-          <div className="game__word-row">
-            {wordCharsStore.shuffleWord.map((char, index) => {
-              return (
-                <Button
-                  className="button_square game__char-button"
-                  onClick={() => wordCharsStore.check(index)}
-                  key={index}
-                >
-                  {char}
-                </Button>
-              );
-            })}
+          <div className="game__wrapper">
+            <div className="game__word-row">
+              {wordCharsStore.shuffleWord.map((char, index) => {
+                return (
+                  <Button
+                    className="button_square game__char-button"
+                    onClick={() => wordCharsStore.check(index)}
+                    key={index}
+                  >
+                    {char}
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="game__group-controls">
+            <Button className="button_red" onClick={skipButtonHandler}>
+              <>{t('Skip it')}</>
+            </Button>
           </div>
         </>
       )}
