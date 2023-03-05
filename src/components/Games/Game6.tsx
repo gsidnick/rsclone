@@ -9,6 +9,7 @@ import WordListenStore from '../../store/WordListenStore';
 import { useTranslation } from 'react-i18next';
 import GameEndMessage from '../Messages/GameEndMessage';
 import EarSvg from '../../images/ear.svg';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordListenStore = new WordListenStore();
@@ -71,6 +72,7 @@ function Game6() {
   return (
     <main className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('It translates as')}</span>

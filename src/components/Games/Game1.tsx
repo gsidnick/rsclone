@@ -8,6 +8,7 @@ import WordIteratorStore from '../../store/WordIteratorStore';
 import WordSpeechStore from '../../store/WordSpeechStore';
 import { useTranslation } from 'react-i18next';
 import GameEndMessage from '../Messages/GameEndMessage';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordSpeechStore = new WordSpeechStore();
@@ -69,6 +70,7 @@ function Game1() {
   return (
     <div className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Say this word')}</span>

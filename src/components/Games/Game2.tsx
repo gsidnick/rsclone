@@ -7,6 +7,7 @@ import useStores from '../../hooks/useStores';
 import WordIteratorStore from '../../store/WordIteratorStore';
 import WordCharsStore from '../../store/WordCharsStore';
 import GameEndMessage from '../Messages/GameEndMessage';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordCharsStore = new WordCharsStore();
@@ -53,6 +54,7 @@ function Game2() {
   return (
     <div className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <div className="game__word-row game__word-row-none">

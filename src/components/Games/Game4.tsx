@@ -9,6 +9,7 @@ import WordWriteStore from '../../store/WordWriteStore';
 import { useTranslation } from 'react-i18next';
 import GameEndMessage from '../Messages/GameEndMessage';
 import Input from '../UI/Input/Input';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 const wordIteratorStore = new WordIteratorStore();
 const wordWriteStore = new WordWriteStore();
@@ -90,6 +91,7 @@ function Game4() {
   return (
     <main className="game">
       {wordStore.isLoading && <Loader />}
+      {!wordStore.isLoading && wordStore.words.length > 0 && <ProgressBar value={wordIteratorStore.setProgress()} />}
       {!wordStore.isLoading && (
         <>
           <span className="game__word-label">{t('Write a translation for this word')}</span>
